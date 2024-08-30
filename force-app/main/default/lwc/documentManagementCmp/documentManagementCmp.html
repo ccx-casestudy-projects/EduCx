@@ -1,0 +1,63 @@
+<template>
+    <div class="slds-clearfix">
+        <div class="slds-float_right slds-m-right_x-large slds-m-bottom_small">
+            <lightning-button variant="brand" label="New Document" title="New" icon-name="action:new"
+                onclick={handleButtonClick}></lightning-button>
+        </div>
+    </div>
+    <div class="scroller" style="height:50%;">
+        <template if:true={organizations}>
+            <template for:each={organizations} for:item="organization">
+                <div key={organization.organization.Id} class="card clearfix">
+                    <lightning-layout horizontal-align="space-between" vertical-align="center">
+                        <lightning-layout-item>
+                            <p class=" ">
+                                {organization.formattedCreatedDate}<span class='slds-m-left_xx-small'><b>{organization.organization.Name}</b></span>
+                             
+                            </p>
+                        </lightning-layout-item>
+                        <lightning-layout-item alignment-bump="left">
+                            <template if:true={organization.files}>
+                                <template for:each={organization.files} for:item="file">
+                                    <lightning-button-icon key={file.ContentDocumentId} label="Preview"
+                                        onclick={handleViewClick} value={file.ContentDocumentId}
+                                        icon-name="utility:preview">
+                                    </lightning-button-icon>
+                                </template>
+                            </template>
+                        </lightning-layout-item>
+                        <lightning-layout-item class="slds-m-left_xx-small">
+                            <lightning-button-icon onclick={handleEditClick} icon-name="utility:edit_form"
+                                alternative-text="Edit" title="Edit" value={organization.organization.Id}>
+                            </lightning-button-icon>
+                    </lightning-layout-item>
+                    <lightning-layout-item class="slds-m-left_xx-small">
+                        <lightning-button-icon onclick={handleDeleteClick} icon-name="utility:delete"
+                            alternative-text="Delete" title="Delete" value={organization.organization.Id}>
+                        </lightning-button-icon>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </div>
+        </template>
+    </template></div>
+    <template if:false={organizations}>
+        <p>No notices available.</p>
+    </template>
+    <template if:true={error}>
+        <p>Error: {error.message}</p>
+    </template>
+    <template if:true={showOrganizationForm}>
+        <c-generic-modal header-text={heading} onclosemodal={handleCloseModal}>
+            <c-add-document  oncloseform={handleCloseModal} ></c-add-document>
+        </c-generic-modal>
+    </template>
+    <template if:true={showDeleteModal}>
+        <c-generic-delete onaction={refreshData} record-ids={deleteRecordIds}></c-generic-delete>
+    </template>
+    <template if:true={showOrganizationEditForm}>
+        <c-generic-modal header-text={heading} onclosemodal={handleCloseModal}>
+            <c-edit-document  file-id={documentId} record-id={recordId}
+                oncloseform={handleCloseModal} hide-semister={hideSemister}></c-edit-document>
+        </c-generic-modal>
+    </template>
+</template>

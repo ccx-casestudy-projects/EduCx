@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Designation --></label>
+    <name>Designation__c</name>
+    <picklistValues>
+        <masterLabel>Assistant Professor</masterLabel>
+        <translation><!-- Assistant Professor --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Associate Professor</masterLabel>
+        <translation><!-- Associate Professor --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Jr.Assistant</masterLabel>
+        <translation><!-- Jr.Assistant --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Librarian</masterLabel>
+        <translation><!-- Librarian --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Principal</masterLabel>
+        <translation><!-- Principal --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Professor</masterLabel>
+        <translation><!-- Professor --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Sr.Assistant</masterLabel>
+        <translation><!-- Sr.Assistant --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

@@ -1,0 +1,102 @@
+<template>
+    
+    <lightning-card >
+        <div class="slds-grid ">
+             <div class="slds-col slds-size_1-of-3">
+                <lightning-icon class="custom-back-icon" icon-name='action:back' alternative-text='back' size='x-small'  onclick={handleBackClick} title='back' ></lightning-icon>
+                <!-- <lightning-button-icon icon-name="action:back" alternative-text="Back" onclick={handleBackClick} size="medium" ></lightning-button-icon> -->
+            </div>
+            <div class="slds-col slds-size_1-of-3" style="text-align:center;">
+                <b style="font-size:large; ">Student Payment Information</b>
+            </div>
+             <div class="slds-col slds-size_1-of-3">
+            </div>
+        </div>
+        <br/>
+       <template if:true={paymentDetailData}>
+            <lightning-layout multiple-rows>
+                
+                <lightning-layout-item size="12">
+                    <lightning-layout style="padding-left: 10px;">
+                        <lightning-layout-item size="4">
+                            <div >
+                                <label class="layout-item">Student Name:</label>&nbsp;
+                                {paymentDetailData.studentName}
+                            </div>
+                        </lightning-layout-item>
+                        <lightning-layout-item size="4">
+                            <div >
+                                <label class="layout-item">Hall Ticket Number:</label>&nbsp;
+                               {paymentDetailData.studentHallTicket}
+                            </div>
+                        </lightning-layout-item>
+                        <lightning-layout-item size="4">
+                            <div >
+                                <label class="layout-item">Course Year:</label>&nbsp;
+                                {paymentDetailData.studentCourseYear}
+                            </div>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                </lightning-layout-item>
+
+                
+                <lightning-layout-item size="12">
+                    <lightning-layout style="padding-left: 10px;">
+                        <lightning-layout-item size="4">
+                            <div >
+                                <label class="layout-item" >Total Fee:</label>&nbsp;
+                                 {paymentDetailData.totalAmountFee}
+                            </div>
+                        </lightning-layout-item>
+                        <lightning-layout-item size="4">
+                            <div>
+                                <label class="layout-item">Total Amount Paid:</label>&nbsp;
+                               {paymentDetailData.totalAmountPaid}
+                            </div>
+                        </lightning-layout-item>
+                        <lightning-layout-item size="4">
+                            <div >
+                                <label class="layout-item">Total Amount Balance:</label>&nbsp;
+                                {paymentDetailData.totalAmountBalance}
+                            </div>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                </lightning-layout-item>
+            </lightning-layout>
+        </template>
+        <br/>
+        <template if:true={paymentDetailData}>
+            <lightning-datatable key-field="id" data={paymentDetailData.paymentDetailsList} columns={paymentDetailColumns} onrowaction={handleRowAction}>
+            </lightning-datatable>
+        </template>
+    </lightning-card>
+
+    
+    <template if:true={isModalOpen}>
+        <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01"
+            class="slds-modal slds-fade-in-open slds-modal_small">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                        <lightning-icon icon-name="utility:close" alternative-text="close" size="small" variant="inverse"></lightning-icon>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <h2 class="slds-text-heading_medium">Edit Payment Detail</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium">
+                    <lightning-record-edit-form object-api-name="educx__Payment_Details__c" record-id={selectedRecordId} onsuccess={handleSuccess} onerror={handleError}>
+                        <lightning-input-field field-name="educx__Payment__c"></lightning-input-field>
+                        <lightning-input-field field-name="educx__Fee_Type__c"></lightning-input-field>
+                        <lightning-input-field field-name="educx__Payment_Type__c"></lightning-input-field>
+                        <lightning-input-field field-name="educx__Amount_Paid__c"></lightning-input-field>
+                        <div class="slds-align_absolute-center">
+                            <lightning-button variant="neutral" label="Cancel" onclick={closeModal}></lightning-button>
+                            <lightning-button class="slds-p-left_xx-large" type="submit" label="Update" onclick={handleSubmitUpdate} variant="brand"></lightning-button>
+                        </div>
+                    </lightning-record-edit-form>
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>

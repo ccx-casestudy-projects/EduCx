@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>NAME</columns>
+    <columns>Months__c</columns>
+    <columns>Attendance__c</columns>
+    <columns>Date_Year__c</columns>
+    <columns>Student__c</columns>
+    <columns>TodayDayPresent__c</columns>
+    <columns>Day_1__c</columns>
+    <columns>Day_2__c</columns>
+    <columns>Day_3__c</columns>
+    <columns>Day_4__c</columns>
+    <columns>Day_5__c</columns>
+    <columns>Day_6__c</columns>
+    <columns>Day_7__c</columns>
+    <columns>Day_8__c</columns>
+    <columns>Day_9__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+</ListView>

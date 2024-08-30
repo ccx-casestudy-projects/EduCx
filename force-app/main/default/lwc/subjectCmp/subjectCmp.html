@@ -1,0 +1,220 @@
+<template>
+    <lightning-card>
+        <!-- Create / Edit / Delete / Associate Course / Add Elective Buttons -->
+        <div class="slds-m-around_medium">
+            <div class="slds-grid slds-gutters">
+                <div class="slds-col slds-size_1-of-4">
+                    <lightning-input class="search-input" type="search" value={searchKey} placeholder="Search Subject"
+                        onchange={searchField}></lightning-input>
+                </div>
+                <div class="slds-col slds-size_3-of-4 slds-grid slds-grid_align-end slds-m-top_medium">
+                    <lightning-button label="Associate Course(s)" onclick={handleAssociateCourse} variant="brand"
+                        icon-name="utility:link"></lightning-button>
+                    <lightning-button label="Add Elective" onclick={handleElective} variant="brand"
+                        class="slds-m-left_small"></lightning-button>
+                    <lightning-button label="Create" onclick={handleCreate} variant="brand" icon-name="utility:add"
+                        class="slds-m-left_small"></lightning-button>
+                    <lightning-button label="Delete" onclick={handleDelete} variant="destructive-text"
+                        icon-name="utility:delete" class="slds-m-left_small"></lightning-button>
+                </div>
+            </div>
+        </div>
+        <!-- Data Table -->
+        <lightning-datatable key-field="id" data={displayedSubjects} columns={columns} onrowaction={handleRowAction}
+            onrowselection={handleRowSelection}></lightning-datatable>
+
+        <!-- Create / Edit Modal -->
+        <template if:true={isModalOpen}>
+            <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <header class="slds-modal__header">
+                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={handleCloseModal}>
+                            <lightning-icon icon-name="utility:close" alternative-text="close" size="small"></lightning-icon>
+                            <span class="slds-assistive-text">Close</span>
+                        </button>
+                        <b><h2 class="slds-text-heading_large">{modalTitle}</h2></b>
+                    </header>
+                    <div class="slds-modal__content slds-p-around_medium">
+                        <lightning-record-edit-form object-api-name="educx__Subject__c" record-id={selectedSubjectId}
+                            onsuccess={handleSuccess}>
+                            <label for="subcode" class="text">Subject Code</label>
+                            <lightning-input-field id="subcode" variant="label-hidden" field-name="Name">
+                            </lightning-input-field><br/>
+                            <label for="subname" class="text">Subject Name</label>
+                            <lightning-input-field id="subname" variant="label-hidden"
+                                field-name="educx__Subject_Name__c"></lightning-input-field><br/>
+                            <label for="elect" class="text">Has Elective</label>
+                            <lightning-input-field id="elect" variant="label-hidden"
+                                field-name="educx__Has_Elective__c"></lightning-input-field><br/>
+                            <footer class="slds-modal__footer slds-align_absolute-center">
+                                <lightning-button variant="neutral" label="Cancel" onclick={handleCloseModal}>
+                                </lightning-button>
+                                <lightning-button variant="brand" label="Save" type="submit" style="margin-left: 5px;">
+                                </lightning-button>
+                            </footer>
+                        </lightning-record-edit-form>
+                    </div>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </template>
+
+        <!-- Associate Courses -->
+        <template if:true={isAssociateModalOpen}>
+            <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open custom-modal slds-modal_medium">
+                <div class="slds-modal__container">
+                    <header class="slds-modal__header">
+                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={handleCloseAssociateModal}>
+                            <lightning-icon icon-name="utility:close" alternative-text="close" size="small"></lightning-icon>
+                            <span class="slds-assistive-text">Close</span>
+                        </button>
+                        <b><h2 class="slds-text-heading_large">Associate Course with Selected Subjects</h2></b>
+                    </header>
+                    <div class="slds-modal__content slds-p-around_medium">
+                        <lightning-layout class="slds-p-around_medium custom-layout">
+
+
+                            <!-- Subject Details Section -->
+                            <lightning-layout-item size="6">
+                                <div class="slds-m-bottom_medium slds-text-align_left">
+                                    <h2 class="slds-text-heading_small">Selected Subjects</h2>
+                                    <div class="custom-scroll-container">
+                                        <ol class="custom-list">
+                                            <template for:each={selectedSubjects} for:item="subject">
+                                                <li key={subject.Id} class="slds-m-around_small custom-subject-item">
+                                                    <span class="slds-m-right_small">{subject.Name} - {subject.educx__Subject_Name__c}</span>
+                                                </li>
+                                            </template>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </lightning-layout-item>
+
+                            <!-- Vertical line for separation -->
+                            <div class="vertical-line"></div>
+
+                            <div class="slds-m-around_medium slds-size_5-of-12">
+                                <lightning-layout-item size="6">
+                                    <lightning-record-edit-form object-api-name="educx__Course_Subject__c"
+                                        onsuccess={handleAssociateSuccess} onerror={handleError}>
+                                        <label for="course" class="text">Course Code</label>
+                                        <lightning-input-field field-name="educx__Course__c" id="course"
+                                            variant="label-hidden" onchange={handleCourseChange}>
+                                        </lightning-input-field><br/>
+                                        <label for="year" class="text">Year</label>
+                                        <lightning-input-field field-name="educx__Year__c" id="year"
+                                            variant="label-hidden" onchange={handleYearChange}></lightning-input-field>
+                                        <br/>
+                                        <label for="sem" class="text">Semester</label>
+                                        <lightning-input-field field-name="educx__Semester__c" id="sem"
+                                            variant="label-hidden" onchange={handleSemesterChange}>
+                                        </lightning-input-field><br/>
+                                    </lightning-record-edit-form>
+                                </lightning-layout-item>
+                            </div>
+
+                        </lightning-layout>
+
+
+
+                        <footer class="slds-modal__footer slds-align_absolute-center">
+                            <lightning-button variant="neutral" label="Cancel" onclick={handleCloseAssociateModal}>
+                            </lightning-button>
+                            <lightning-button variant="brand" label="Save" onclick={handleSaveAssociations}
+                                style="margin-left: 5px;"></lightning-button>
+                        </footer>
+
+                    </div>
+
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </template>
+
+        <!-- Add Elective Modal -->
+        <template if:true={isAddElectiveModalOpen}>
+            <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <header class="slds-modal__header">
+                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={handleCloseAddElectiveModal}>
+                            <lightning-icon icon-name="utility:close" alternative-text="close" size="small"></lightning-icon>
+                            <span class="slds-assistive-text">Close</span>
+                        </button>
+                        <b><h2 class="slds-text-heading_large">Add Elective to {selectedSubjectName}</h2></b>
+                    </header>
+                    <div class="slds-modal__content slds-p-around_medium">
+                        <lightning-record-edit-form object-api-name="educx__Elective__c"
+                            onsuccess={handleAddElectiveSuccess} onerror={handleError}>
+                            <label for="SubjectCode" class="text" required>Subject Codes</label>
+                            <lightning-input-field id="SubjectCode" variant="label-hidden"
+                                field-name="educx__Subject__c" value={selectedSubId} required></lightning-input-field><br/>
+                            <label for="elective" class="text">Elective Name</label>
+                            <lightning-input-field id="elective" variant="label-hidden" field-name="Name" >
+                            </lightning-input-field><br/>
+                            <footer class="slds-modal__footer slds-align_absolute-center">
+                                <lightning-button variant="neutral" label="Cancel"
+                                    onclick={handleCloseAddElectiveModal}></lightning-button>
+                                <lightning-button variant="brand" label="Save" type="submit" style="margin-left: 5px;">
+                                </lightning-button>
+                            </footer>
+                        </lightning-record-edit-form>
+                    </div>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </template>
+
+        <c-toast-message></c-toast-message>
+
+   
+
+    <template if:true={availableElectivesPopup}>
+    <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01"
+        class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={handleCloseModal}>
+                <lightning-icon icon-name="utility:close" alternative-text="close" size="small"></lightning-icon>
+                <span class="slds-assistive-text">Close</span>
+            </button>
+            <div class="slds-modal__header">
+                <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate" tabindex="-1">Available Electives</h1>
+            </div>
+            <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                <template if:true={showRecs}>
+                    <ul>
+                        <template for:each={relatedElectives} for:item="elective">
+                            <li key={elective.Id}>Elective Name : {elective.Name}</li>
+                        </template>
+                    </ul>
+                </template>
+                <template if:true={donotShowRec}>
+                    <p>No Electives are Available</p>
+                </template>
+            </div>
+            <footer class="slds-modal__footer">
+                <lightning-button variant="neutral" label="Cancel" onclick={handleCloseModal}></lightning-button>
+            </footer>
+        </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+</template>
+
+        <!-- Pagination Controls and Page Number Display -->
+        <div class="slds-align_absolute-center" style="height:5rem">
+            <lightning-button disabled={bDisableFirst} icon-name="utility:jump_to_left" label="First"
+                class="slds-p-horizontal_x-small" alternative-text="first page" onclick={firstPage}></lightning-button>
+
+            <lightning-button disabled={bDisableFirst} icon-name="utility:chevronleft" label="Previous"
+                alternative-text="Previous" onclick={previousPage}></lightning-button>
+            &nbsp;
+            <span class="slds-badge">Page {pageNumber} of {totalPages}</span>
+            &nbsp;
+            <lightning-button disabled={bDisableLast} icon-name="utility:chevronright" label="Next"
+                alternative-text="Next" onclick={nextPage} class="slds-p-horizontal_x-small" icon-position="right">
+            </lightning-button>
+
+            <lightning-button disabled={bDisableLast} icon-name="utility:jump_to_right" label="Last"
+                alternative-text="last page" onclick={lastPage} icon-position="right"></lightning-button>
+        </div>
+    </lightning-card>
+</template>

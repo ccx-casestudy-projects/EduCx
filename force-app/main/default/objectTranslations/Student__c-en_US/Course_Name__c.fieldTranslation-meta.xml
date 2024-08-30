@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Course Name --></label>
+    <name>Course_Name__c</name>
+    <picklistValues>
+        <masterLabel>Bachelor of Education</masterLabel>
+        <translation><!-- Bachelor of Education --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Botany/Zoology/Applied Nutrition</masterLabel>
+        <translation><!-- Botany/Zoology/Applied Nutrition --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Botany/Zoology/Chemistry</masterLabel>
+        <translation><!-- Botany/Zoology/Chemistry --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>CBCS</masterLabel>
+        <translation><!-- CBCS --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Computer Application</masterLabel>
+        <translation><!-- Computer Application --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Economics/Pol.Science/History</masterLabel>
+        <translation><!-- Economics/Pol.Science/History --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>General</masterLabel>
+        <translation><!-- General --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Master of Business Administration</masterLabel>
+        <translation><!-- Master of Business Administration --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Maths/Chemistry/Computer Science</masterLabel>
+        <translation><!-- Maths/Chemistry/Computer Science --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Maths/Physics/Chemistry</masterLabel>
+        <translation><!-- Maths/Physics/Chemistry --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Maths/Physics/Computer Science</masterLabel>
+        <translation><!-- Maths/Physics/Computer Science --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

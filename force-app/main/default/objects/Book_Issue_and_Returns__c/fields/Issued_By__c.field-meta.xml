@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Issued_By__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>Issued By</label>
+    <lookupFilter>
+        <active>true</active>
+        <filterItems>
+            <field>Employees__c.Designation__c</field>
+            <operation>equals</operation>
+            <value>Librarian</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>Employees__c</referenceTo>
+    <relationshipLabel>Book Issue and Returns (Employees)</relationshipLabel>
+    <relationshipName>Book_Issue_and_Returns1</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

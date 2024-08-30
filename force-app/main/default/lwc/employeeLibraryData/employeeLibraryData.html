@@ -1,0 +1,44 @@
+<template>
+    <lightning-card>
+    <template if:false={show}>
+        <div class="slds-text-heading_large headercolor">Issued Books</div>
+       
+            <div class="slds-box slds-box_xx-small">
+             
+            <lightning-layout horizontal-align="spread">
+             
+                <lightning-layout-item padding="around-small">
+                    <div style="font-weight: bold;" >Name:</div> {employeeName}
+               </lightning-layout-item>
+               <lightning-layout-item padding="around-small">
+             
+                    <div style="font-weight: bold;" >Employee Id:</div> {employeeLogin}
+               </lightning-layout-item>
+               <lightning-layout-item padding="around-small">
+                    <lightning-button class="slds-p-around_small slds-p-right_xx-large"   variant="brand" label="Issue" onclick={handleIssue} disabled={disableIssueButton}></lightning-button>
+                </lightning-layout-item>
+                </lightning-layout>
+            </div>
+    </template>
+<!--Book Details-->
+<template if:true={allbooksLength}>
+<div class="card">
+              <lightning-datatable
+              key-field="id"
+              data={allbooks}
+              columns={columns}
+              onrowaction={handleRowAction}
+              hide-checkbox-column="true"
+            ></lightning-datatable>
+          </div>
+        </template>
+            <template if:false={allbooksLength}>
+                 <div style="color: #F1490E; font-size: 18px; font-weight: bold; text-align: center; padding: 10px;">
+            No books are issued for this employee.
+        </div>
+          
+     
+    </template>
+      <c-issue-books-for-candidate candidate-id={employeeId} candidate-type={candidateType}></c-issue-books-for-candidate>    
+</lightning-card>
+</template>

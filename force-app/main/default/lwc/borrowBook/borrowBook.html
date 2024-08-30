@@ -1,0 +1,38 @@
+<template>
+   
+    <div class="slds-box slds-box_xx-small">
+        <div class="slds-text-heading_large headercolor">Borrow Book</div>
+        <lightning-record-edit-form
+            object-api-name="educx__Book_Issue_and_Returns__c"
+            onsuccess={handleSuccess}
+        >
+            <lightning-messages></lightning-messages>
+            <div class="slds-grid slds-gutters">
+                <div class="slds-col slds-size_1-of-2 slds-p-around_medium">
+                    <lightning-input-field field-name="educx__Book_Id__c"></lightning-input-field>
+                    <lightning-input-field field-name="educx__Issued_By__c"></lightning-input-field>
+                    <lightning-input-field field-name="educx__Candidate__c" onchange={handleCandidateChange}></lightning-input-field>
+                </div>
+                <div class="slds-col slds-size_1-of-2 slds-p-around_medium">
+                     <template if:true={isEmployeeSelected}>
+                        <lightning-input-field field-name="educx__Employee_Id__c"></lightning-input-field>
+                    </template>
+                    <template if:true={isStudentSelected}>
+                        <lightning-input-field field-name="educx__Student_Id__c"></lightning-input-field>
+                    </template>
+                    <lightning-input-field field-name="educx__Date_of_Issue__c"></lightning-input-field>
+                    <lightning-input-field field-name="educx__Date_of_Return__c"></lightning-input-field>
+                   
+                </div>
+            </div>
+            <div class="slds-m-top_medium">
+                <lightning-button
+                    variant="brand"
+                    type="submit"
+                    name="save"
+                    label="Issue"
+                ></lightning-button>
+            </div>
+        </lightning-record-edit-form>
+    </div>
+</template>

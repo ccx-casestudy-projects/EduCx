@@ -1,0 +1,99 @@
+<template>
+    <template if:true={showPromotePage}>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+            aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container custom-modal">
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close" title="Close" style="color:white" onclick={handleClose}>
+                        <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse" size="small"></lightning-icon>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <h2 id="modal-heading-02" class="slds-text-heading_medium slds-hyphenate header">
+                        Promote Students
+                    </h2>
+                    </header>
+                    <lightning-card>
+                    <div class="input-container fontsize">
+                        <lightning-record-edit-form object-api-name="educx__Student__c">
+                            <lightning-layout multiple-rows="false">
+                                <lightning-layout-item size="2">
+                                    <lightning-combobox 
+                                        name="academicYear" 
+                                        label="Select Academic Year" 
+                                        value={selectedAcademicYear} 
+                                        placeholder="Select an Academic Year" 
+                                        options={academicYearOptions}
+                                        onchange={handleAcademicYearChange}
+                                        class="custom-combobox spacing">
+                                    </lightning-combobox>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="2">
+                                    <lightning-combobox 
+                                        name="course" 
+                                        label="Select Course" 
+                                        value={selectedCourse} 
+                                        placeholder="Select Course" 
+                                        options={CourseOptions}
+                                        onchange={handleCourseChange}
+                                        class="custom-combobox">
+                                    </lightning-combobox>
+                                    <lightning-input-field field-name="educx__Course_Code__c" 
+                                        value={selectedCourse} class="hidefield">
+                                    </lightning-input-field>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="1">
+                                    <lightning-input-field field-name="educx__Course__c" 
+                                        value={StdCourse} onchange={StdCourseChange} disabled>
+                                    </lightning-input-field>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="2">
+                                    <lightning-input-field field-name="educx__Course_Name__c" 
+                                        value={StdCourseName} onchange={StdCourseNameChange} disabled>
+                                    </lightning-input-field>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="2">
+                                    <lightning-input-field field-name="educx__Year__c" 
+                                        value={CourseYear} onchange={CourseYearChange}>
+                                    </lightning-input-field>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="2">
+                                    <lightning-input-field field-name="educx__Semester__c" 
+                                        value={CourseSem} onchange={CourseSemChange}>
+                                    </lightning-input-field>
+                                </lightning-layout-item>
+                                 <lightning-layout-item style="margin-top:24px !important" size="1">
+                                        <lightning-button  label="Promote" onclick={handlepromote} 
+                                            variant="brand" disabled={isPromoteButtonDisabled}></lightning-button>
+                                 </lightning-layout-item>
+                            </lightning-layout>
+                        </lightning-record-edit-form>
+                    </div>
+                    <br/>
+                    <div class="datatable-container">
+                        <template if:true={hasStudents}>
+                            <lightning-datatable 
+                                key-field="Id" 
+                                data={studentData} 
+                                columns={columns} 
+                                onrowselection={handleRowSelection}>
+                            </lightning-datatable>
+                        </template>
+                        <template if:false={hasStudents}>
+                            <div class="slds-text-align_center slds-m-around_medium fontsize">
+                                No students found.
+                            </div>
+                        </template>
+                    </div>
+                    <footer class="slds-modal__footer">
+                        <div class="slds-grid slds-grid_align-end">
+                            <lightning-button variant="brand-outline" label="Cancel" onclick={handleClose}>
+                            </lightning-button>
+                        </div>
+                    </footer>
+                    </lightning-card>
+                    </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+    <c-toast-message></c-toast-message>
+</template>

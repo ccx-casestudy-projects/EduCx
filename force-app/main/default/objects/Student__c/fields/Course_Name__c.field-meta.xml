@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Course_Name__c</fullName>
+    <externalId>false</externalId>
+    <label>Course Name</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Course__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Economics/Pol.Science/History</fullName>
+                <default>false</default>
+                <label>Economics/Pol.Science/History</label>
+            </value>
+            <value>
+                <fullName>Botany/Zoology/Chemistry</fullName>
+                <default>false</default>
+                <label>Botany/Zoology/Chemistry</label>
+            </value>
+            <value>
+                <fullName>Maths/Physics/Computer Science</fullName>
+                <default>false</default>
+                <label>Maths/Physics/Computer Science</label>
+            </value>
+            <value>
+                <fullName>Maths/Physics/Chemistry</fullName>
+                <default>false</default>
+                <label>Maths/Physics/Chemistry</label>
+            </value>
+            <value>
+                <fullName>Computer Application</fullName>
+                <default>false</default>
+                <label>Computer Application</label>
+            </value>
+            <value>
+                <fullName>General</fullName>
+                <default>false</default>
+                <label>General</label>
+            </value>
+            <value>
+                <fullName>CBCS</fullName>
+                <default>false</default>
+                <label>CBCS</label>
+            </value>
+            <value>
+                <fullName>Master of Business Administration</fullName>
+                <default>false</default>
+                <label>Master of Business Administration</label>
+            </value>
+            <value>
+                <fullName>Bachelor of Education</fullName>
+                <default>false</default>
+                <label>Bachelor of Education</label>
+            </value>
+            <value>
+                <fullName>Maths/Chemistry/Computer Science</fullName>
+                <default>false</default>
+                <label>Maths/Chemistry/Computer Science</label>
+            </value>
+            <value>
+                <fullName>Botany/Zoology/Applied Nutrition</fullName>
+                <default>false</default>
+                <label>Botany/Zoology/Applied Nutrition</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>B.A.</controllingFieldValue>
+            <valueName>Economics/Pol.Science/History</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>B.Com</controllingFieldValue>
+            <valueName>Computer Application</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>B.Com</controllingFieldValue>
+            <valueName>General</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>B.Sc.</controllingFieldValue>
+            <valueName>Botany/Zoology/Chemistry</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>B.Sc.</controllingFieldValue>
+            <valueName>Maths/Physics/Computer Science</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>B.Sc.</controllingFieldValue>
+            <valueName>Maths/Physics/Chemistry</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>B.Sc.</controllingFieldValue>
+            <valueName>Maths/Chemistry/Computer Science</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>B.Sc.</controllingFieldValue>
+            <valueName>Botany/Zoology/Applied Nutrition</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>B.Ed.</controllingFieldValue>
+            <valueName>Bachelor of Education</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>M.B.A.</controllingFieldValue>
+            <valueName>Master of Business Administration</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,13 @@
+.spinning-container {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  .spinner-content {
+    position: absolute;
+    top: calc(50% + 3em);
+    width: 100%;
+    font-weight: bold;
+  }

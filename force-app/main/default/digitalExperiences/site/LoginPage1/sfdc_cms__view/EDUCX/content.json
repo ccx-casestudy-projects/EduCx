@@ -1,0 +1,245 @@
+{
+  "type" : "sfdc_cms__view",
+  "title" : "STUDENT",
+  "contentBody" : {
+    "component" : {
+      "children" : [ {
+        "children" : [ {
+          "attributes" : {
+            "backgroundImageConfig" : "",
+            "backgroundImageOverlay" : "rgba(0,0,0,0)",
+            "componentSpacerSize" : "",
+            "dxpStyle" : {
+              "margin" : {
+                "bottom" : "",
+                "left" : "20px",
+                "right" : "20px",
+                "top" : ""
+              }
+            },
+            "layoutDirectionDesktop" : "row",
+            "layoutDirectionMobile" : "column",
+            "layoutDirectionTablet" : "column",
+            "maxContentWidth" : "",
+            "sectionColumnGutterWidth" : "",
+            "sectionConfig" : "{\"UUID\":\"c518c7d8-7fc7-48aa-8ffd-15f8c6e988d0\",\"columns\":[{\"UUID\":\"6eb450eb-0d3a-4187-ab58-579da4366437\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}",
+            "sectionMinHeight" : "",
+            "sectionVerticalAlign" : "flex-start"
+          },
+          "children" : [ {
+            "children" : [ {
+              "attributes" : {
+                "dxpStyle" : {
+                  "margin" : {
+                    "bottom" : "2px",
+                    "left" : "20px",
+                    "right" : "20px",
+                    "top" : ""
+                  }
+                }
+              },
+              "definition" : "educx:studentMainComponent",
+              "id" : "30676dc7-7d46-46c0-9fe9-6714325b0f24",
+              "type" : "component"
+            } ],
+            "id" : "6eb450eb-0d3a-4187-ab58-579da4366437",
+            "name" : "col1",
+            "title" : "Column 1",
+            "type" : "region"
+          } ],
+          "definition" : "community_layout:section",
+          "id" : "c518c7d8-7fc7-48aa-8ffd-15f8c6e988d0",
+          "type" : "component"
+        }, {
+          "attributes" : {
+            "backgroundImageConfig" : "",
+            "backgroundImageOverlay" : "rgba(0,0,0,0)",
+            "componentSpacerSize" : "",
+            "layoutDirectionDesktop" : "row",
+            "layoutDirectionMobile" : "column",
+            "layoutDirectionTablet" : "column",
+            "maxContentWidth" : "none",
+            "sectionColumnGutterWidth" : "",
+            "sectionConfig" : "{\"UUID\":\"57174284-941b-469f-9249-d3643de7ca13\",\"columns\":[{\"UUID\":\"1813045a-5770-4f6a-adec-c48035d54313\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}",
+            "sectionMinHeight" : "",
+            "sectionVerticalAlign" : "flex-start"
+          },
+          "children" : [ {
+            "children" : [ {
+              "attributes" : {
+                "activeTabBackgroundColor" : "rgb(200, 200, 200)",
+                "activeTabBorderHighlightWeight" : "5px",
+                "activeTabTextAlignment" : "center",
+                "activeTabTextEmphasis" : "{\"bold\":true,\"underline\":true}",
+                "activeTabTextStyle" : "{\"textStyle\":\"heading-medium\",\"headingTag\":\"h3\"}",
+                "borderColor" : "rgb(0, 0, 0)",
+                "borderRadius" : "0px",
+                "borderWeight" : "3px",
+                "dxpStyle" : {
+                  "margin" : {
+                    "bottom" : "0px",
+                    "left" : "0px",
+                    "right" : "0px",
+                    "top" : "0px"
+                  }
+                },
+                "enableOverflowMenu" : false,
+                "imageFit" : "cover",
+                "imagePosition" : "center center",
+                "overflowIconColor" : "rgb(116,116,116)",
+                "overflowIconStyle" : "down-arrow",
+                "overflowMenuLabel" : "More",
+                "tabAlignment" : "left",
+                "tabBorderColor" : "",
+                "tabBorderRadius" : "0px",
+                "tabBorderWeight" : "2px",
+                "tabHoverBorderHighlightWeight" : "1px",
+                "tabLayout" : "vertical",
+                "tabPadding" : "12px",
+                "tabTextAlignment" : "center",
+                "tabTextEmphasis" : "{\"bold\":true,\"underline\":false}",
+                "tabTextStyle" : "{\"textStyle\":\"heading-small\",\"headingTag\":\"h4\"}",
+                "tabsetConfig" : "{\"UUID\":\"a05dc7d8-620a-4978-93f3-1b89fdaf4304\",\"activeTab\":null,\"useOverflowMenu\":null,\"tabs\":[{\"UUID\":\"80efc9d3-77c6-494b-9349-185441d05015\",\"tabName\":\"My Attendance\",\"tabKey\":\"tab1\",\"locked\":false,\"allowGuestUser\":false},{\"UUID\":\"d2ccd1d0-1a78-4ee4-94c7-c00851b8143f\",\"tabName\":\"My Payments\",\"tabKey\":\"tab2\",\"locked\":false,\"allowGuestUser\":false},{\"UUID\":\"0e5893b8-5715-491a-bdc7-e2b654c5bfa7\",\"tabName\":\"Issued Books\",\"tabKey\":\"6553a\",\"locked\":false,\"allowGuestUser\":false},{\"UUID\":\"9e69bbaf-a548-4c37-adcb-c75e41a96fef\",\"tabName\":\"My Requests\",\"tabKey\":\"c7adf\",\"locked\":false,\"allowGuestUser\":false},{\"UUID\":\"271eda5e-7702-4b76-88a4-55263a9e9d04\",\"tabName\":\"My Documents\",\"tabKey\":\"5e3a8\",\"locked\":false,\"allowGuestUser\":false}]}",
+                "width" : "98%"
+              },
+              "children" : [ {
+                "children" : [ {
+                  "attributes" : {
+                    "dxpStyle" : {
+                      "margin" : {
+                        "bottom" : "1%",
+                        "left" : "1%",
+                        "right" : "1%",
+                        "top" : "1%"
+                      }
+                    }
+                  },
+                  "definition" : "educx:displayLoginStudentAttendance",
+                  "id" : "64060159-cd84-4a72-8b75-3845b396c045",
+                  "type" : "component"
+                } ],
+                "id" : "80efc9d3-77c6-494b-9349-185441d05015",
+                "name" : "tab1",
+                "title" : "My Attendance",
+                "type" : "region"
+              }, {
+                "children" : [ {
+                  "attributes" : {
+                    "dxpStyle" : {
+                      "margin" : {
+                        "bottom" : "1%",
+                        "left" : "1%",
+                        "right" : "1%",
+                        "top" : "1%"
+                      }
+                    }
+                  },
+                  "definition" : "educx:studentPaymentComponent",
+                  "id" : "4bae3d53-574e-40b8-a820-df97c8d48a54",
+                  "type" : "component"
+                } ],
+                "id" : "d2ccd1d0-1a78-4ee4-94c7-c00851b8143f",
+                "name" : "tab2",
+                "title" : "My Payments",
+                "type" : "region"
+              }, {
+                "children" : [ {
+                  "attributes" : {
+                    "dxpStyle" : {
+                      "margin" : {
+                        "bottom" : "1%",
+                        "left" : "1%",
+                        "right" : "1%",
+                        "top" : "1%"
+                      },
+                      "padding" : {
+                        "bottom" : "",
+                        "left" : "",
+                        "right" : "10px",
+                        "top" : ""
+                      }
+                    }
+                  },
+                  "definition" : "educx:stuLibraryData",
+                  "id" : "1c0fb715-b31f-46f7-8e89-a23c9d0764eb",
+                  "type" : "component"
+                } ],
+                "id" : "0e5893b8-5715-491a-bdc7-e2b654c5bfa7",
+                "name" : "6553a",
+                "title" : "Issued Books",
+                "type" : "region"
+              }, {
+                "children" : [ {
+                  "attributes" : {
+                    "dxpStyle" : {
+                      "margin" : {
+                        "bottom" : "1%",
+                        "left" : "1%",
+                        "right" : "1%",
+                        "top" : "1%"
+                      }
+                    }
+                  },
+                  "definition" : "educx:studentApprovalStatusPage",
+                  "id" : "5092bfe4-0d45-4444-99bb-9277f93574ff",
+                  "type" : "component"
+                } ],
+                "id" : "9e69bbaf-a548-4c37-adcb-c75e41a96fef",
+                "name" : "c7adf",
+                "title" : "My Requests",
+                "type" : "region"
+              }, {
+                "children" : [ {
+                  "attributes" : { },
+                  "definition" : "educx:stuNotesandAttchaments",
+                  "id" : "69b4e10e-899a-482a-aa83-69e612b24eff",
+                  "type" : "component"
+                } ],
+                "id" : "271eda5e-7702-4b76-88a4-55263a9e9d04",
+                "name" : "5e3a8",
+                "title" : "My Documents",
+                "type" : "region"
+              } ],
+              "definition" : "dxp_layout:tabs",
+              "id" : "a05dc7d8-620a-4978-93f3-1b89fdaf4304",
+              "type" : "component"
+            } ],
+            "id" : "1813045a-5770-4f6a-adec-c48035d54313",
+            "name" : "col1",
+            "title" : "Column 1",
+            "type" : "region"
+          } ],
+          "definition" : "community_layout:section",
+          "id" : "57174284-941b-469f-9249-d3643de7ca13",
+          "type" : "component"
+        } ],
+        "id" : "f318396d-7352-4a49-825b-e7784177aa4d",
+        "name" : "content",
+        "title" : "Content",
+        "type" : "region"
+      }, {
+        "children" : [ {
+          "attributes" : {
+            "customHeadTags" : "",
+            "description" : "",
+            "pageTitle" : "STUDENT",
+            "recordId" : "{!recordId}"
+          },
+          "definition" : "community_builder:seoAssistant",
+          "id" : "9737650b-eae5-4153-9eff-ef4adccea98f",
+          "type" : "component"
+        } ],
+        "id" : "14354405-81e3-4bb7-8ac1-f9f2c9cf3823",
+        "name" : "sfdcHiddenRegion",
+        "title" : "sfdcHiddenRegion",
+        "type" : "region"
+      } ],
+      "definition" : "community_layout:sldsFlexibleLayout",
+      "id" : "fa87a57c-2075-4ee0-bd55-be440ef5f556",
+      "type" : "component"
+    },
+    "dataProviders" : [ ],
+    "themeLayoutType" : "Inner",
+    "viewType" : "custom-e-d-u-c-x"
+  }
+}

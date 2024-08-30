@@ -1,0 +1,8 @@
+<template>
+    <lightning-card title="Bulk Student Upload">
+        <div class="slds-m-around_medium">
+            <lightning-icon icon-name='utility:upload' onclick={handleUploadClick} size='small'></lightning-icon>
+            <input type="file" accept=".csv" style="display:none" onchange={handleFileChange} ref={fileInput} />
+        </div>
+    </lightning-card>
+</template>

@@ -1,0 +1,25 @@
+.label{
+    font-size: 17px;
+    margin-left: 20%;
+}
+.radiotext{
+    margin-left: 40%;
+    font-size: 14px;
+--slds-c-radio-mark-color-foreground: rgb(15, 121, 197);
+--slds-c-radio-color-border-focus:#01d3b4;
+}
+.slds-radio{
+    margin-bottom: 20px;
+}
+
+.header{
+    --slds-c-modal-header-text-color: rgb(0, 0, 0);
+    --slds-c-modal-header-color-background:white;
+    --slds-c-modal-heading-font-weight:bold;
+    --slds-c-modal-heading-font-size:20px;
+}
+
+.custom-modal {
+    width: 20%; 
+    max-width: 30rem; 
+}

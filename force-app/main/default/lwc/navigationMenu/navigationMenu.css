@@ -1,0 +1,18 @@
+.btn-group button {
+  background-color: transparent;
+    color: black;
+    font-weight: bold;
+    font-family: Inter;
+    padding: 9px 23px;
+    width: 70%;
+    text-align: left;
+    display: block;
+    border: none;
+    margin-bottom: 5px;
+	font-size: 15px;
+}
+
+
+.btn-group button:hover {
+    background-color: #007bff; 
+}

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>OverDue_By__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(
+  OR(Date_of_Return__c = Date_of_Issue__c,Date_of_Return__c &lt;=Due_Date__c), 
+  0, 
+  IF(
+    ISBLANK(Date_of_Return__c), 
+    IF(
+      TODAY() &gt; Due_Date__c,
+      TODAY() - Due_Date__c,
+      0
+    ),
+    Date_of_Return__c - Due_Date__c
+  )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>OverDue By</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

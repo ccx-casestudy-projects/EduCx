@@ -1,0 +1,61 @@
+<template>
+    <lightning-card>
+     <div class="slds-p-top_small slds-p-horizontal_medium">
+    <div class="slds-clearfix slds-align_absolute-center">
+      <div class="slds-media slds-media_center slds-has-flexi-truncate">
+        <div class="slds-media__body">
+          <h1 class="slds-text-title_bold headerSize slds-p-bottom_medium " >Student Management</h1>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="slds-grid slds-wrap slds-grid_align-spread slds-p-horizontal_small">
+        <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2 slds-p-right_small">
+          <div class="slds-form-element">
+            <lightning-layout-item padding="around-small">
+       <div class="slds-text-align_right">
+        <lightning-input type="search" value={searchKey} placeholder="Search the list" onchange={searchField} >
+       </lightning-input>  
+       </div>
+       </lightning-layout-item>
+          </div>
+        </div>
+        <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2 slds-text-align_right slds-p-left_small">
+          <lightning-button label="Add Student" onclick={addNewStudent} variant="brand" class="slds-m-right_small"></lightning-button>
+          </div>
+      </div>
+      <div class="slds-p-horizontal_small slds-m-top_small">
+        <!-- Other components and elements
+          <c-edit-employee crecord-id={selectedRecordId} onclose={handleModalClose}></c-edit-employee>
+      --> </div>
+    </div>
+  </div>
+  
+  
+    </lightning-card>
+  
+    <lightning-card>
+      <div class="slds-m-around_medium">
+        <template if:true={paginatedStudents}>
+          <lightning-datatable
+            key-field="Id"
+            data={paginatedStudents}
+            columns={columns}
+            onrowaction={handleRowAction}
+            hide-checkbox-column="true">
+          </lightning-datatable>
+
+              <div class="slds-m-top_medium slds-m-bottom_medium slds-align_absolute-center">
+            <lightning-button label="First" onclick={handleFirstPage} disabled={isFirstDisabled}></lightning-button>
+            <lightning-button label="Previous" onclick={handlePreviousPage} disabled={isPreviousDisabled} class="slds-m-left_small"></lightning-button>
+            <span class="slds-m-left_small slds-m-right_small">{currentPageInfo}</span>
+            <lightning-button label="Next" onclick={handleNextPage} disabled={isNextDisabled} class="slds-m-left_small"></lightning-button>
+            <lightning-button label="Last" onclick={handleLastPage} disabled={isLastDisabled} class="slds-m-left_small"></lightning-button>
+          </div>
+        </template>
+        <template if:false={paginatedStudents}>
+          No records found
+        </template>
+      </div>
+    </lightning-card>
+  </template>

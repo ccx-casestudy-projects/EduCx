@@ -1,0 +1,48 @@
+<template>
+    <lightning-card>
+       
+       <div class="slds-p-top_small">
+        <div class="slds-clearfix">
+            <div class="slds-align_absolute-center">
+            <lightning-icon icon-name="standard:expense" size="small" class="slds-m-right_small"></lightning-icon>
+            <!-- <h1 class="slds-text-title_caps slds-text-title_bold headerSize">Expenditure</h1> -->
+            <h1 class="slds-text-title_bold headerSize">Expenditure</h1>
+            </div>
+            <!-- <div style="display: flex; align-items: center; justify-content: space-between;">
+            <strong class="warehouse-title" style="margin-right: 10px;">Expenditure Records: <span class="count">{AllRowCount}</span></strong>
+        </div> -->
+        </div>
+        <div>
+             <div class="button-container">
+        <strong class="warehouse-title slds-p-left_large">Expenditure Records: <span class="count">{AllRowCount}</span></strong>
+        <lightning-button label="Add Expenditure" onclick={handleAddNewEmp} variant="brand" class="button_css slds-p-right_large"></lightning-button>
+        
+                         <c-add-expenditure new-emp={newEmp}  onclosemodal={closeModal}></c-add-expenditure>
+    </div>
+            <!-- <lightning-button variant="brand" label="Add Expenditure" onclick={handleAddNewEmp} class="slds-p-right_small"></lightning-button>
+                         <c-add-expenditure new-emp={newEmp} selected-warehouse-id={whid} onclosemodal={closeModal}></c-add-expenditure>
+                        -->    
+             <c-edit-expenditure crecord-id={selectedRecordId}  onclose={handleModalClose}></c-edit-expenditure>
+            
+          </div>
+        </div> 
+       </lightning-card>
+         
+    
+     <lightning-card>
+           <div class="slds-m-around_medium">
+               <template if:true={employees}>
+                   <lightning-datatable
+                       key-field="Id"
+                       data={employees}
+                       columns={columns}
+                       onrowaction={handleRowAction}
+                       hide-checkbox-column="true">
+                   </lightning-datatable>
+               </template>
+               <template if:false={employees}>
+                   No records found
+               </template>
+           </div>
+       </lightning-card>
+   </template>

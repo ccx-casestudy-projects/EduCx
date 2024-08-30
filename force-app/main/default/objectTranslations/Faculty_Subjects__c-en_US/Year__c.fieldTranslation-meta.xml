@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Year --></label>
+    <name>Year__c</name>
+    <picklistValues>
+        <masterLabel>1st Year</masterLabel>
+        <translation><!-- 1st Year --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>2nd Year</masterLabel>
+        <translation><!-- 2nd Year --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>3rd Year</masterLabel>
+        <translation><!-- 3rd Year --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>4th Year</masterLabel>
+        <translation><!-- 4th Year --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

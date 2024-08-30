@@ -1,0 +1,202 @@
+<template>
+	<lightning-card>
+		<!-- <lightning-button label="Payment" onclick={handleOpenModal}></lightning-button> -->
+
+		<template if:true={isModalOpen}>
+			<section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open">
+				<div class="slds-modal__container">
+					<header class="slds-modal__header">
+						<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={handleCloseModal}>
+                            <lightning-icon icon-name="utility:close" alternative-text="close" size="small" variant="inverse"></lightning-icon>
+                            <span class="slds-assistive-text">Close</span>
+                        </button>
+						<h2 class="slds-text-heading_medium">Enter Hall Ticket Number</h2>
+					</header>
+					<div class="slds-modal__content slds-p-around_medium">
+						<lightning-input label="Hall Ticket Number" value={hallTicketNumber} required 
+							></lightning-input>
+					</div>
+					<footer class="slds-modal__footer">
+						<lightning-button variant="neutral" label="Cancel" onclick={handleCloseModal}>
+						</lightning-button> &ensp;
+						<lightning-button variant="brand" label="Search" onclick={handleSave}></lightning-button>
+					</footer>
+				</div>
+			</section>
+			<div class="slds-backdrop slds-backdrop_open"></div>
+		</template>
+
+	<template if:true={showPaymentSection}>
+    <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open slds-modal_medium">
+        <div class="slds-modal__container">
+            <header class="slds-modal__header">
+                <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={handlePaymentModal}>
+                    <lightning-icon icon-name="utility:close" alternative-text="close" size="small" variant="inverse" ></lightning-icon>
+                    <span class="slds-assistive-text">Close</span>
+                </button>
+                <div class="slds-m-around_medium">
+                    <h2 class="slds-text-heading_medium header">Payment Details</h2>
+                    <template if:true={isManagementOrSpot}>
+                        <lightning-layout multiple-rows>
+                            <lightning-layout-item size="6">
+                                <table>
+                                    <tr valign="top">
+                                        <td>
+                                            <div class="layout-item">
+                                                <label>Student Name:</label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div if:true={studentInfo.studentName} class="layout-item1">
+                                                {studentInfo.studentName}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr valign="top">
+                                        <td>
+                                            <div class="layout-item">
+                                                <label>Hall Ticket Number:</label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div if:true={studentInfo.studentHallticketno} class="layout-item1">
+                                                {studentInfo.studentHallticketno}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr valign="top">
+                                        <td>
+                                            <div class="layout-item">
+                                                <label>Course:</label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div if:true={studentInfo.stdRelatedCourse} class="layout-item1">
+                                                {studentInfo.stdRelatedCourse}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </lightning-layout-item>
+                            <lightning-layout-item size="6">
+                                <table>
+                                    <tr valign="top">
+                                        <td>
+                                            <div class="layout-item">
+                                                <label>Total Fee:</label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="layout-item1">
+                                                {studentInfo.totalFee}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr valign="top">
+                                        <td>
+                                            <div class="layout-item">
+                                                <label>Payment Due:</label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="layout-item1">
+                                                {studentInfo.totalFeeBalance}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </lightning-layout-item>
+                        </lightning-layout>
+                    </template>
+                    
+                    <template if:true={isConvenor}>
+                        <lightning-layout multiple-rows>
+                            <lightning-layout-item size="6">
+                                <table>
+                                    <tr valign="top">
+                                        <td>
+                                            <div class="layout-item">
+                                                <label>Student Name:</label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div if:true={studentInfo.studentName} class="layout-item1">
+                                                {studentInfo.studentName}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr valign="top">
+                                        <td>
+                                            <div class="layout-item">
+                                                <label>Hall Ticket Number:</label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div if:true={studentInfo.studentHallticketno} class="layout-item1">
+                                                {studentInfo.studentHallticketno}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr valign="top">
+                                        <td>
+                                            <div class="layout-item">
+                                                <label>Course:</label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div if:true={studentInfo.stdRelatedCourse} class="layout-item1">
+                                                {studentInfo.stdRelatedCourse}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </lightning-layout-item>
+                            <lightning-layout-item size="6">
+                                <table>
+                                    <tr valign="top">
+                                        <td>
+                                            <div class="layout-item">
+                                                <label>Total Fee:</label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="layout-item1">
+                                                {studentInfo.totalFee}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr valign="top">
+                                        <td>
+                                            <div class="layout-item">
+                                                <label>Payment Due:</label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="layout-item1">
+                                                {studentInfo.totalFeeBalance}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </lightning-layout-item>
+                        </lightning-layout>
+                    </template>
+                </div>
+            </header>
+            <div class="slds-modal__content slds-p-around_medium">
+                <c-custom-payment-datatable key-field="id" data={data} columns={columns} hide-checkbox-column
+                    onamountpaidvalue={handleAmountPaid} onpaymenttypevalue={handleFeeType}></c-custom-payment-datatable>
+            </div>
+            <footer class="slds-modal__footer">
+                <lightning-button variant="brand" label="Submit" onclick={handleManagementPayment}></lightning-button>
+            </footer>
+        </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+</template>
+
+	</lightning-card>
+    <template if:true ={receiptUpload}>
+        <c-generate-fee-receipt-pdf record-ids={paymentRecordId}></c-generate-fee-receipt-pdf>
+    </template>
+</template>

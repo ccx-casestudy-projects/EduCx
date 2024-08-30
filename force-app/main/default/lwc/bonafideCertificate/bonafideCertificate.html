@@ -1,0 +1,72 @@
+<template>
+    <lightning-card>
+        <div class="slds-p-top_small">
+            <div class="slds-clearfix">
+                <div class="slds-align_absolute-center">
+                    <lightning-icon icon-name="standard:swarm_request" size="small" class="slds-m-right_small"></lightning-icon>
+                    <h1 class="slds-text-title_bold headerSize">Students</h1>
+                </div>
+            </div>
+        </div>
+        <lightning-card>
+            <div class="slds-m-around_medium">
+                <div class="search-combobox-container fontsize">
+                    <lightning-input class="search-input"
+                        type="search"
+                        label="Search"
+                        placeholder="Search by Name or Hall Ticket No"
+                        onchange={handleSearchChange}>
+                    </lightning-input>
+                    <lightning-combobox class="combobox-width"
+                        name="academicYear" 
+                        label="Select Academic Year" 
+                        value={selectedAcademicYear} 
+                        placeholder="Select an Academic Year" 
+                        options={academicYearOptions}
+                        onchange={handleAcademicYearChange}>
+                    </lightning-combobox>
+                    <lightning-button class="addbutton" variant="brand" label="New Student" 
+                    onclick={handleAddStudent}> </lightning-button>
+                </div>
+            </div>
+            <div class="slds-m-around_medium">
+                <template if:true={recordsToDisplay.length}>
+                    <lightning-datatable
+                        key-field="id"
+                        data={recordsToDisplay}
+                        columns={columnsList}
+                        onrowaction={handleRowAction}
+                        hide-checkbox-column="true"
+                        show-row-number-column
+                        >
+                    </lightning-datatable>
+                
+                    <div class="slds-align_absolute-center" style="height:5rem">
+                        <lightning-button disabled={bDisableFirst} icon-name="utility:jump_to_left" label="First"
+                            class="slds-p-horizontal_x-small" alternative-text="first page" onclick={firstPage}></lightning-button>
+                        <lightning-button disabled={bDisableFirst} icon-name="utility:chevronleft" label="Previous"
+                            alternative-text="Previous" onclick={previousPage}></lightning-button>
+                        &nbsp;
+                        <span class="slds-badge">Page {pageNumber} of {totalPages}</span>
+                        &nbsp;
+                        <lightning-button disabled={bDisableLast} icon-name="utility:chevronright" label="Next"
+                            alternative-text="Next" onclick={nextPage} class="slds-p-horizontal_x-small" icon-position="right">
+                        </lightning-button>
+                        <lightning-button disabled={bDisableLast} icon-name="utility:jump_to_right" label="Last"
+                            alternative-text="last page" onclick={lastPage} icon-position="right"></lightning-button>
+                    </div>
+                </template>
+                <template if:false={recordsToDisplay.length}>
+                   <b> No records found </b>
+                </template>
+            </div>
+        </lightning-card>
+    </lightning-card>
+    <template if:true={previewClicked}>
+        <c-student-detail-preview record-id={selectedStudentId} preview-details={previewClicked}></c-student-detail-preview>
+    </template>
+    <c-student-registration></c-student-registration>
+    <!-- <template if:true={showRegForm}>
+        <c-student-registration show-reg-form={showRegForm}></c-student-registration>
+    </template> -->
+</template>

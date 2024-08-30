@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Document Type --></label>
+    <name>Document_Type__c</name>
+    <picklistValues>
+        <masterLabel>Bonafide Certificate</masterLabel>
+        <translation><!-- Bonafide Certificate --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Inter Certificate</masterLabel>
+        <translation><!-- Inter Certificate --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Leave Requests</masterLabel>
+        <translation><!-- Leave Requests --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>SSC Certificate</masterLabel>
+        <translation><!-- SSC Certificate --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Transfer Certificate(TC)</masterLabel>
+        <translation><!-- Transfer Certificate(TC) --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

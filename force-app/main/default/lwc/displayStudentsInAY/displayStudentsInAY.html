@@ -1,0 +1,74 @@
+<template>
+    <lightning-card>
+        <div class="slds-m-around_medium"> 
+            <div class="search-combobox-container fontsize">
+                <lightning-input class="search-input"
+                    type="search"
+                    label="Search"
+                    placeholder="Search by Name or Hall Ticket No"
+                    onchange={handleSearchChange}
+                    >
+                </lightning-input>
+                <lightning-combobox class="combobox-width"
+                    name="academicYear" 
+                    label="Select Academic Year" 
+                    value={selectedAcademicYear} 
+                    placeholder="Select an Academic Year" 
+                    options={academicYearOptions}
+                    onchange={handleAcademicYearChange}>
+                </lightning-combobox>
+                <c-search-student-cmp></c-search-student-cmp>
+                <lightning-icon icon-name="action:upload" onclick={handleUploadClick} class="button" size='x-small'></lightning-icon>
+                <input type="file" accept=".csv" style="display:none" onchange={handleFileChange} ref={fileInput} />
+                <lightning-button class="button" variant="brand" label="New Student" icon-name="utility:add"
+                    onclick={handleAddStudent}> </lightning-button>
+                <lightning-button class="button" variant="destructive" label="Delete" icon-name="utility:delete"
+                    onclick={handleDeleteStudents} > </lightning-button>
+                <lightning-button class="button" variant="brand" label="Promote" icon-name="utility:promotion_segments"
+                    size='medium' onclick={handlePromoteStudents} > </lightning-button>
+            </div>
+        </div>
+        <div class="slds-m-around_medium">
+            <template if:true={recordsToDisplay.length}>
+                <lightning-datatable
+                    key-field="Id"
+                    data={recordsToDisplay}
+                    columns={columnsList}
+                    onrowaction={handleRowAction}
+                    onrowselection={handleRowSelection}>
+                </lightning-datatable>
+            
+                <div class="slds-align_absolute-center" style="height:2rem; margin-top:1rem;">
+                    <lightning-button icon-name="utility:jump_to_left" label="First" class="slds-p-horizontal_x-small"
+                        alternative-text="First page" onclick={handleFirstPage} disabled={isFirstPage}></lightning-button>
+
+                    <lightning-button icon-name="utility:chevronleft" label="Previous" alternative-text="Previous"
+                        onclick={handlePrevious} disabled={isPrevDisabled} class="slds-p-horizontal_x-small">
+                    </lightning-button>
+
+                    <span class="slds-badge"> Page {currentPage} of {totalPages}</span>
+
+                    <lightning-button icon-name="utility:chevronright" label="Next" alternative-text="Next"
+                        onclick={handleNext} disabled={isNextDisabled} class="slds-p-horizontal_x-small"
+                        icon-position="right"></lightning-button>
+
+                    <lightning-button icon-name="utility:jump_to_right" label="Last" alternative-text="Last page"
+                        onclick={handleLastPage} disabled={isLastPage} icon-position="right"></lightning-button>
+                </div>
+            </template>
+            <template if:false={recordsToDisplay.length}>
+                <b>No records found</b>
+            </template>
+        </div>
+    </lightning-card>
+    <template if:true={editPage}>
+         <c-student-detail-preview record-id={selectedStudentId} preview-details={editPage} onclose={handlePreviewClose}></c-student-detail-preview>
+    </template>
+    <template if:true={promotePage}>
+         <c-promote-students show-promote-page={promotePage} onclose={handlePromoteClose}></c-promote-students>
+    </template>
+    <template if:true={registerPage}>
+         <c-student-registration show-reg-form={registerPage} onclose={handleRegisterClose}></c-student-registration>
+    </template>
+    <c-toast-message></c-toast-message>
+</template>

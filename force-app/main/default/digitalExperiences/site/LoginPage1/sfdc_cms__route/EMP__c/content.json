@@ -1,0 +1,11 @@
+{
+  "type" : "sfdc_cms__route",
+  "title" : "EMP",
+  "contentBody" : {
+    "activeViewId" : "EMP",
+    "configurationTags" : [ ],
+    "pageAccess" : "UseParent",
+    "routeType" : "custom-e-m-p",
+    "urlPrefix" : "EMP"
+  }
+}

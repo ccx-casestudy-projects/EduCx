@@ -1,0 +1,34 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.search-bar {
+    flex: 0 0 30%; /* Takes up 70% of the width */
+    margin-right: 50px; /* Optional: Adjust margin as needed */
+}
+
+.pay-now-button {
+    flex: 0 0 auto; /* Button size adjusts based on its content */
+}
+
+.header{
+    font-size: 18px; 
+}
+.table-data {
+    font-size: 14px; 
+    font-weight: normal;
+}
+.table-header {
+    font-size: 15px; 
+    font-weight: bold;
+}
+.bold-header{
+    font-weight: bold;
+    font-size: 17px;
+}
+.slds-modal__container {
+    max-width: 80rem !important;
+    width: 70% !important;
+}

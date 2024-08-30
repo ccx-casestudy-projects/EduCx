@@ -1,0 +1,9 @@
+<template>
+    <lightning-datatable 
+    key-field="Id" 
+    data={studentRequestData}
+    hide-checkbox-column="true"
+    wrap-text-max-lines="3"
+    onrowaction={handleRowAction}
+    columns={requestColumn}></lightning-datatable>
+</template>

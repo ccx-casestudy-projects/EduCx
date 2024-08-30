@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TodayDayPresent__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(Day_1__c, 1, 0) + IF(Day_2__c, 1, 0) + IF(Day_3__c, 1, 0) + IF(Day_4__c, 1, 0) +
+IF(Day_5__c, 1, 0) + IF(Day_6__c, 1, 0) + IF(Day_7__c, 1, 0) + IF(Day_8__c, 1, 0) +
+IF(Day_9__c, 1, 0) + IF(Day_10__c, 1, 0) + IF(Day_11__c, 1, 0) + IF(Day_12__c, 1, 0) +
+IF(Day_13__c, 1, 0) + IF(Day_14__c, 1, 0) + IF(Day_15__c, 1, 0) + IF(Day_16__c, 1, 0) +
+IF(Day_17__c, 1, 0) + IF(Day_18__c, 1, 0) + IF(Day_19__c, 1, 0) + IF(Day_20__c, 1, 0) +
+IF(Day_21__c, 1, 0) + IF(Day_22__c, 1, 0) + IF(Day_23__c, 1, 0) + IF(Day_24__c, 1, 0) +
+IF(Day_25__c, 1, 0) + IF(Day_26__c, 1, 0) + IF(Day_27__c, 1, 0) + IF(Day_28__c, 1, 0) +
+IF(Day_29__c, 1, 0) + IF(Day_30__c, 1, 0) + IF(Day_31__c, 1, 0)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>TodayDayPresent</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

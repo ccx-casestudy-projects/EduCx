@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Type__c</fullName>
+    <externalId>false</externalId>
+    <label>Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Time Table</fullName>
+                <default>false</default>
+                <label>Time Table</label>
+            </value>
+            <value>
+                <fullName>Alumni</fullName>
+                <default>false</default>
+                <label>Alumni</label>
+            </value>
+            <value>
+                <fullName>Exam</fullName>
+                <default>false</default>
+                <label>Exam</label>
+            </value>
+            <value>
+                <fullName>Announcement</fullName>
+                <default>false</default>
+                <label>Announcement</label>
+            </value>
+            <value>
+                <fullName>Almanac</fullName>
+                <default>false</default>
+                <label>Almanac</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

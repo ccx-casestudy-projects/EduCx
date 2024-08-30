@@ -1,0 +1,72 @@
+.search-combobox-container {
+    display: flex;               /* Use Flexbox for alignment */
+    align-items: center;         /* Vertically align items */
+    justify-content: flex-end;   /* Align all items to the right */
+    margin-right: 0.5rem;                  /* Optional: Adds consistent space between elements */
+}
+.search-input{
+    margin-left: 0.5rem;           /* Add spacing between items */
+}
+.header{
+    font-size: 18px; 
+}
+.course-info{
+    font-size: 18px; 
+    font-weight: bold;
+}
+.table-data {
+    font-size: 14px; 
+    font-weight: normal;
+}
+.table-header {
+    font-size: 15px; 
+    font-weight: bold;
+}
+.slds-modal__container {
+    max-width: 60%; 
+    min-width: 50%; 
+    width: auto;
+}
+.bold-header{
+    font-weight: bold;
+    font-size: 17px;
+}
+.custom-label{
+    font-size: medium;
+    font-weight: bold !important; /* Make the label bold */
+}   
+
+.custom-list {
+    list-style: decimal inside; /* Ensure numbers are displayed inside the list item */
+    padding-left: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+}
+
+.custom-subject-item {
+    display: list-item; /* Ensure the list item displays correctly */
+}
+
+.slds-m-bottom_small {
+    margin-bottom: 0.5rem; /* Adjust margin below the heading */
+}
+
+.slds-text-heading_small {
+    font-size: 1.25rem; /* Adjust font size for the heading */
+    font-weight: 700; /* Adjust font weight for the heading */
+}
+.custom-scroll-container {
+    max-height: 200px; 
+    overflow-y: auto;
+    
+} 
+.custom-layout {
+    display: flex;
+    align-items: stretch; /* Align items to stretch for consistent height */
+}
+
+.vertical-line {
+    width: 1px; /* Adjust the width of the vertical line */
+    background-color: #d8dde6; /* Adjust the color of the vertical line */
+    height: 100%; /* Full height of the parent container */
+    margin: 0 1rem; /* Space between items and the line */
+}

@@ -1,0 +1,52 @@
+<template>
+    <template if:true={reqLeave}>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container custom-modal">
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                        <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse" size="small"></lightning-icon>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate special-heading"><b>Request Leave</b></h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_large heading" id="modal-content-id-1">
+                    <!-- Container for Employee and Leave Account fields -->
+                    <div class="slds-grid slds-grid_align-spread slds-m-bottom_medium">
+                        <div class="slds-col slds-size_1-of-2">
+                            <lightning-input label="Employee" value={employeeName} disabled></lightning-input>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2">
+                            <lightning-input label="Leave Account" value={leaveAccountNumber} disabled></lightning-input>
+                        </div>
+                    </div>
+
+                    <!-- Container for Date fields -->
+                    <div class="slds-grid slds-grid_align-spread slds-m-bottom_medium">
+                        <div class="slds-col slds-size_1-of-3">
+                            <lightning-input type="date" label="From Date" name="fromDate" onchange={handleDateChange}></lightning-input>
+                        </div>
+                        <div class="slds-col slds-size_1-of-3 slds-align_absolute-center">
+                            <lightning-input label="Number of Days Taken" value={numberOfDaysTaken} disabled></lightning-input>
+                        </div>
+                        <div class="slds-col slds-size_1-of-3 slds-align_absolute-center">
+                            <lightning-input type="date" label="To Date" name="toDate" onchange={handleDateChange}></lightning-input>
+                        </div>
+                    </div>
+
+                    <div class="slds-m-bottom_medium">
+                        <lightning-input label="Reason" name="reason" onchange={handleInputChange}></lightning-input>
+                    </div>
+                    <div class="slds-m-bottom_medium">
+                        <lightning-input type="date" label="Applied Date" value={appliedDate} disabled></lightning-input>
+                    </div>
+
+                    <div class="slds-align_absolute-center slds-m-top_medium">
+                        <lightning-button class="slds-m-right_x-small" type="button" label="Cancel" onclick={handleCancel}></lightning-button>
+                        <lightning-button type="button" label="Request" variant="brand" onclick={handleRequestLeave}></lightning-button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>

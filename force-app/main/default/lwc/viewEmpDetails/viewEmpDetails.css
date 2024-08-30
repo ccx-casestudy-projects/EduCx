@@ -1,0 +1,45 @@
+.custom-header {
+    background-color: #89CFF0;
+    color: #fff;
+}
+
+.header-title {
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.custom-modal-body {
+    background-color: #dee9f3;
+}
+
+.field-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.field-header {
+    font-weight: bold;
+    width: 45%;
+}
+
+.field-value {
+    width: 50%;
+    text-align: left;
+    overflow-wrap: break-word;
+}
+
+.custom-modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.custom-modal-container {
+    width: 80%; /* Increase the width as needed */
+    max-width: 80rem; /* Set a maximum width */
+    height: 80%; /* Increase the height as needed */
+    max-height: 60rem; /* Set a maximum height */
+}

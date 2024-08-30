@@ -1,0 +1,24 @@
+<template>
+    <div class="container">
+        <div class="slds-grid slds-gutters">
+            <div class="slds-col slds-size_1-of-3">
+                <p class="slds-align_absolute-center"><strong>Total Fee : ₹ </strong>{totalFee} </p>
+            </div>
+            <div class="slds-col slds-size_1-of-3">
+                <p class="slds-align_absolute-center"><strong>Balance Amount : ₹ </strong>{balanceAmount} </p>
+            </div>
+            <div class="slds-col slds-size_1-of-3">
+                <p class="slds-align_absolute-center"><strong>Paid Amount : ₹ </strong>{paidAmount} </p>
+            </div>
+        </div>
+        <br/>
+        <template if:true={paymentsData}>
+            <lightning-datatable 
+            key-field="Id" 
+            data={paymentsData}
+            hide-checkbox-column="true"
+            wrap-text-max-lines="3"
+            columns={paymentsColumn}></lightning-datatable>
+        </template>
+    </div>
+</template>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Student</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Students</value>
+    </caseValues>
+    <layouts>
+        <layout>Student Layout</layout>
+        <sections>
+            <label><!-- Admission Information --></label>
+            <section>Admission Information</section>
+        </sections>
+        <sections>
+            <label><!-- Bank Details --></label>
+            <section>Bank Details</section>
+        </sections>
+        <sections>
+            <label><!-- Contact Details --></label>
+            <section>Contact Details</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Education Details --></label>
+            <section>Education Details</section>
+        </sections>
+        <sections>
+            <label><!-- Files --></label>
+            <section>Files</section>
+        </sections>
+        <sections>
+            <label><!-- Parent Details --></label>
+            <section>Parent Details</section>
+        </sections>
+        <sections>
+            <label><!-- Student Information --></label>
+            <section>Student Information</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Please follow the format of  XXXX XXXX XXXX --></errorMessage>
+        <name>Aadhar_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Phone number should be maximum of 10 digits only --></errorMessage>
+        <name>Father_Phone_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Phone number should be maximum of 10 digits only --></errorMessage>
+        <name>Student_Phone_Validation</name>
+    </validationRules>
+</CustomObjectTranslation>

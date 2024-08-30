@@ -1,0 +1,15 @@
+.dummy{
+	color : black;
+}
+.button{
+	width:100%;
+	font-weight:bold;
+	padding:0.5rem;
+	font-size: medium;
+}
+.datatable{
+	padding-top: 10px;
+}
+.layout-item{
+	font-weight:bold;
+}

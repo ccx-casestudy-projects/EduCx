@@ -1,0 +1,23 @@
+<apex:page >
+    <style>
+        .banner {
+            border-style:double;
+        	border-color:red;
+            background-color: red;
+            color: white;
+        	align:center;
+            text-align: center;
+            padding: 10px;
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+            font-weight: bold;
+            display: inline-block;
+        }
+    </style>
+    
+    <div class="banner">
+        <p>
+            BONAFIDE CONDUCT CERTIFICATE
+        </p>
+    </div>
+</apex:page>

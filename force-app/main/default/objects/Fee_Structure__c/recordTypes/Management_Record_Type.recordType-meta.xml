@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Management_Record_Type</fullName>
+    <active>true</active>
+    <description>This record type is used for management students</description>
+    <label>Management</label>
+    <picklistValues>
+        <picklist>Course_Name__c</picklist>
+        <values>
+            <fullName>Bachelor of Education</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Botany%2FZoology%2FApplied Nutrition</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Botany%2FZoology%2FChemistry</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CBCS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Computer Application</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Economics%2FPol%2EScience%2FHistory</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>General</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Master of Business Administration</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Maths%2FChemistry%2FComputer Science</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Maths%2FPhysics%2FChemistry</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Maths%2FPhysics%2FComputer Science</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Course__c</picklist>
+        <values>
+            <fullName>B%2EA%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>B%2ECom</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>B%2EEd%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>B%2ESc%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>M%2EB%2EA%2E</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Year__c</picklist>
+        <values>
+            <fullName>1st Year</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2nd Year</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3rd Year</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>4th Year</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

@@ -1,0 +1,133 @@
+<template>
+    <lightning-card>
+        <div class="slds-p-around_medium">
+            <button name="Student Information" class="button">Student Information</button><br/>
+             &ensp;
+            <template if:true={studentInfo}>
+                <lightning-layout multiple-rows>
+                    <lightning-layout-item size="6">
+                        <table>
+                            <tr valign="top">
+                                <td>
+                                    <div class="layout-item">
+                                        <label>Student Name:</label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div if:true={studentInfo.stdName} class="layout-item1">
+                                        {studentInfo.stdName}
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr valign="top">
+                                <td>
+                                    <div class="layout-item">
+                                        <label>Hall Ticket Number:</label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div if:true={studentInfo.stdHallticketno} class="layout-item1">
+                                        {studentInfo.stdHallticketno}
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr valign="top">
+                                <td>
+                                    <div class="layout-item">
+                                        <label>Course:</label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div if:true={studentInfo.stdcourse} class="layout-item1">
+                                        {studentInfo.stdcourse}
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr valign="top">
+                                <td>
+                                    <div class="layout-item">
+                                        <label>Course Name:</label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div if:true={studentInfo.stdcourseName} class="layout-item1">
+                                        {studentInfo.stdcourseName}
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="6">
+                        <table>
+                            <tr valign="top">
+                                <td>
+                                    <div class="layout-item">
+                                        <label>Total Fee:</label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="layout-item1">
+                                        {studentInfo.stdTotalFee}
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr valign="top">
+                                <td>
+                                    <div class="layout-item">
+                                        <label>Payment Due:</label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="layout-item1">
+                                        {studentInfo.stdTotalFeeBalance}
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr valign="top">
+                                <td>
+                                    <div class="layout-item">
+                                        <label>Total Fee Paid:</label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="layout-item1">
+                                        {studentInfo.stdTotalFeePaid}
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </template>
+            <template if:true={studentError}>
+                <div class="slds-text-color_error slds-p-around_medium">
+                    <p>Error loading student info.</p>
+                </div>
+            </template>
+            <br/>
+            <template if:true={paymentData}>
+                <button name="Payment Information" class="button">Payment Information</button>
+                &ensp;
+                <lightning-datatable class="datatable" key-field="Id" data={paymentData} columns={columns} hide-checkbox-column
+                    onrowaction={handleRowAction} wrap-table-header></lightning-datatable>
+                <template if:true={paymentError}>
+                    <div class="slds-text-color_error slds-p-around_medium">
+                        <p>Error loading payments.</p>
+                    </div>
+                </template>
+            </template>
+            <br/>
+            <template if:true={paymentDetail}>
+                <button name="Payment Details Information" class="button">Payment Details</button>
+                &ensp;
+                <lightning-datatable class="datatable" key-field="Id" data={paymentDetail} columns={paymentDetailColumns}
+                    hide-checkbox-column onrowaction={handleRowDetailAction}></lightning-datatable>
+                <template if:true={paymentDetailError}>
+                    <div class="slds-text-color_error slds-p-around_medium">
+                        <p>Error loading payment details.</p>
+                    </div>
+                </template>
+            </template>
+        </div>
+    </lightning-card>
+</template>

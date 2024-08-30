@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- ENTER  ICET / B.Ed / B.Tech / PGCET / ECET Hall Ticket No --></help>
+    <label><!-- Entrance Hall Ticket No --></label>
+    <name>ICET_Hall_Ticket_No__c</name>
+</CustomFieldTranslation>

@@ -1,0 +1,51 @@
+<template>
+    <lightning-card>
+    <lightning-tabset>
+                <lightning-tab label="Leave Requests" value="All" onactive={handleTabChange}>
+                </lightning-tab>
+               
+            </lightning-tabset>
+     <div>
+                <div class="slds-m-around_medium ">
+                <span class=".slds-badge .slds-theme_warning badge-container">
+                    <lightning-badge class="slds-theme_shade-violet" style="margin-right:6px" label={AllRowCount} title="All Rows">All</lightning-badge>
+                    <span class="slds-m-left_small" style="margin-right:6px">All</span>
+                    </span>
+                    <span  class=".slds-badge .slds-theme_warning badge-container">
+                    <lightning-badge class="slds-badge slds-badge_x-small slds-theme_warning" label={pendingRowCount} title="Pending Rows" >Pending</lightning-badge>
+                    <span class="slds-m-left_small" style="margin-right:6px">Pending</span>
+                    </span>
+                    <span class=".slds-badge .slds-theme_warning badge-container">
+                    <lightning-badge class="slds-theme_success" style="margin-right:6px" label={ApprovedRowCount} title="Approved Rows">Approved</lightning-badge>
+                    <span class="slds-m-left_small" style="margin-right:6px">Approved</span>
+                    </span>
+                    <span class=".slds-badge .slds-theme_warning badge-container">
+                    <lightning-badge class="slds-theme_error" style="margin-right:6px" label={RejectedRowCount} title="Rejected Rows">Rejected</lightning-badge>
+                    <span class="slds-m-left_small" style="margin-right:6px">Rejected</span>
+                    </span>
+           
+
+           <span class="slds-align_absolute-center searchbar slds-m-bottom_xx-large slds-form-element__control slds-p-left_large slds-size_1-of-4 "
+                style="position:absolute; bottom:-45px; margin-left:52%" >
+                <lightning-input 
+                    type="search" 
+                    value={searchKey} 
+                    onchange={handleSearchKeyChange} 
+                    placeholder="Search Employee"
+                ></lightning-input></span>
+            </div>
+            </div><br/>
+
+        <!-- Data Table -->
+        <lightning-datatable
+            key-field="Id"
+            data={filteredLeaveDetails}
+            columns={columns}
+            hide-checkbox-column="true"
+            onrowaction={handleRowAction} 
+            onrowselection={handleRowSelection} 
+            column-widths-mode="auto" 
+            class="edu-datatable">
+        </lightning-datatable>
+    </lightning-card>
+</template>

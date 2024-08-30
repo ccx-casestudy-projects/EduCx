@@ -1,0 +1,89 @@
+<template>
+    <lightning-card >
+        <div class="slds-page-header">
+            <div class="slds-media">
+              <div class="slds-media__figure">
+                <span class="slds-icon_container slds-icon-custom-custom18" title="SearchDetails">
+                  <lightning-icon icon-name="custom:custom18"></lightning-icon>
+                </span>
+              </div>
+              <div class="slds-media__body">
+                <div class="slds-page-header__name">
+                  <span class="slds-card__header-title">Attendance Sheet</span>
+                </div>
+              </div>
+            </div>
+        </div>
+        <lightning-layout>
+            <lightning-layout-item padding="around-small" size="6">
+                <lightning-combobox 
+                    name="Course" 
+                    label="Course" 
+                    value={value} 
+                    placeholder="Select Course"
+                    options={options} 
+                    onchange={handleChange}>
+                </lightning-combobox>
+
+                <lightning-combobox 
+                    name="Semester" 
+                    label="Semester" 
+                    value={value} 
+                    placeholder="Select Semester"
+                    options={semesteroptions} 
+                    onchange={handleSemesterChange}>
+                </lightning-combobox>
+
+                <lightning-record-picker 
+                    label="Student Id" 
+                    placeholder="Search Student..."
+                    object-api-name={StudentTarget}
+                    display-info={displayStudent}
+                    matching-info={matchingStudent}
+                    onchange={handleStdChange}>
+                </lightning-record-picker>
+
+                 <lightning-combobox 
+                    name="Status" 
+                    label="Status" 
+                    value={value} 
+                    placeholder="Select Status" 
+                    options={statusoptions}
+                    onchange={handleStatusChange}>
+                </lightning-combobox>
+            </lightning-layout-item>
+
+            <lightning-layout-item padding="around-small" size="6">
+                <lightning-record-picker 
+                    label="Subject" 
+                    placeholder="Search Subject..."
+                    object-api-name={SubjectTarget}
+                    display-info={displaySubject}
+                    matching-info={matchingSubject}
+                    onchange={handleSubChange}>
+                </lightning-record-picker>
+
+
+                <lightning-record-picker 
+                    label="Employees" 
+                    placeholder="Search Employee..."
+                    object-api-name={EmployeesTarget}
+                    display-info={displayEmployee}
+                    matching-info={matchingEmployee}
+                    onchange={handleEmpChange}>
+                </lightning-record-picker>
+
+                <lightning-combobox 
+                    name="Year" 
+                    label="Year" 
+                    value={value} 
+                    placeholder="Select Year" 
+                    options={yearoptions}
+                    onchange={handleYearChange}>
+                </lightning-combobox>
+
+                <lightning-input type="Datetime" label=""  class="slds-p-top_xx-small"> </lightning-input>
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+</template>

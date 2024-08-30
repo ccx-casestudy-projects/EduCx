@@ -1,0 +1,16 @@
+.badge-container {
+    border: 1px solid #4F6271; /* Set the border color according to your design */
+    padding: 5px; /* Adjust padding as needed */
+    border-radius: 20px; /* Set border-radius for rounded corners */
+    margin-bottom: 2px; /* Optional: Add margin to separate groups */
+    display: inline-block;
+    margin-left:15px;
+   
+}
+
+.slds-m-around_medium{
+    position: relative;
+}
+.searchbar{
+    width:45%;
+}

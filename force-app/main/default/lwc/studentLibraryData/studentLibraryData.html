@@ -1,0 +1,42 @@
+<template>
+    <lightning-card>
+       
+        <div class="slds-text-heading_large headercolor">Issued Books</div><br/>
+            <div class="slds-box slds-box_xx-small">
+            <lightning-layout horizontal-align="spread">
+          
+                <lightning-layout-item padding="around-small">
+                    <div style="font-weight: bold;" >Name:</div> {studentName}
+               </lightning-layout-item>
+               <lightning-layout-item padding="around-small">
+                <div style="font-weight: bold;" >Student Id:</div> {studentHallTicket}
+           </lightning-layout-item>
+           <lightning-layout-item padding="around-small">
+            <lightning-button class="slds-p-around_small"   variant="brand" label="Issue" onclick={handleIssue} disabled={disableIssueButton}></lightning-button>
+               
+       </lightning-layout-item>
+               </lightning-layout></div>
+         
+       
+        
+<!--Book Details-->
+<template if:true={allbooksLength}>
+<div class="slds-box slds-box_xx-small">
+    
+              <lightning-datatable 
+              key-field="id"
+              data={allbooks}
+              columns={columns}
+              onrowaction={handleRowAction}
+              hide-checkbox-column="true"
+            ></lightning-datatable>
+      </div>
+    </template>
+      <template if:false={allbooksLength}>
+        <div style="color: #F1490E; font-size: 18px; font-weight: bold; text-align: center; padding: 10px;">
+          No books are issued for this student .
+      </div>
+      </template>
+      <c-issue-books-for-candidate candidate-id={studentId} candidate-type={candidateType}></c-issue-books-for-candidate>    
+</lightning-card>
+</template>

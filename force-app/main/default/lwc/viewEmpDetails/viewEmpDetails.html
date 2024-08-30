@@ -1,0 +1,96 @@
+<template>
+    <template if:true={showRecScreens}>
+        <div>
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open custom-modal">
+                <div class="slds-modal__container custom-modal-container">
+    
+                    <header class="slds-modal__header custom-header">
+                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                            title="Close" onclick={closeModal}>
+                            <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse"
+                                size="small"></lightning-icon>
+                            <span class="slds-assistive-text">Close</span>
+                        </button>
+    
+                        <h2 class="header-title"><b>Preview Employee Details</b></h2>
+                    </header>
+    
+                    <div class="slds-modal__body custom-modal-body">
+                        <template if:true={employeeDetails}>
+                            <lightning-card>
+                                <div class="slds-grid slds-wrap">
+                                    <!-- Column 1 -->
+                                    <div class="slds-col slds-size_1-of-2 slds-p-around_small">
+                                        <div class="field-container">
+                                            <span class="field-header">Employee Name: </span>
+                                            <span class="field-value">{employeeDetails.educx__Employee_Name__c}</span>
+                                        </div>
+                                        <div class="field-container">
+                                            <span class="field-header">Father's Name: </span>
+                                            <span class="field-value">{employeeDetails.educx__Father_s_Name__c}</span>
+                                        </div>
+                                        <div class="field-container">
+                                            <span class="field-header">Phone: </span>
+                                            <span class="field-value">{employeeDetails.educx__Phone__c}</span>
+                                        </div>
+                                        <div class="field-container">
+                                            <span class="field-header">Email: </span>
+                                            <span class="field-value">{employeeDetails.educx__Email__c}</span>
+                                        </div>
+                                        <div class="field-container">
+                                            <span class="field-header">Aadhar Number: </span>
+                                            <span class="field-value">{employeeDetails.educx__Aadhar_Number__c}</span>
+                                        </div>
+                                        <div class="field-container">
+                                            <span class="field-header">Pan: </span>
+                                            <span class="field-value">{employeeDetails.educx__Pan__c}</span>
+                                        </div>
+                                        <div class="field-container">
+                                            <span class="field-header">Status: </span>
+                                            <span class="field-value">{employeeDetails.educx__Status__c}</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Column 2 -->
+                                    <div class="slds-col slds-size_1-of-2 slds-p-around_small">
+                                        <div class="field-container">
+                                            <span class="field-header">Date of Birth: </span>
+                                            <span class="field-value">{employeeDetails.educx__Date_of_Birth__c}</span>
+                                        </div>
+                                        <div class="field-container">
+                                            <span class="field-header">Designation: </span>
+                                            <span class="field-value">{employeeDetails.educx__Designation__c}</span>
+                                        </div>
+                                        <div class="field-container">
+                                            <span class="field-header">Specialization: </span>
+                                            <span class="field-value">{employeeDetails.educx__Specialization__c}</span>
+                                        </div>
+                                        <div class="field-container">
+                                            <span class="field-header">Years of Experience: </span>
+                                            <span class="field-value">{employeeDetails.educx__Years_of_Experience__c}</span>
+                                        </div>
+                                        <div class="field-container">
+                                            <span class="field-header">Qualifications: </span>
+                                            <span class="field-value">{employeeDetails.educx__Qualifications__c}</span>
+                                        </div>
+                                        <div class="field-container">
+                                            <span class="field-header">Employee Type: </span>
+                                            <span class="field-value">{employeeDetails.educx__Employee_Type__c}</span>
+                                        </div>
+                                        <div class="field-container">
+                                            <span class="field-header">Is Ratified: </span>
+                                            <span class="field-value">{employeeDetails.educx__Is_Ratified__c}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </lightning-card>
+                        </template>
+                    </div>
+    
+                </div>
+            </section>
+        </div>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>

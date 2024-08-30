@@ -1,0 +1,40 @@
+<template>
+    <div class="backgroundScreen ">
+    
+    <div class="loginscreen1 slds-text-align_center">
+      <lightning-card >
+        <div class="slds-align_absolute-center slds-p-around_small" >
+          <lightning-icon 
+            icon-name="action:user" 
+            alternative-text="User" 
+            size="xx-large" 
+            title="User"
+            
+          ></lightning-icon>
+        </div>
+        <div>
+          <label class="slds-text-heading_small slds-align_absolute-center slds-p-around_small">Employee ID</label>
+        </div>
+     
+        <div class="slds-p-around_medium slds-grid slds-gutters">
+         
+        <div class=" slds-col slds-size_10-of-12 slds-p-around_x-small" >
+          <div class="input-container">
+          <div class="input-wrapper">
+           <lightning-input type="text" variant="label-hidden" placeholder="Enter Id"
+                               label="Employee Id" onchange={handleEmployeeIdChange} value={inputEmpId}
+                               class="input-field">
+              </lightning-input>
+             </div>
+          </div>                        
+        </div>
+        </div>
+        <div class="slds-align_absolute-center">
+          <lightning-button class=" slds-p-around_small"  label="Back" onclick={handleBack}></lightning-button>
+          <lightning-button class=" slds-p-around_small" variant="brand" label="OK" onclick={handleLogin}></lightning-button>
+        </div>
+      </lightning-card>
+    </div>
+  
+  </div> 
+  </template>

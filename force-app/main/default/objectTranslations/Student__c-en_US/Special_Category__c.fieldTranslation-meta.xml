@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Special Category --></label>
+    <name>Special_Category__c</name>
+    <picklistValues>
+        <masterLabel>CAP</masterLabel>
+        <translation><!-- CAP --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>NCC</masterLabel>
+        <translation><!-- NCC --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>NSS</masterLabel>
+        <translation><!-- NSS --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>PH</masterLabel>
+        <translation><!-- PH --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>SPORT</masterLabel>
+        <translation><!-- SPORT --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

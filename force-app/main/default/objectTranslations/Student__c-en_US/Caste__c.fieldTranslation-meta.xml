@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Caste --></label>
+    <name>Caste__c</name>
+    <picklistValues>
+        <masterLabel>EBC</masterLabel>
+        <translation><!-- EBC --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>EWS</masterLabel>
+        <translation><!-- EWS --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>OC</masterLabel>
+        <translation><!-- OC --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>SC</masterLabel>
+        <translation><!-- SC --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>ST</masterLabel>
+        <translation><!-- ST --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

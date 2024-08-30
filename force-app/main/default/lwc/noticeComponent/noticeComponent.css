@@ -1,0 +1,24 @@
+.card {
+  background-color: #f1f1f1;
+  padding: 10px;
+  width: 98%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin-top: 10px;
+  position: relative;
+}
+.scroller {
+  overflow-y: scroll;
+  
+}
+.badge {
+  margin-left: 7px;
+  height: 23px;
+}
+.slds-p-left_small, .slds-p-left--small {
+  padding-left: var(--lwc-spacingSmall, 0.75rem);
+  display: none;
+}
+.slds-p-top_xx-small, .slds-p-top--xx-small {
+  padding-top: var(--lwc-spacingXxSmall, 0.25rem);
+  display: none;
+}

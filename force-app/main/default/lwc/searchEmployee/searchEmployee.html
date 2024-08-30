@@ -1,0 +1,108 @@
+<template>
+    <template if:true={searchEmp}>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                        <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse" size="small"></lightning-icon>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate special-heading">Search Employee</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium">
+                    <lightning-card>
+                        <div class="slds-p-horizontal_small slds-p-bottom_small">
+                            <b><lightning-input label="Search Employee By Name or ID" value={searchTerm} onchange={handleInputChange}></lightning-input></b>
+                        </div>
+                    </lightning-card>
+
+                    <template if:true={employeeData}>
+                        <lightning-card>
+                            <div class="card-content">
+                                <div class="header-container slds-grid slds-p-horizontal_small slds-align_absolute-center">
+                                    <h2 class="header slds-col slds-p-left_x-small"> {employeeData.educx__Employee_Name__c}</h2>
+                                    <!-- Commented out buttons -->
+                                    <!-- <div class="slds-col slds-m-left_auto slds-grid slds-grid_align-end slds-p-right_x-small">
+                                        <lightning-button class="slds-m-right_small" variant="brand" label="Request Leave" onclick={handleRequestLeave}></lightning-button>
+                                        <c-request-leave req-leave={reqLeave} employee-id={employeeData.Id} onclosemodal={closeModal3}></c-request-leave>
+                                        <lightning-button label="Mark Attendance" variant="brand" onclick={handleMarkAttendance}></lightning-button>
+                                    </div> -->
+                                </div>
+                                <div class="container slds-p-around_small">
+                                    <div class="column">
+                                        <div class="info-box no-gap">
+                                            <div class="label">Id:</div>
+                                            <div class="value-box">{employeeData.Name}</div>
+                                        </div>
+                                        <div class="info-box no-gap">
+                                            <div class="label">Email:</div>
+                                            <div class="value-box">{employeeData.educx__Email__c}</div>
+                                        </div>
+                                    </div>
+                                    <div class="column">
+                                        <div class="info-box no-gap">
+                                            <div class="label">Phone Number:</div>
+                                            <div class="value-box">{employeeData.educx__Phone__c}</div>
+                                        </div>
+                                        <div class="info-box no-gap">
+                                            <div class="label">Designation:</div>
+                                            <div class="value-box">{employeeData.educx__Designation__c}</div>
+                                        </div>
+                                    </div>
+                                    <div class="alt_box">
+                                        <template if:true={profileImage}>
+                                            <lightning-formatted-rich-text value={profileImage}></lightning-formatted-rich-text>
+                                        </template>
+                                        <template if:false={profileImage}>
+                                            <!-- Inline SVG for default employee icon -->
+                                            <svg class="default-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <circle cx="12" cy="8" r="4" />
+                                                <path d="M4 20c0-4 8-6 8-6s8 2 8 6" />
+                                            </svg>
+                                        </template>
+                                    </div>
+                                </div>
+
+                                <!-- Leaves Info Card -->
+                                <div class="slds-box slds-box_xx-small style">Leave Information</div>
+                                <br />
+                                <div class="slds-grid slds-grid_align-spread slds-grid_vertical-align-center slds-m-bottom_large">
+                                    <div class="slds-col slds-size_1-of-4 no-padding slds-text-align_center">
+                                        <div><b>Total Leaves</b></div>
+                                        <div class="slds-m-top_small slds-text-heading_medium">{totalLeaves}</div>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-4 no-padding slds-text-align_center">
+                                        <div><b>Availed Leaves</b></div>
+                                        <div class="slds-m-top_small slds-text-heading_medium">{availedLeaves}</div>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-4 no-padding slds-text-align_center">
+                                        <div><b>Balance Leaves</b></div>
+                                        <div class="slds-m-top_small slds-text-heading_medium">{balanceLeaves}</div>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-4 no-padding slds-text-align_center">
+                                        <div><b>Loss Of Pay</b></div>
+                                        <div class="slds-m-top_small slds-text-heading_medium">{lossOfPay}</div>
+                                    </div>
+                                </div>
+                                <lightning-card>
+                                    <div class="slds-box slds-box_xx-small style">Subjects Assigned</div>
+                                    <c-display-course-subjects employee-id={employeeData.Id}></c-display-course-subjects>
+                                </lightning-card>
+                                <lightning-card>
+                                    <div class="slds-box slds-box_xx-small style">Issued Books</div>
+                                    <!-- <c-employee-library-data employee-id={employeeData.Id} show={show} columns={libraryColumns}></c-employee-library-data> -->
+                                    <c-borrower-library-data candidate-type={candidateType} candidate-id={employeeData.Name} show={show} columns={libraryColumns}></c-borrower-library-data>
+                                </lightning-card>
+                            </div>
+                        </lightning-card>
+                    </template>
+           
+                </div>
+                <footer class="slds-modal__footer">
+                    <lightning-button class="slds-m-right_x-small" type="button" label="Cancel" onclick={handleCancel}></lightning-button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>

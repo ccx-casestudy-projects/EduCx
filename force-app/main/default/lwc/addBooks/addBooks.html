@@ -1,0 +1,41 @@
+<template>
+    <div class="card">
+        <lightning-card title="Add Books">
+            <lightning-record-edit-form object-api-name="educx__Book__c" onsuccess={handleSuccess}
+                onsubmit={handleSubmit}>
+                <lightning-messages></lightning-messages>
+
+                <div class=" slds-grid slds-gutters">
+
+                    <div class="slds-col slds-size_1-of-2 slds-p-around_medium">
+                        <lightning-input-field class="bold-label" field-name="educx__Title_of_the_book__c"
+                            data-field="educx__Title_of_the_book__c"></lightning-input-field>
+
+                        <lightning-input-field class="bold-label" field-name="educx__Author__c"
+                            data-field="educx__Author__c"></lightning-input-field>
+
+                        <lightning-input-field class="bold-label" field-name="educx__Edition__c"
+                            data-field="educx__Edition__c"></lightning-input-field>
+
+                    </div>
+
+                    <!-- Right Column -->
+                    <div class="slds-col slds-size_1-of-2 slds-p-around_medium">
+                        <lightning-input-field class="bold-label" field-name="educx__Date_of_purchase__c"
+                            data-field="educx__Date_of_purchase__c"></lightning-input-field>
+
+                        <lightning-input-field class="bold-label" field-name="educx__Price__c"
+                            data-field="educx__Price__c"></lightning-input-field>
+                        <lightning-input-field class="bold-label" field-name="educx__Number_of_Copies__c" type="number"
+                            min="1" value={copies} onchange={handleCopiesChange}></lightning-input-field>
+                    </div>
+                </div>
+                <div class="slds-m-top_medium slds-text-align_center">
+                    <lightning-button variant="brand" type="button" name="save" label="Save"
+                        onclick={handleCreateBooks}></lightning-button>
+                </div>
+
+            </lightning-record-edit-form>
+        </lightning-card>
+    </div>
+</template>

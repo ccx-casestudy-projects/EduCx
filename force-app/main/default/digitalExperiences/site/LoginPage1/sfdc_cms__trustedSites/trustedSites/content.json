@@ -1,0 +1,15 @@
+{
+  "type" : "sfdc_cms__trustedSites",
+  "title" : "trustedSites",
+  "contentBody" : {
+    "trustedSites" : [ {
+      "isActive" : true,
+      "source" : "https://www.google.com/",
+      "sourceName" : "Google"
+    }, {
+      "isActive" : true,
+      "source" : "https://www.bing.com/",
+      "sourceName" : "Bing"
+    } ]
+  }
+}

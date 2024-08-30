@@ -1,0 +1,57 @@
+<template>
+    <div class="backgroundScreen">
+        <div class="loginscreen1 slds-text-align_center">
+            <lightning-card>
+                <div class="slds-align_absolute-center slds-p-around_small">
+                    <lightning-icon 
+                        icon-name="action:user" 
+                        alternative-text="User" 
+                        size="xx-large" 
+                        title="User">
+                    </lightning-icon>
+                </div>
+                <div>
+                   <!-- <label class="slds-text-heading_small slds-align_absolute-center slds-p-around_small">
+                      Enter Candidate ID
+                    </label>-->
+                </div>
+                <div class="slds-p-around_medium slds-grid slds-gutters">
+                    <div class="slds-col slds-size_1-of-12">
+                        </div>
+                    <div class="slds-col slds-size_10-of-12 slds-p-around_x-small">
+                        <template if:true={isEmployeeAvailable}>
+                            <lightning-input 
+                                type="text" 
+                               
+                                label="Employee ID" 
+                                placeholder="Enter Employee ID (e.g., EMP-1234)" 
+                               
+                                onchange={handleEmployeeIdChange} 
+                                value={inputEmpId} 
+                                data-id="empId"
+                                class="input-field">
+                            </lightning-input>
+                        </template>
+                        <template if:true={isStudentAvailable}>
+                            <lightning-input 
+                                type="text" 
+                               
+                                label="Hall Ticket Number" 
+                                placeholder="Enter Hall Ticket Number (e.g., 1234567890)" 
+                              
+                                onchange={handleHallTicketNumberChange} 
+                                value={inputHallTicketNumber} 
+                                data-id="hallTicket"
+                                class="input-field">
+                            </lightning-input>
+                        </template>
+                    </div>
+                </div>
+                <div class="slds-align_absolute-center">
+                    <lightning-button class="slds-p-around_small" label="Back" onclick={handleBack}></lightning-button>
+                    <lightning-button class="slds-p-around_small" variant="brand" label="OK" onclick={handleLogin}></lightning-button>
+                </div>
+            </lightning-card>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,10 @@
+<template>
+  <template if:true={showSpinner}>
+   
+    <lightning-spinner size="large"></lightning-spinner>
+    <div class="spinner-content spinning-container">
+      {currentData} <br/>
+      {dynamicContent}
+    </div>
+  </template>
+</template>

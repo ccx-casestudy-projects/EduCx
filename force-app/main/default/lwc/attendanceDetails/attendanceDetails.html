@@ -1,0 +1,55 @@
+<template>
+    <lightning-card title="Attendance Sheet ({20204-25})">
+        <div class="slds-p-around_medium">
+            <div style="padding-left: 10px; width: 31.5rem;">
+                <lightning-layout multiple-rows>
+                    <lightning-layout-item size="6">      
+                    </lightning-layout-item>
+                </lightning-layout>
+            </div>
+
+            <lightning-layout>
+                <lightning-layout-item padding="around-small" size="2">
+                    <template if:true={recordsList}>
+                        <c-custom-lookup lookup-label="Course" icon-name="standard:account" records-lst={recordsList} onrecordselection={handleCourseChange}></c-custom-lookup>
+                    </template>
+                </lightning-layout-item>
+
+                <lightning-layout-item padding="around-small" size="2">
+                    <lightning-combobox name="Year" label="Year" value={value} placeholder="Select" options={yearoptions} onchange={handleYearChange}>
+                    </lightning-combobox>
+                </lightning-layout-item>
+
+                <lightning-layout-item padding="around-small" size="2">
+                    <lightning-combobox name="Semester" label="Semester" value={value} placeholder="Select" options={semesteroptions} onchange={handleSemesterChange}>
+                    </lightning-combobox>
+                </lightning-layout-item>
+
+                <!-- <lightning-layout-item padding="around-small" size="3">
+                    <lightning-combobox name="Subject" label="Subject" value={value} placeholder="Select Subject" options={subjectOptions} onchange={handleSubjectChange}>
+                    </lightning-combobox>
+                </lightning-layout-item> -->
+
+                <template lwc:if={showDateTime}>
+                    <lightning-layout-item padding="around-small" size="3">
+                        <lightning-input type="datetime-local" value={currentDateTime} onchange={handleDateTimeChange}>
+                        </lightning-input>
+                    </lightning-layout-item>
+                </template>
+            </lightning-layout>
+
+            <template lwc:if={showStudentDataTable}>
+                <div style="height: 15rem">
+                    <c-custom-datatable key-field="id" data={data} columns={columns} hide-checkbox-column onattendancecheckvalue={handleAttendanceCheck} onrowselection={handleSelectedRowHandler}>
+                    </c-custom-datatable>
+                </div>
+
+                <template if:false={hasStudents}>
+                    <div class="slds-text-align_center slds-m-top_medium" style="font-size:22px; color:red">
+                        No students found.
+                    </div>
+                </template>
+            </template>
+        </div>
+    </lightning-card>
+</template>

@@ -1,0 +1,73 @@
+.fontsize {
+    font-weight: bold;
+}
+.custom-modal.custom-student-modal {
+    width: 90%;
+    max-width: 100%;
+    margin: 0 auto;
+}
+.address-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.grid-item {
+    display: flex;
+    flex-direction: column;
+}
+.slds-modal__header {
+    background-color: #89CFF0;
+}
+.sectioncolor{
+    background-color: lightskyblue;
+}
+lightning-input[type="file"] {
+    width: 200px; /* Fixed width for the file input */
+}
+
+/* Add more space between columns */
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 30px; /* Adjust space between columns as needed */
+}
+
+/* Adjust spacing and alignment for file name display */
+.form-row {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.file-name {
+    margin-left: 10px; /* Space between file input and file name */
+    overflow: hidden; /* Ensures file names don't break the layout */
+    text-overflow: ellipsis; /* Show ellipsis if file name is too long */
+    white-space: nowrap; /* Prevent file name from wrapping */
+    max-width: 200px; /* Adjust as needed */
+}
+.file-size-error {
+    color: #d73a4a; /* Error color */
+    font-size: 0.75rem; /* Smaller font size for error messages */
+    margin-top: 0.5rem; /* Space between the file input and the error message */
+    display: block; /* Ensure the error message is displayed as a block element */
+}
+.labels {
+    font-weight: bold;
+    font-size: 16px;
+    width: 200px; /* Adjust as needed for label width */
+    text-align: right;
+    margin-right: 10px;
+}
+.custom-confirm-modal{
+    width: 60%;
+    max-width: 100%;
+}

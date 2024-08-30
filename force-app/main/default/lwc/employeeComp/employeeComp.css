@@ -1,0 +1,41 @@
+.headerSize {
+    font-size: 30px;
+  }
+  .slds-grid {
+    align-items: center;
+}
+.employee-title {
+  font-family:Times New Roman, Times, serif;
+  font-size: 23px; /* Change font size */
+  color : rgba(16, 63, 202, 0.662); /* Change font color */
+  padding: 10px; /* Add padding */
+  margin-right: auto;/* Pushes the title to the left */
+}
+
+.count {
+  font-family:Arial, Helvetica, sans-serif; /* Change font family */
+  font-size: 20px; /* Change font size */
+  color:rgb(227, 3, 85); /* Change font color */
+}
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; /* Ensure the container takes full width */
+}
+
+
+.button_css {
+    margin-left: auto; /* Pushes the button to the right */
+}
+.slds-m-right_small {
+  margin-right: 0.5rem;
+}
+
+.slds-form-element {
+  padding: 0.5rem;
+}
+
+.slds-grid_align-spread {
+  justify-content: space-between;
+}

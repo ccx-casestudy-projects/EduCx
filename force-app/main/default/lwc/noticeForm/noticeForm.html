@@ -1,0 +1,38 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 07-23-2024
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+	<lightning-record-edit-form object-api-name="educx__Notice__c" onsuccess={handleSuccess} onerror={handleError}>
+		<!-- Name field -->
+		<lightning-input-field field-name="educx__Type__c" value={noticeType} disabled></lightning-input-field>
+		<lightning-input-field field-name="Name" required></lightning-input-field>
+		<lightning-input-field field-name="educx__Academic_Year__c" required></lightning-input-field>
+		<lightning-input-field field-name="educx__Course__c" required></lightning-input-field>
+		<lightning-input-field field-name="educx__Year__c" required></lightning-input-field>
+		<template if:false={hideSemister}>
+		<lightning-input-field field-name="educx__Semister__c" required></lightning-input-field>
+	</template><lightning-file-upload label="Attachments" name="fileUploader" required
+			accept=".pdf, .png, .jpeg, .jpg, .docx, .xlsx, .pptx, .txt, .csv, .zip"
+			onuploadfinished={handleUploadFinished}>
+		</lightning-file-upload>
+		<template for:each={uploadedFiles} for:item="file">
+			<div key={file.documentId}>
+				<p>{file.name}</p>
+				<div class="remove-icon" onclick={handleRemoveFile} data-document-id={file.documentId}>
+					&#10006;
+					<!-- Close (X) symbol -->
+				</div>
+			</div>
+		</template>
+		<div class="slds-m-top_x-small slds-align_absolute-center">
+		<lightning-button class="slds-m-top_small" variant="brand" type="submit" label="Save">
+		</lightning-button></div>
+	</lightning-record-edit-form>
+
+	<!-- Include the toastMessage component -->
+	<c-toast-message></c-toast-message>
+</template>

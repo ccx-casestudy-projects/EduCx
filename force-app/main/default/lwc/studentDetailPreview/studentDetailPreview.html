@@ -1,0 +1,352 @@
+<template>
+	<template if:true={previewDetails}>
+		<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+			aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+			<div class="slds-modal__container custom-modal custom-student-modal">
+				<header class="slds-modal__header">
+					<button class="slds-button slds-button_icon slds-modal__close" title="Close" onclick={closePreviewPopUp}>
+                    <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse" size="small"></lightning-icon>
+                    <span class="slds-assistive-text">Close</span>
+                </button>
+					<h2 id="modal-heading-02" class="slds-text-heading_medium slds-hyphenate fontsize">
+						 Student Information</h2>
+				</header>
+				<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-2">
+					<lightning-record-edit-form object-api-name="educx__Student__c" record-id={recordId} data-id="Std1"
+						class="fontsize">
+						<div class="slds-box slds-box_xx-small slds-align_absolute-center sectioncolor">
+							<h2 class="slds-text-heading_small  ">
+								Admission Information
+							</h2>
+						</div>
+
+						<lightning-layout multiple-rows="true">
+							<lightning-layout-item class="slds-var-p-around_medium" size="6">
+								<div>
+									<lightning-input-field field-name="educx__ICET_Rank__c"></lightning-input-field>
+										<lightning-layout class="slds-gutters">
+										<lightning-layout-item class="slds-var-p-around_medium" size="12">
+											<lightning-input-field field-name="educx__Admission_Type__c" value={StdAdmType}
+											onchange={StdAdmTypeChange} ></lightning-input-field>
+										</lightning-layout-item>
+										</lightning-layout>
+										<lightning-input-field field-name="educx__Identification_Mark_1__c"></lightning-input-field>
+										<lightning-input-field field-name="educx__Aadhar_Number__c"></lightning-input-field>
+								</div>
+							</lightning-layout-item>
+							<lightning-layout-item class="slds-var-p-around_medium" size="6">
+								<div>
+									<lightning-input-field field-name="educx__ICET_Hall_Ticket_No__c"></lightning-input-field>
+									<lightning-layout class="slds-gutters">
+										<lightning-layout-item class="slds-var-p-around_medium" size="8">
+											<lightning-input-field field-name="educx__Agreement_Fee__c" disabled={isManagementQuota}></lightning-input-field>
+										</lightning-layout-item>
+										<lightning-layout-item class="slds-var-p-around_medium" size="4">
+											<lightning-input-field field-name="educx__Fee_Type__c" disabled={isManagementQuota}></lightning-input-field>
+										</lightning-layout-item>
+									</lightning-layout>
+									<span></span>
+									<span></span>
+									<lightning-input-field field-name="educx__Identification_Mark_2__c"></lightning-input-field>
+									</div>
+							</lightning-layout-item>
+						</lightning-layout>
+						<!-- Student Information -->
+						<div class="slds-box slds-box_xx-small slds-align_absolute-center sectioncolor">
+							<h2 class="slds-text-heading_small  ">
+								Student Information
+							</h2>
+						</div>
+						<lightning-layout multiple-rows="true">
+							<lightning-layout-item class="slds-var-p-around_medium" size="6">
+								<div>
+									<lightning-input-field field-name="educx__Name_of_The_Candidate__c" >
+									</lightning-input-field>
+									<lightning-input-field field-name="educx__Date_of_Birth__c"></lightning-input-field>
+									<lightning-input-field field-name="educx__Nationality__c" >
+									</lightning-input-field>
+									<lightning-input-field field-name="educx__Caste__c"></lightning-input-field>
+								</div>
+							</lightning-layout-item>
+							<lightning-layout-item class="slds-var-p-around_medium" size="6">
+								<div>
+									<lightning-input-field field-name="educx__Gender__c"></lightning-input-field>
+									<lightning-input-field field-name="educx__Special_Category__c">
+									</lightning-input-field>
+									<lightning-input-field field-name="educx__Religion__c">
+									</lightning-input-field>
+									<lightning-input-field field-name="educx__Sub_Caste__c" >
+									</lightning-input-field>
+								</div>
+							</lightning-layout-item>
+						</lightning-layout>
+						<div class="slds-box slds-box_xx-small slds-align_absolute-center sectioncolor">
+							<h2 class="slds-text-heading_small  ">
+								Course Details
+							</h2>
+						</div>
+						<lightning-layout>
+							<lightning-layout-item class="slds-var-p-around_medium" size="6">
+								<div>
+									<lightning-input-field field-name="educx__SSC_Registration_No__c"></lightning-input-field>
+									<lightning-input-field field-name="educx__Course_Code__c"
+												value={StdCourseCode} onchange={StdCourseCodeChange}>
+											</lightning-input-field>
+											<lightning-input-field field-name="educx__Course__c" value={StdCourse}
+												 disabled></lightning-input-field>
+									<lightning-input-field field-name="educx__Year__c"></lightning-input-field>
+								</div>
+							</lightning-layout-item>
+							<lightning-layout-item class="slds-var-p-around_medium" size="6">
+								<div>
+									<lightning-input-field field-name="educx__SSC_Year_of_Passing__c"></lightning-input-field>
+									<lightning-input-field field-name="educx__Joining_Date__c"></lightning-input-field>
+									<lightning-input-field field-name="educx__Course_Name__c"
+												value={StdCourseName} disabled>
+											</lightning-input-field>
+									<lightning-input-field field-name="educx__Semester__c"></lightning-input-field>
+								</div>
+							</lightning-layout-item>
+						</lightning-layout>
+						<!-- Parent Details -->
+						<div class="slds-box slds-box_xx-small slds-align_absolute-center sectioncolor">
+							<h2 class="slds-text-heading_small  ">
+								Parent Details
+							</h2>
+						</div>
+						<lightning-layout>
+							<lightning-layout-item class="slds-var-p-around_medium" size="6">
+								<div>
+									<lightning-input-field field-name="educx__Name_of_The_Father__c">
+									</lightning-input-field>
+									<lightning-input-field field-name="educx__Parent_Occupation__c">
+									</lightning-input-field>
+									<lightning-input-field field-name="educx__Father_Phone__c" >
+									</lightning-input-field>
+								</div>
+							</lightning-layout-item>
+							<lightning-layout-item class="slds-var-p-around_medium" size="6">
+								<div>
+									<lightning-input-field field-name="educx__Name_of_The_Mother__c">
+									</lightning-input-field>
+									<lightning-input-field field-name="educx__Parent_Income__c">
+									</lightning-input-field>
+								</div>
+							</lightning-layout-item>
+						</lightning-layout>
+						<!-- Contact Details -->
+						<div class="slds-box slds-box_xx-small slds-align_absolute-center sectioncolor">
+							<h2 class="slds-text-heading_small  ">
+								Contact Details
+							</h2>
+						</div>
+						<lightning-layout>
+							<lightning-layout-item class="slds-var-p-around_medium" size="6">
+									<lightning-input-field field-name="educx__Email__c"></lightning-input-field>
+									<lightning-input-field field-name="educx__Alternate_Mobile_No__c"></lightning-input-field>
+										
+									<lightning-input-field field-name="educx__Permanent_Address__Street__s"
+											value={permanentStreet} onchange={PermanentStreetChange}>
+									</lightning-input-field>
+									<div class="grid-container">
+										<lightning-input-field class="grid-item"
+											field-name="educx__Permanent_Address__City__s" value={permanentCity}
+											onchange={PermanentCityChange}></lightning-input-field>
+										<lightning-input-field class="grid-item"
+											field-name="educx__Permanent_Address__CountryCode__s"
+											value={permanentCountry} onchange={PermanentCountryChange}>
+										</lightning-input-field>
+									</div>
+									<div class="grid-container">
+										<lightning-input-field class="grid-item"
+											field-name="educx__Permanent_Address__StateCode__s"
+											value={permanentState} onchange={PermanentStateChange}>
+										</lightning-input-field>
+										<lightning-input-field class="grid-item"
+											field-name="educx__Permanent_Address__PostalCode__s"
+											value={permanentPostalCode} onchange={PermanentPostalCodeChange}>
+										</lightning-input-field>
+									</div>
+								</lightning-layout-item>
+
+								<!-- Second Column -->
+								<lightning-layout-item class="slds-var-p-around_medium" size="6">
+									<lightning-input-field field-name="educx__Phone_Number__c" value={StdPhnNo}
+										onchange={StdPhnNoChange}></lightning-input-field>
+									<lightning-input-field field-name="educx__IsCommAddSameAsPermanentAddress__c"
+										value={IsAddressSame} onchange={IsAddressSameChange}>
+									</lightning-input-field>
+									<lightning-layout-item class="slds-var-p-around_medium">
+										<lightning-input-field field-name="educx__Communication_Address__Street__s"
+											value={communicationStreet} onchange={CommunicationStreetChange}
+											disabled={isCommAddressDisabled}></lightning-input-field>
+
+										<lightning-layout>
+											<lightning-layout-item size="5" class="slds-p-right_small">
+												<lightning-input-field
+													field-name="educx__Communication_Address__City__s"
+													value={communicationCity} onchange={CommunicationCityChange}
+													disabled={isCommAddressDisabled}>
+												</lightning-input-field>
+											</lightning-layout-item>
+											<lightning-layout-item size="7">
+												<lightning-input-field
+													field-name="educx__Communication_Address__CountryCode__s"
+													value={communicationCountry}
+													onchange={CommunicationCountryChange}
+													disabled={isCommAddressDisabled}></lightning-input-field>
+											</lightning-layout-item>
+										</lightning-layout>
+
+										<div class="grid-container">
+											<lightning-input-field class="grid-item"
+												field-name="educx__Communication_Address__StateCode__s"
+												value={communicationState} onchange={CommunicationStateChange}
+												disabled={isCommAddressDisabled}></lightning-input-field>
+											<lightning-input-field class="grid-item"
+												field-name="educx__Communication_Address__PostalCode__s"
+												value={communicationPostalCode}
+												onchange={CommunicationPostalCodeChange}
+												disabled={isCommAddressDisabled}></lightning-input-field>
+										</div>
+									</lightning-layout-item>
+								</lightning-layout-item>
+							</lightning-layout>
+						<!-- Bank Details -->
+						<div class="slds-box slds-box_xx-small slds-align_absolute-center sectioncolor">
+							<h2 class="slds-text-heading_small  ">
+								Bank Details
+							</h2>
+						</div>
+						<lightning-layout>
+							<lightning-layout-item class="slds-var-p-around_medium" size="6">
+								<div>
+									<lightning-input-field field-name="educx__Bank_Name__c"></lightning-input-field>
+									<lightning-input-field field-name="educx__Bank_Account_Number__c">
+									</lightning-input-field>
+								</div>
+							</lightning-layout-item>
+							<lightning-layout-item class="slds-var-p-around_medium" size="6">
+								<div>
+									<lightning-input-field field-name="educx__Branch_Name__c">
+									</lightning-input-field>
+									<lightning-input-field field-name="educx__IFSC_Code__c" ></lightning-input-field>
+								</div>
+							</lightning-layout-item>
+						</lightning-layout>
+						
+					</lightning-record-edit-form>
+
+					<!-- Previous Study Details -->
+					<div class="slds-box slds-box_xx-small slds-align_absolute-center sectioncolor">
+						<h2 class="slds-text-heading_small fontsize ">
+							Previous 7 Year Study Details
+						</h2>
+					</div>
+					<div class="slds-p-around_large" style="width:100%">
+						<template if:true={itemList}>
+							<template for:each={itemList} for:item="item">
+								<lightning-record-edit-form object-api-name="educx__Previous_Study_Details__c"
+									record-id={item.Id} key={item.Id} class="fontsize" data-id="psd">
+									<lightning-messages></lightning-messages>
+									<table>
+										<tbody>
+											<tr>
+												<td>
+													<lightning-input-field class="studentfield"
+														field-name="educx__Student__c" value={recordId} disabled>
+													</lightning-input-field>
+												</td>
+												<td>
+													<lightning-input-field field-name="educx__Course__c"
+														value={item.educx__Course__c}>
+													</lightning-input-field>
+												</td>
+												<td>
+													<lightning-input-field field-name="educx__School_College__c"
+														value={item.educx__School_College__c}></lightning-input-field>
+												</td>
+												<td>
+													<lightning-input-field field-name="educx__Year_of_Passing__c"
+														value={item.educx__Year_of_Passing__c}></lightning-input-field>
+												</td>
+												<td>
+													<lightning-input-field field-name="educx__Place__c"
+														value={item.educx__Place__c}>
+													</lightning-input-field>
+												</td>
+												<!-- Removed Add Row and Remove Row icons -->
+											</tr>
+										</tbody>
+									</table>
+								</lightning-record-edit-form>
+							</template>
+						</template>
+					</div>
+					
+					<!-- File Uploads -->
+					<div class="slds-box slds-box_xx-small slds-align_absolute-center sectioncolor">
+						<h2 class="slds-text-heading_small  fontsize">
+							Attachments
+						</h2>
+					</div>
+					<c-attachments record-id={recordId}></c-attachments>
+					<!-- Attachment Details -->
+					<!-- <div class="slds-box slds-box_xx-small slds-align_absolute-center sectioncolor">
+						<h2 class="slds-text-heading_small  fontsize">
+							Attachments
+						</h2>
+					</div>
+					<lightning-record-edit-form object-api-name="educx__Student__c" record-id={recordId} data-id="Std2"
+					 class="fontsize" onsuccess={handleSuccessStudentCreation} onerror={handleError}>
+						<lightning-layout>
+							<lightning-layout-item class="slds-var-p-around_medium" size="6">
+								<div>
+									<lightning-input-field field-name="educx__Rank_Card__c" disabled>
+									</lightning-input-field>
+									<lightning-input-field field-name="educx__Photo__c" disabled>
+									</lightning-input-field>
+									<lightning-input-field field-name="educx__SSC_Memo__c" disabled>
+									</lightning-input-field>
+									<lightning-input-field field-name="educx__Intermediate_Memo__c" disabled>
+									</lightning-input-field>
+									<lightning-input-field field-name="educx__Caste_Certificate__c" disabled>
+									</lightning-input-field>
+									<lightning-input-field field-name="educx__All_Bonafides__c" disabled>
+									</lightning-input-field>
+								</div>
+							</lightning-layout-item>
+							<lightning-layout-item class="slds-var-p-around_medium" size="6">
+								<div>
+									<lightning-input-field field-name="educx__Hall_Ticket__c" disabled>
+									</lightning-input-field>
+									<lightning-input-field field-name="educx__Aadhar_Card__c" disabled>
+									</lightning-input-field>
+									<lightning-input-field field-name="educx__Tranfer_Certificate__c" disabled>
+									</lightning-input-field>
+									<lightning-input-field field-name="educx__B_Tech_Degree_Memo__c" disabled>
+									</lightning-input-field>
+									<lightning-input-field field-name="educx__Income_Certificate__c" disabled>
+									</lightning-input-field>
+
+								</div>
+							</lightning-layout-item>
+						</lightning-layout>
+					</lightning-record-edit-form>
+				</div> -->
+				</div>
+			
+				<footer class="slds-modal__footer">
+					<div class="slds-grid slds-grid_align-end">
+						<lightning-button variant="brand-outline" class="slds-var-m-around_xx-small"
+							label="Cancel" onclick={closePreviewPopUp} ></lightning-button>
+						<lightning-button variant="brand" class="slds-var-m-around_xx-small"
+							label="Save & Confirm" onclick={handleConfirmClick} ></lightning-button>
+					</div>
+				</footer>
+				</div>
+		</section>
+		<div class="slds-backdrop slds-backdrop_open"></div>
+	</template>
+	<c-toast-message></c-toast-message>
+</template>

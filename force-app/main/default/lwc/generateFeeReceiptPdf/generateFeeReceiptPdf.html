@@ -1,0 +1,14 @@
+<template>
+       
+    <template if:true={showSpinner}>
+        <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+    </template>
+    <template if:true={uploadFile}>
+        <c-file-upload-attach  
+            record-id={stdrecordId} 
+            file-name={fileName} 
+            base64-data={base64Data} 
+            onok={handleSuccess}>
+        </c-file-upload-attach>
+    </template>
+</template>

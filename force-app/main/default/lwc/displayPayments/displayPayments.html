@@ -1,0 +1,49 @@
+<template>
+    <lightning-card>
+        <div class="slds-grid slds-wrap">
+            <div class="slds-col slds-size_6-of-8">
+                <lightning-input type="search" value={searchKey} placeholder="Search by Name Or Hallticket"
+                     class="slds-p-bottom_medium search-bar slds-p-left_medium"
+                    style="width:25rem;"></lightning-input>
+            </div>
+            <div class="slds-col slds-size_2-of-8" style="padding-top: 23px; padding-left: 8rem;">
+                <lightning-button variant="brand" label="Pay Now" title="Pay Now" onclick={handleClick}
+                    class="pay-now-button slds-p-right_small"></lightning-button>
+               
+            </div>
+        </div>
+    
+        <lightning-datatable key-field="id" 
+                            data={paginatedRecords} 
+                            columns={columns} 
+                            sorted-by={sortBy}
+                            sorted-direction={sortDirection}
+                            onsort={doSorting} 
+                            onrowaction={handleRowAction}
+                            onrowselection={handleRowSelection} 
+                            wrap-table-header>
+        </lightning-datatable>
+    
+       <div class="slds-align_absolute-center" style="height:2rem; margin-top:1rem;">
+                <lightning-button icon-name="utility:jump_to_left" label="First" class="slds-p-horizontal_x-small"
+                    alternative-text="First page" onclick={handleFirstPage} disabled={isFirstPage}></lightning-button>
+
+                <lightning-button icon-name="utility:chevronleft" label="Previous" alternative-text="Previous"
+                    onclick={handlePrevious} disabled={isPrevDisabled} class="slds-p-horizontal_x-small">
+                </lightning-button>
+
+                <span class="slds-badge"> Page {currentPage} of {totalPages}</span>
+
+                <lightning-button icon-name="utility:chevronright" label="Next" alternative-text="Next"
+                    onclick={handleNext} disabled={isNextDisabled} class="slds-p-horizontal_x-small"
+                    icon-position="right"></lightning-button>
+
+                <lightning-button icon-name="utility:jump_to_right" label="Last" alternative-text="Last page"
+                    onclick={handleLastPage} disabled={isLastPage} icon-position="right"></lightning-button>
+            </div>
+    </lightning-card>
+
+    <template if:true={paymentscreen}>
+        <c-payment is-modal-open={paymentscreen} onclosemodalatt={handleCloseModal}></c-payment>
+    </template>
+</template>

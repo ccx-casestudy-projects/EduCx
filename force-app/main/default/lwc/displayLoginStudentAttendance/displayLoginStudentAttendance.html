@@ -1,0 +1,47 @@
+<template>
+    <lightning-card title="Student Attendance">
+        <template if:true={showRecs}>
+            <lightning-accordion allow-multiple-sections-open>
+                <template for:each={groupedSubjects} for:item="group">
+                    <lightning-accordion-section class="bold-header" label={group.yearSemester} key={group.yearSemester}>
+                        <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+                            <thead>
+                                <tr class="slds-text-title_caps">
+                                    <th scope="col">
+                                        <div class="table-header" title="Subject Code">Subject Code</div>
+                                    </th>
+                                    <th scope="col">
+                                        <div class="table-header" title="Subject Name">Subject Name</div>
+                                    </th>
+                                    <th scope="col">
+                                        <div class="table-header" title="Attendance">Classes Attended</div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <template for:each={group.subjects} for:item="subject">
+                                    <tr key={subject.Id}>
+                                        <td class="wrap-text">
+                                            <div class="table-data" title={subject.subjectCode}>{subject.subjectCode}</div>
+                                        </td>
+                                        <td class="wrap-text">
+                                            <div class="table-data" title={subject.subjectName}>{subject.subjectName}</div>
+                                        </td>
+                                        <td class="wrap-text">
+                                            <div class="table-data" title={subject.attendance}>{subject.attendance}</div>
+                                        </td>
+                                    </tr>
+                                </template>
+                                
+                                
+                            </tbody>
+                        </table>
+                    </lightning-accordion-section>
+                </template>
+            </lightning-accordion>
+        </template>
+        <template if:false={showRecs}>
+            <p>No attendance records found.</p>
+        </template>
+    </lightning-card>
+</template>

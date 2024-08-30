@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Student hall ticket No --></help>
+    <label><!-- User Number --></label>
+    <name>User_Number__c</name>
+</CustomFieldTranslation>

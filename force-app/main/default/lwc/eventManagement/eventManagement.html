@@ -1,0 +1,35 @@
+<template>
+    <br/>
+   <div class="button-container">
+        <lightning-button 
+            label="Events as List" 
+            onclick={handleToggleAdmin} 
+            variant="success" 
+            class="eventbutton">
+        </lightning-button>
+    </div>
+    <lightning-card>
+    <div class="custom-card-header">
+        <lightning-icon icon-name="action:announcement" size="small" alternative-text="Announcement" class="custom-icon"></lightning-icon>
+        <h2 class="custom-card-title">Events & Holidays</h2>
+    </div>
+
+        <div class="events-container">
+        <div class="events" style="margin-left:1.5rem">
+            <template for:each={events} for:item="event">
+                <div key={event.Id} class="event-item">
+                    <span class="bullet"><b>&#9755;</b> </span>
+                    <span class="event-title"><b> {event.Subject}</b></span>
+                    <template if:true={event.Location}>
+                            <span class="event-title"><b>, Venue: {event.Location},</b></span>
+                    </template>
+                    <span class="event-dates"><b>{event.formattedDates} </b></span>
+                    <template if:true={event.isNew}>
+                            <img src="https://edu51-dev-ed--educx.develop.vf.force.com/resource/1721727405000/educx__new_blinking_gif?"/>
+                        </template>
+                </div>
+            </template>
+        </div>
+        </div>
+    </lightning-card>
+</template>

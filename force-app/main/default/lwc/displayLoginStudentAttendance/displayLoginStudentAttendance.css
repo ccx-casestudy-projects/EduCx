@@ -1,0 +1,22 @@
+.wrap-text {
+    white-space: normal !important; /* Allows text to wrap */
+    word-wrap: break-word !important; /* Breaks long words to wrap text */
+    overflow: hidden;    /* Hides any overflowing content */
+    text-overflow: ellipsis; /* Adds ellipsis (...) if text overflows */
+}
+
+.table-data {
+    max-width: 150px; /* Adjust this width based on your table's layout */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal; /* Allows text to wrap within the div */
+}
+.slds-table {
+    table-layout: auto; /* Allows the table to adjust column widths based on content */
+    width: 100%;
+}
+
+.slds-table th, .slds-table td {
+    word-wrap: break-word;
+    white-space: normal;
+}

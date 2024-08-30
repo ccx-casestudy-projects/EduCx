@@ -1,0 +1,23 @@
+<template>
+    <template if:true={isShowEdit}>
+        <div class="slds-modal__container custom-modal">
+            <lightning-modal-header label="New Employee" class="header"></lightning-modal-header>
+            <lightning-modal-body>
+                <span class="slds-var-m-left_xx-large label">Select a Record Type:</span><br/>
+                <lightning-radio-group name="radioGroup" class="radiotext slds-radio slds-m-around_small"
+                                       options={options}
+                                       value={value}
+                                       onchange={handleChange}
+                                       type="radio">
+                </lightning-radio-group>
+                <template if:true={showError}>
+                    <div class="slds-text-color_error slds-m-top_small">{errorMessage}</div>
+                </template>
+            </lightning-modal-body>
+            <lightning-modal-footer>
+                <lightning-button class="slds-m-right_small" type="button" variant="base" label="Cancel" onclick={handleCancel}></lightning-button>
+                <lightning-button variant="brand" label="OK" onclick={handleOkay}></lightning-button>
+            </lightning-modal-footer>
+        </div>
+    </template>
+</template>

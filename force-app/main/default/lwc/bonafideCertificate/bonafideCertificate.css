@@ -1,0 +1,33 @@
+.search-input, .combobox-width, .addbutton {
+    margin-left: 1rem;           /* Add spacing between items */
+}
+
+.search-input {
+    flex: 1;                     /* Allows input to take up remaining space */
+    max-width: 250px;            /* Optional: Controls maximum width of the input */
+}
+
+.combobox-width {
+    flex: 1;                     /* Allows combobox to take up remaining space */
+    max-width: 250px;            /* Optional: Controls maximum width of the combobox */
+}
+
+.addbutton {
+    /* No need for extra margin here unless needed for design */
+     margin-right: 2rem;  
+     margin-top: 1.0rem; 
+}
+.headerSize {
+    font-size:35px;
+    color:rgb(68, 41, 102);
+	  font-family:'Times New Roman', Times, serif;
+  }
+.fontsize {
+    font-weight: bold;
+}
+.search-combobox-container {
+    display: flex;               /* Use Flexbox for alignment */
+    align-items: center;         /* Vertically align items */
+    justify-content: flex-end;   /* Align all items to the right */
+    gap: 1rem;                   /* Optional: Adds consistent space between elements */
+}

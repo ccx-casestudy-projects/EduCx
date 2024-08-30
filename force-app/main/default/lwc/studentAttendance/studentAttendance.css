@@ -1,0 +1,18 @@
+.custom-header {
+    text-align: center;
+    padding: 0; /* Adjust padding as necessary */
+    color:white;
+   
+}
+
+.slds-card__header-title {
+    display: inline-block; /* To ensure centering works as expected */
+    
+}
+.layout-item{
+    font-weight: bold;
+    font-size: small;
+}
+.layout-item1{
+    font-size: small;
+}

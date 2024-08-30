@@ -1,0 +1,128 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-basis: 48%;
+    margin-bottom: 0;
+}
+
+.info-box {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem; 
+}
+
+.label {
+    font-weight: bold;
+    font-size: 15px;
+    margin-right: 2px; 
+    width: 25%;
+    white-space: nowrap; 
+}
+
+.value-box {
+    font-size: 15px;
+    padding: 5px 10px;
+    border: 1px solid #dcdcdc;
+    border-radius: 3px;
+    background-color: #f9f9f9;
+    width: 50%;
+    text-align: left;
+    margin-left: 1rem;
+}
+
+.header {
+    font-size: 1.8em;
+    font-family: 'Times New Roman', sans-serif;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #F1490E;
+}
+
+.alt_box {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    font-size: 35px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #dee9f3; /* Optional: Background color for better visibility */
+    position: relative;
+}
+.default-icon {
+    height: 60px; /* Adjust size as needed */
+    width: 60px;  /* Adjust size as needed */
+    color: #666;  /* Icon color */
+}
+
+
+
+.slds-modal__container {
+    width: 50%;
+    max-width: 40rem;
+}
+
+.slds-modal__close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+.slds-backdrop_open {
+    z-index: 50;
+}
+
+
+.slds-box_x-small {
+    padding: 1rem;
+    border-radius: 0.25rem;
+}
+
+.slds-theme_default {
+    /*background-color: #f4f6f9;*/
+    border: 1px solid #dddbda;
+}
+
+.slds-badge_lightest {
+    background-color: #eef4fb;
+    color: #0070d2;
+}
+
+.slds-m-top_small {
+    margin-top: 0.5rem;
+}
+
+.slds-text-heading_medium {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.header-container {
+    background-color: #e3f2fd;
+    /*background-color: #89CFF0;*/
+    border-radius: 0.2rem;
+}
+
+.style{
+	font-weight: bold;
+	font-size: 15px;
+	background-color:#89CFF0;
+    color: black
+}
+ .no-gap {
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+   
+    .no-padding {
+    padding: 0;
+    margin: 0;
+}

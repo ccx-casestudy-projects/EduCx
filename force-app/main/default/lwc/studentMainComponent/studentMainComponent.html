@@ -1,0 +1,44 @@
+<template>
+    <div>
+        <div class="slds-grid slds-gutters">
+            <div class="slds-col slds-size_3-of-4 slds-grid slds-gutters slds-box">
+                <div class="slds-col">
+                    <p><strong>Hallticket No</strong></p>
+                    <p>{studentHallticketNo}</p>
+                </div>
+                <div class="slds-col">
+                    <p><strong>Name</strong></p>
+                    <p>{studentName}</p>
+                </div>
+                <div class="slds-col">
+                    <p>&ndash;</p>
+                    <p>{year} , {semester} Sem , {CourseName}</p>
+                </div>
+            </div>
+            <div class="slds-col slds-size_1-of-4 slds-grid slds-gutters">
+                <div if:true={studentRecId}>
+                    <div class="slds-col">
+                        <br/>
+                        &nbsp;&nbsp;<c-opting-documents 
+                            studentrecord-id={studentRecId} 
+                            student-value={studentName} 
+                            course-value={CourseCode} 
+                            course-name={CourseName} 
+                            course={Course}>
+                        </c-opting-documents>
+                    </div>
+                </div>
+
+                <div class="slds-col">
+                    <br/>
+                    <lightning-button 
+                        variant="destructive" 
+                        icon-name="utility:logout" 
+                        label="Logout" 
+                        onclick={handleLogout}>
+                    </lightning-button>
+                </div> 
+            </div>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,280 @@
+/*1st:-*/
+.img1{
+	width: 5.8%;
+	height: 4%;
+}
+.alignment1{
+	text-align: center;
+}
+.title1{
+	font-family: Belwe Std Condensed;
+	font-size: 300%;
+	align-items: center;
+}
+@font-face {
+    font-family: 'Belwe Std Condensed';
+    src: url('/resource/BELWE?') format('truetype');
+}
+ 
+.custom-font {
+    font-family: 'Belwe Std Condensed', sans-serif;
+    font-size: 50px;
+}
+ 
+
+
+.address1{
+	
+	font-family: Arial;
+	font-size: 160%;
+	align-items: center;
+}
+.phone1{
+	font-family: 'Times New Roman', Times, serif;
+	font-size: 120%;
+	align-items: center;
+}
+.contact-info1 {
+    font-family: Arial;
+            display: flex;
+            justify-content: center;
+            font-size: 90%;
+            gap: 25px; 
+        }
+       
+
+		 
+		.certificate-box1 {
+            font-family: 'Times New Roman', Times, serif;
+            display: inline-block;
+            padding: 3px 7px; 
+            border-bottom: 5px solid #000; 
+            border-right: 5px solid #000; 
+			border-top: 2px solid #000; 
+			border-left: 2px solid #000; 
+            font-size: 2rem;
+            font-weight: bold;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2); 
+			margin-top: 10px;
+        }
+
+/*2nd*/
+.img2{
+	width: 4%;
+	height: 2.5%;
+}
+.title2{
+	font-family: Arial Black;
+	font-size: 290%;
+	align-items: center;
+}
+.address2
+{
+	
+	font-family: Arial;
+	font-size: 160%;
+	text-align: center;
+}
+.phone2
+{
+	font-family: 'Times New Roman', Times, serif;
+	font-size: 120%;
+	align-items: center;
+}
+.contact-info2 {
+    font-family: Arial;
+            display: flex;
+            justify-content: center;
+            font-size: 80%;
+            gap: 25px; 
+        }
+       
+
+		 
+		.certificate-box2 {
+             font-family: 'Times New Roman', Times, serif;
+             font-style: italic; 
+            font-size: 2rem;
+            font-weight: bold;
+            border: none; 
+            box-shadow: none; 
+        }
+
+/*3rd*/
+.img3{
+	width: 4%;
+	height: 3%;
+}
+.alignment3{
+	text-align: center;
+}
+.title3{
+	font-family: Tw Cen MT Condensed Extra Bold;
+	font-size: 250%;
+	align-items: center;
+}
+.address3{
+	
+	font-family: Arial;
+	font-size: 190%;
+	align-items: center;
+}
+ 
+		.certificate-box3 {
+    font-family: 'Times New Roman', Times, serif;
+    display: inline-block;
+    padding: 3px 7px; 
+    border-bottom: 5px solid #000;
+    border-right: 5px solid #000;
+    border-top: 2px solid #000;
+    border-left: 2px solid #000;
+    font-size: 2rem;
+    font-weight: bold;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    margin-top: 10px;
+}
+
+       
+
+
+/*4th*/
+.img4{
+	width: 5%;
+	height: 3.5%;
+}
+.alignment4{
+	text-align: center;
+}
+.title4{
+	font-family: Futura EF Bold Condensed Oblique;
+	font-size: 250%;
+	align-items: center;
+    color:rgb(10, 36, 112);
+}
+.address4{
+	
+	font-family: Arial;
+	font-size: 170%;
+	align-items: center;
+    color:rgb(10, 36, 112);
+}
+ .phone4{
+	font-family: Arial;
+	font-size: 90%;
+	align-items: center;
+    color:rgb(10, 36, 112);
+}
+		.certificate-box4 {
+    font-family: 'Times New Roman', Times, serif;
+    display: inline-block;
+    padding: 3px 7px; 
+    border-bottom: 5px solid rgb(10, 36, 112);
+    border-right: 5px solid rgb(10, 36, 112);
+    border-top: 2px solid rgb(10, 36, 112);
+    border-left: 2px solid rgb(10, 36, 112);
+    font-size: 2rem;
+    font-weight: bold;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    margin-top: 10px; 
+    color:rgb(10, 36, 112);
+}
+
+/*5rd*/.img5 {
+    width: 5%;
+    height: 3.5%;
+}
+
+.alignment5 {
+    text-align: center;
+}
+
+.title5 {
+    font-family: 'Tw Cen MT Condensed Extra Bold';
+    font-size: 300%;
+    align-items: center;
+    color: #F1490E;
+}
+
+.address5 {
+    font-family: Arial;
+    font-size: 150%;
+    align-items: center;
+    color: rgb(10, 36, 112);
+}
+
+.certificate-box5 {
+    position: relative;
+    font-family: Arial, Helvetica, sans-serif;
+    display: inline-block;
+    padding: 5px 10px; /* Adjust padding to reduce height */
+    background-color: #F1490E; /* Orange fill color */
+    font-size: 2rem;
+    font-weight: bold;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    margin-top: 10px;
+    border-radius: 15px; /* Increased border radius for rounder corners */
+    z-index: 1; /* Ensure the box is above the pseudo-elements */
+    color: white; /* White text color */
+}
+
+.certificate-box5::before {
+    content: "";
+    position: absolute;
+    top: -5px; /* Adjust to create space between the borders */
+    left: -5px; /* Adjust to create space between the borders */
+    right: -5px; /* Adjust to create space between the borders */
+    bottom: -5px; /* Adjust to create space between the borders */
+    border: 2px solid #F1490E; /* Outer border color and width */
+    border-radius: 20px; /* Increased border radius for rounder corners */
+    z-index: -1; /* Ensure the pseudo-element is behind the box */
+}
+
+/*6th*/
+.img6{
+	width: 5%;
+	height: 4.5%;
+}
+.alignment6{
+	text-align: center;
+}
+.title6{
+	font-family: Tw Cen MT Condensed Extra Bold;
+	font-size: 300%;
+	align-items: center;
+    color:#F1490E;
+}
+.address6{
+	
+	font-family: Arial;
+	font-size: 150%;
+	align-items: center;
+    color:rgb(10, 36, 112);
+}
+
+ 
+	.certificate-box6 {
+    position: relative;
+    font-family: Arial, Helvetica, sans-serif;
+    display: inline-block;
+    padding: 5px 10px; /* Adjust padding to reduce height */
+    background-color: #F1490E; /* Orange fill color */
+    font-size: 2rem;
+    font-weight: bold;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    margin-top: 10px;
+    border-radius: 15px; /* Increased border radius for rounder corners */
+    z-index: 1; /* Ensure the box is above the pseudo-elements */
+    color: white; /* White text color */
+}
+
+.certificate-box6::before {
+    content: "";
+    position: absolute;
+    top: -5px; /* Adjust to create space between the borders */
+    left: -5px; /* Adjust to create space between the borders */
+    right: -5px; /* Adjust to create space between the borders */
+    bottom: -5px; /* Adjust to create space between the borders */
+    border: 2px solid #F1490E; /* Outer border color and width */
+    border-radius: 20px; /* Increased border radius for rounder corners */
+    z-index: -1; /* Ensure the pseudo-element is behind the box */
+}

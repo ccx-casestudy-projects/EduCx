@@ -1,0 +1,33 @@
+<!-- stuNotesandAttachments.html -->
+<template>
+    <div class="scroller" style="height:50%;">
+        <template if:true={recordId}>
+        <template if:true={files}>
+            <template for:each={files} for:item="file">
+                <div key={file.id} class="card clearfix">
+                    <lightning-layout horizontal-align="space-between" vertical-align="center">
+                        <lightning-layout-item>
+                            <p>
+                                <b>{file.title}</b>
+                            </p>
+                        </lightning-layout-item>
+                        <lightning-layout-item alignment-bump="left">
+                            <lightning-button-icon key={file.id} label="Preview"
+                                onclick={handlePreview} value={file.id}
+                                icon-name="utility:preview" class="slds-m-right_small">
+                            </lightning-button-icon>
+                            <lightning-button-icon key={file.id} label="Download"
+                                onclick={handleDownload} value={file.id}
+                                icon-name="utility:download">
+                            </lightning-button-icon>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                </div>
+            </template>
+        </template>
+        </template>
+        <template if:false={files}>
+            <p>No files found</p>
+        </template>
+    </div>
+</template>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Type --></label>
+    <name>Type__c</name>
+    <picklistValues>
+        <masterLabel>Almanac</masterLabel>
+        <translation><!-- Almanac --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Alumni</masterLabel>
+        <translation><!-- Alumni --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Announcement</masterLabel>
+        <translation><!-- Announcement --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Exam</masterLabel>
+        <translation><!-- Exam --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Time Table</masterLabel>
+        <translation><!-- Time Table --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

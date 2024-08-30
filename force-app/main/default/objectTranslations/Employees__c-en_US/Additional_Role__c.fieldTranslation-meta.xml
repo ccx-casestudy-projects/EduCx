@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Additional Role --></label>
+    <name>Additional_Role__c</name>
+    <picklistValues>
+        <masterLabel>Controller of Exams</masterLabel>
+        <translation><!-- Controller of Exams --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Events Incharge</masterLabel>
+        <translation><!-- Events Incharge --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>NCC Incharge</masterLabel>
+        <translation><!-- NCC Incharge --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

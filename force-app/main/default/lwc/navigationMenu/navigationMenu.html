@@ -1,0 +1,93 @@
+<!-- verticalButtonGroup.html -->
+<template>
+	<c-edu-c-x_-header></c-edu-c-x_-header>
+	<lightning-card variant="Narrow" style="margin-top:-1rem">
+		<lightning-layout>
+			<lightning-layout-item size=3>
+				<div class="btn-group">
+					<button name="Student_Management" onclick={handleButtonClick} >Student Management</button>
+					<button name="Fee_Management" onclick={handleButtonClick}>Fee Management</button>
+					<button name="Course_Management" onclick={handleButtonClick}>Course Management</button>
+					<button name="Faculty_Management" onclick={handleButtonClick}>Employee Management</button>
+					<button name="Attendance_Management" onclick={handleButtonClick}>Attendance Management</button>
+					<button name="Time_Tables_Management" onclick={handleButtonClick}>Time Tables Management</button>
+					<button name="Exam_Management" onclick={handleButtonClick}>Exam Management</button>
+					<button name="Library_Management" onclick={handleButtonClick}>Library Management</button>
+					<button name="Approval_Management" onclick={handleButtonClick}>Approval Management</button>
+					<button name="Event_Management" onclick={handleButtonClick}>Event Management</button>
+					<button name="Documents_Management" onclick={handleButtonClick}>Documents Management</button>
+					<button name="Almanac_Management" onclick={handleButtonClick}>Almanac Management</button>
+					<button name="Procurement_Management" onclick={handleButtonClick}>Income and Expenditure Management</button>
+					<button name="Alumni_Management" onclick={handleButtonClick}>Alumni Management</button>
+				</div>
+
+			</lightning-layout-item>
+			<lightning-layout-item size=9>
+				<template if:true={isStudentManagement}>
+					<div style="font-size:x-large;font-family: Inter;"><b>Student Management</b></div>
+					<c-display-students-in-a-y></c-display-students-in-a-y>
+				</template>
+				<template if:true={isFeeManagement}>
+					<div class="slds-align_absolute-center" style="font-size:x-large; padding-bottom:2rem"><b>Fee Management</b></div>
+					<lightning-tabset variant="scoped" active-tab-value="one">
+						<lightning-tab label="Fee Structure" value="one">
+							<c-fee-structure-Management></c-fee-structure-Management>
+						</lightning-tab>
+						<lightning-tab label=" All Payments" value="two">
+							<c-display-payments></c-display-payments>
+						</lightning-tab>
+					</lightning-tabset>
+				</template>
+				<template if:true={isFacultyManagement}>
+					<div style="font-size:x-large;font-family: Inter;"><b>Employeee Management</b></div>
+					<c-employee-comp></c-employee-comp>
+				</template>
+				<template if:true={isCourseManagement}>
+					<div style="font-size:x-large; padding-bottom:1rem"><b>Course Management</b></div>
+					<lightning-tabset variant="scoped" active-tab-value="one">
+						<lightning-tab label="Courses" value="one">
+							<c-course-cmp></c-course-cmp>
+						</lightning-tab>
+						<lightning-tab label="Subjects" value="two">
+							<c-subject-cmp></c-subject-cmp>
+						</lightning-tab>
+					</lightning-tabset>
+				</template>
+				<template if:true={isProcurementManagement}>
+					<c-income-comp></c-income-comp>
+				</template>
+				<template if:true={isExamManagement}>
+					<c-notice-component notice-type='Exam'></c-notice-component>
+				</template>
+				<template if:true={isTimeTablesManagement}>
+					<c-notice-component notice-type='Time Table'></c-notice-component>
+				</template>
+				<template if:true={isEventManagement}>
+					<div class="slds-align_absolute-center" style="font-size:x-large;"><b>Event Management</b></div>
+					<c-event-management></c-event-management>
+				</template>
+				<template if:true={isLibraryManagement}>
+						<div style="font-size:x-large;"><b>Library Management</b></div>
+					<c-library-main-cmp></c-library-main-cmp>
+				</template>
+				<template if:true={isDocumentsManagement}>
+                <div style="font-size:x-large;"><b>Documents Management</b></div>
+					<c-document-management-cmp></c-document-management-cmp>
+				</template>
+				<template if:true={isAttendanceManagement}>
+					<c-display-all-students-attendence student-id=''></c-display-all-students-attendence>
+				</template>
+				<template if:true={isAlumniManagement}>
+					<div style="font-size:x-large;"><b>Alumni Management</b></div>
+					<c-passed-out-student-details></c-passed-out-student-details>
+				</template>
+				<template if:true={isAlmanacManagement}>
+					<c-notice-component notice-type='Almanac' hide-semister={isAlmanacManagement}></c-notice-component>
+				</template>
+				<template if:true={isApprovalManagement}>
+					<c-approval-page-component></c-approval-page-component>
+				</template>
+			</lightning-layout-item>
+		</lightning-layout>
+	</lightning-card>
+</template>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ActionPlanTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <isAdHocItemCreationEnabled>false</isAdHocItemCreationEnabled>
+    <name>Action Plan Template</name>
+    <targetEntityType>educx__Student__c</targetEntityType>
+    <uniqueName>Action_Plan_Template_413a0e4c_47f8_11ef_b221_5d5f0fddb3fc</uniqueName>
+</ActionPlanTemplate>

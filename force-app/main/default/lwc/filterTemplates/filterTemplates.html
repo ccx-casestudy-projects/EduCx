@@ -1,0 +1,27 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 08-06-2024
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+    <template if:true={generateBonafideMBACourses}>
+        <c-bonafide-template-m-b-a student-data={filteredBonafideMBACourses}></c-bonafide-template-m-b-a>
+    </template>
+    <template if:true={generateTCMBACourses}>
+    <c-tc-template-m-b-a student-data={filteredTCMBACourses}></c-tc-template-m-b-a>
+    </template>
+    <template if:true={generateTCDegreeCourses}>
+    <c-degree-tc-template student-data={filteredTCDegreeCourses}></c-degree-tc-template>
+    </template>
+    <template if:true={generateBonafideDegreeCourses}>
+    <c-degree-bonafide-template student-data={filteredBonafideDegreeCourses}></c-degree-bonafide-template>
+    </template>
+     <template if:true={generateTCBedCourses}>
+    <c-b-ed-t-c-template student-data={filteredTCBedCourses}></c-b-ed-t-c-template>
+    </template>
+    <template if:true={generateBonafideBedCourses}>
+    <c-b-ed-bonafide-template student-data={filteredBonafideBedCourses}></c-b-ed-bonafide-template>
+    </template>
+</template>

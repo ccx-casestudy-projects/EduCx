@@ -1,0 +1,24 @@
+.img{
+	width: 8%;
+	height: 8%;
+}
+.alignment{
+	text-align: center;
+	background-color: white;
+	padding: 1em;
+}
+.title{
+	font-family: Revue Bold;
+	font-size: 2.5em;
+	align-items: center;
+}
+.slogan{
+	font-family: sentic;
+	font-size: 1.3em;
+	align-items: center;
+}
+.address{
+	font-family: sentic;
+	font-size: 1.2em;
+	align-items: center;
+}

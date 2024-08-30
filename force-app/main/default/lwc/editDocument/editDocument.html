@@ -1,0 +1,28 @@
+<template>
+    <lightning-record-edit-form object-api-name="educx__Organization__c" onsuccess={handleSuccess} onerror={handleError} record-id={recordId}>
+		<!-- Name field -->
+		
+		<lightning-input-field field-name="Name" required></lightning-input-field>
+		
+		<lightning-file-upload label="Attachments" name="fileUploader"
+			accept=".pdf, .png, .jpeg, .jpg, .docx, .xlsx, .pptx, .txt, .csv, .zip"
+			onuploadfinished={handleUploadFinished}>
+		</lightning-file-upload>
+		<template for:each={uploadedFiles} for:item="file">
+			<div key={file.documentId}>
+				<p>{file.name}</p>
+				<div class="remove-icon" onclick={handleRemoveFile} data-document-id={file.documentId}>
+					&#10006;
+					<!-- Close (X) symbol -->
+				</div>
+			</div>
+		</template>
+		<div class="slds-m-top_x-small slds-align_absolute-center">
+		<lightning-button class="slds-m-top_small " variant="brand" type="submit" label="Update">
+		</lightning-button></div>
+	</lightning-record-edit-form>
+	<c-toast-message></c-toast-message>
+	<template if:true={showSpinner}>
+		<lightning-spinner alternative-text="Loading" size="x-small"></lightning-spinner>
+	</template>
+</template>

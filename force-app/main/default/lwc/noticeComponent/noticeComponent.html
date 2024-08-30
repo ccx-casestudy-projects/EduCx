@@ -1,0 +1,72 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 07-23-2024
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+    <div class="slds-clearfix">
+        <div class="slds-float_right slds-m-right_x-large slds-m-bottom_small">
+            <lightning-button variant="brand" label="New" title="New" icon-name="action:new"
+                onclick={handleButtonClick}></lightning-button>
+        </div>
+    </div>
+	<div class="scroller" style="height:50%;">
+    <template if:true={notices}>
+        <template for:each={notices} for:item="notice">
+            <div key={notice.notice.Id} class="card clearfix">
+                <lightning-layout horizontal-align="space-between" vertical-align="center">
+                    <lightning-layout-item>
+                        <p class=" ">
+                            {notice.formattedCreatedDate}<span class='slds-m-left_xx-small'><b>{notice.notice.Name} <span class='slds-m-left_xx-small'>{notice.notice.educx__Academic_Year__c}</span> </b></span>
+                            <template if:true={notice.isNew}>
+                                <span class="slds-badge slds-theme_success badge">New</span>
+                            </template>
+                        </p>
+                    </lightning-layout-item>
+                    <lightning-layout-item alignment-bump="left"><!---->
+                        <template if:true={notice.files}>
+                            <template for:each={notice.files} for:item="file">
+                                <lightning-button-icon key={file.ContentDocumentId} label="Preview"
+                                    onclick={handleViewClick} value={file.ContentDocumentId}
+                                    icon-name="utility:preview">
+                                </lightning-button-icon>
+                            </template>
+                        </template>
+                    </lightning-layout-item>
+                    <lightning-layout-item class="slds-m-left_xx-small">
+                        <lightning-button-icon onclick={handleEditClick} icon-name="utility:edit_form"
+                            alternative-text="Edit" title="Edit" value={notice.notice.Id}>
+                        </lightning-button-icon>
+                    </lightning-layout-item>
+                    <lightning-layout-item class="slds-m-left_xx-small">
+                        <lightning-button-icon onclick={handleDeleteClick} icon-name="utility:delete"
+                            alternative-text="Delete" title="Delete" value={notice.notice.Id}>
+                        </lightning-button-icon>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </div>
+        </template>
+    </template></div>
+    <template if:false={notices}>
+        <p>No notices available.</p>
+    </template>
+    <template if:true={error}>
+        <p>Error: {error.message}</p>
+    </template>
+    <template if:true={showNoticeForm}>
+        <c-generic-modal header-text={heading} onclosemodal={handleCloseModal}>
+            <c-notice-form notice-type={noticeType} oncloseform={handleCloseModal} hide-semister={hideSemister}></c-notice-form>
+        </c-generic-modal>
+    </template>
+    <template if:true={showDeleteModal}>
+        <c-generic-delete onaction={refreshData} record-ids={deleteRecordIds}></c-generic-delete>
+    </template>
+    <template if:true={showNoticeEditForm}>
+        <c-generic-modal header-text={heading} onclosemodal={handleCloseModal}>
+            <c-notice-edit-form notice-type={noticeType} file-id={documentId} record-id={recordId}
+                oncloseform={handleCloseModal} hide-semister={hideSemister}></c-notice-edit-form>
+        </c-generic-modal>
+    </template>
+</template>

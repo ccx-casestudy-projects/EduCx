@@ -1,0 +1,72 @@
+.slds-card {
+        border: 1px solid #d8dde6; 
+        border-radius: 0.25rem;
+    }
+
+    .slds-icon {
+        width: 1.0rem; 
+        height: 1.0rem; 
+    }
+
+    .events-container {
+        overflow-y: auto;
+        word-wrap: break-word;
+    }
+
+    .event-item {
+        margin-bottom: 20px; /* Increased space between events */
+        animation: blink 1s infinite alternate;
+    }
+
+    @keyframes blink {
+        from {
+            color: black;
+        }
+        to {
+            color: blue; 
+        }
+    }
+
+    .events {
+        animation: scroll-up 25s linear infinite;
+    }
+
+    .events:hover {
+        animation-play-state: paused;
+    }
+
+    @keyframes scroll-up {
+        from {
+            transform: translateY(100%);
+        }
+        to {
+            transform: translateY(-100%);
+        }
+    }
+
+    .button-container {
+        display: flex;
+        justify-content: flex-end; 
+        margin-bottom: 0.5rem; 
+    }
+
+    .eventbutton {
+        margin-right: 30px;
+    }
+
+    .custom-card-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 2rem;
+        padding: 0.75rem 1rem;
+    }
+
+    .custom-icon {
+        margin-right: 0.5rem;
+    }
+
+    .custom-card-title {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin: 0;
+    }

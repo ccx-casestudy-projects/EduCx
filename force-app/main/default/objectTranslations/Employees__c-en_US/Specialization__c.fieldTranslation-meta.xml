@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Specialization --></label>
+    <name>Specialization__c</name>
+    <picklistValues>
+        <masterLabel>Botony</masterLabel>
+        <translation><!-- Botony --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Chemistry</masterLabel>
+        <translation><!-- Chemistry --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Civics</masterLabel>
+        <translation><!-- Civics --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Computer Science</masterLabel>
+        <translation><!-- Computer Science --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Economics</masterLabel>
+        <translation><!-- Economics --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Electronics</masterLabel>
+        <translation><!-- Electronics --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>English</masterLabel>
+        <translation><!-- English --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Hindi</masterLabel>
+        <translation><!-- Hindi --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>History</masterLabel>
+        <translation><!-- History --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Maths</masterLabel>
+        <translation><!-- Maths --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Physics</masterLabel>
+        <translation><!-- Physics --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Political science</masterLabel>
+        <translation><!-- Political science --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Public Administration</masterLabel>
+        <translation><!-- Public Administration --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Sanskrit</masterLabel>
+        <translation><!-- Sanskrit --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Telugu</masterLabel>
+        <translation><!-- Telugu --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Zoology</masterLabel>
+        <translation><!-- Zoology --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

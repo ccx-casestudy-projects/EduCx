@@ -1,0 +1,17 @@
+<template>
+    <template if:true={records}>
+                <lightning-datatable
+                key-field="id"
+                data={records}
+                columns={columns}
+                onrowaction={handleRowAction}
+                column-widths-mode="auto"
+                hide-checkbox-column
+                wrap-table-header
+                >
+                </lightning-datatable>
+    </template>
+    <template if:false={records}>
+        <b> No Document Requests</b>
+    </template>
+</template>

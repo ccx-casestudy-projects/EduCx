@@ -1,0 +1,42 @@
+<template>
+  
+  <section role="dialog" tabindex="-1" aria-modal="true" aria-label="Meaningful description of the modal content" class="slds-modal slds-fade-in-open">
+    <div class="slds-modal__container">
+    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse">
+    <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+    </svg>
+    <span class="slds-assistive-text">Cancel and close</span>
+    </button>
+    <div class="slds-modal__content slds-p-around_medium slds-modal__content_headless" id="modal-content-id-1">
+    <lightning-card title="File Preview and Download">
+           <template for:each={filesList} for:item="file">
+               <div key={file.value} class="slds-box">
+                   <div class="slds-grid slds-wrap">
+                       <div class="slds-col slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-size_12-of-12">
+                         <p><strong>FileName:  </strong>{file.label}</p>
+                       </div>
+                       <div class="slds-col slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-size_12-of-12">
+                         <a href={file.url} download>Download</a>
+                       </div>
+                       <div class="slds-col slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-size_12-of-12">
+                         <lightning-button label="Preview" 
+                         variant="brand"
+                        data-id={file.value}
+                        onclick={previewHandler}
+                         ></lightning-button>
+                       </div>
+                     </div>
+               </div>
+           </template>
+      </lightning-card>
+      </div>
+    <div class="slds-modal__footer">
+      <button class="slds-button slds-button_neutral" aria-label="Cancel and close" onclick={closeModal}>Close</button>
+    </div>
+    </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+    
+  
+</template>

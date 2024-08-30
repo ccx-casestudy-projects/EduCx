@@ -1,0 +1,12 @@
+<template>
+    <lightning-card>
+            <template if:true={allbooks}>
+              <lightning-datatable 
+              key-field="id"
+              data={allbooks}
+              columns={columns}
+              hide-checkbox-column="true">
+        </lightning-datatable>
+      </template>
+     </lightning-card>
+</template>

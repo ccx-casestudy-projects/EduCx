@@ -1,0 +1,170 @@
+@IsTest
+public class BookControllerTest {
+@TestSetup
+    static void setupTestData() {
+        //course
+         educx__Course__c Course = new educx__Course__c(
+   		 Name = '701'
+		);
+		insert Course;
+        // Create test data for Book__c
+        List<Book__c> books = new List<Book__c>();
+        for (Integer i = 0; i < 5; i++) {
+            books.add(new Book__c(
+                educx__Author__c = 'Author' + i, 
+                educx__Date_of_purchase__c = Date.today(),  
+                educx__Edition__c = 'Edition' + i,  
+                educx__Price__c = 100 + i, 
+                educx__Status__c = 'In Stock',  
+                educx__Title_of_the_book__c = 'Title' + i,  
+                educx__Number_of_Copies__c = 10  
+            ));
+        }
+        insert books;
+//student
+        educx__Student__c student = new educx__Student__c(
+    educx__Name_of_The_Candidate__c = 'John Doe',
+    educx__Hall_Ticket_No__c = 'HT123',
+    educx__ICET_Rank__c = '345',
+    educx__Aadhar_Number__c = '2443 2312 1233',
+    educx__ICET_Hall_Ticket_No__c = '8743568',
+    educx__Identification_Mark_1__c = 'mole on right hand',
+    educx__Identification_Mark_2__c = 'mole on hand',
+             educx__Parent_Income__c = 8326.0,  
+    educx__Date_of_Birth__c = Date.today()-900,
+    educx__Email__c = 'ashu@gmail.com', 
+    educx__Phone_Number__c = '8726423543', 
+    educx__SSC_Year_of_Passing__c = '2020',
+    educx__SSC_Registration_No__c = '735r2875t',
+    educx__Course_Code__c = course.Id,
+    educx__Course__c = 'B.Ed.',
+            educx__Father_Phone__c='8792347889',
+    educx__Joining_Date__c = Date.today()-20, 
+    educx__Year__c = '1st Year',
+    educx__Semester__c = 'I'
+);
+insert student;
+
+        // Create test data for educx__Employees__c
+        educx__Employees__c employee = new educx__Employees__c(
+            educx__Employee_Name__c = 'Jane Smith', 
+            educx__Father_s_Name__c = 'Jan',  
+            educx__Designation__c = 'Librarian', 
+            educx__Aadhar_Number__c = '8374 9283 8374', 
+            educx__Pan__c = 'ASDHU5678H',  
+            educx__Qualifications__c = 'B.Ed.', 
+            educx__Years_of_Experience__c = '2',  
+            educx__Employee_Type__c = 'Teaching',  
+            educx__Email__c = 'ashu@gmail.com',  
+            educx__Phone__c = '8726423543',  
+            educx__Date_of_Birth__c = Date.newInstance(2000, 5, 22)  
+        );
+        insert employee;
+
+
+    // Create a ContentDocument and ContentVersion
+    ContentVersion contentVersion = new ContentVersion(
+        Title = 'Test File',
+        PathOnClient = 'TestFile.pdf',
+        VersionData = Blob.valueOf('Test file content'),
+        IsMajorVersion = true
+    );
+    insert contentVersion;
+	ContentVersion newContentVersion = [SELECT Id, ContentDocumentId FROM ContentVersion WHERE Id = :contentVersion.Id LIMIT 1];
+        Id contentDocumentId = newContentVersion.ContentDocumentId;
+   
+   // Create a ContentDocumentLink to link the ContentDocument to a record
+        ContentDocumentLink contentDocumentLink = new ContentDocumentLink();
+        contentDocumentLink.ContentDocumentId = contentDocumentId;
+        contentDocumentLink.LinkedEntityId = student.id;
+        contentDocumentLink.ShareType = 'V'; // View access to the linked record
+        contentDocumentLink.Visibility = 'AllUsers'; // Document is visible to all users
+        insert contentDocumentLink;
+}
+
+  @IsTest
+    static void testGetAllBooksWithSearchKey() {
+
+        Test.startTest();
+        List<Book__c> books = BookController.getAllBooks('Author1');
+        Test.stopTest();
+
+        System.assert(books[0].educx__Author__c.contains('Author1'), 'Book name should match search key');
+    }
+
+    @IsTest
+    static void testGetAllBooksWithoutSearchKey() {
+        Test.startTest();
+        List<Book__c> books = BookController.getAllBooks('');
+        Test.stopTest();
+
+        System.assertEquals(5, books.size(), 'All books should be returned');
+    }
+
+    @IsTest
+    static void testSearchStudentsByHallticketNumber() {
+        Test.startTest();
+        educx__Student__c student = BookController.searchStudentsByHallticketNumber('HT123');
+        Test.stopTest();
+
+        System.assertNotEquals(null, student, 'Student should be returned');
+        System.assertEquals('HT123', student.educx__Hall_Ticket_No__c, 'Hall Ticket number should match');
+    }
+
+    @IsTest
+    static void testSearchStudentsByHallticketNumberNotFound() {
+        Test.startTest();
+        educx__Student__c student = BookController.searchStudentsByHallticketNumber('InvalidHT');
+        Test.stopTest();
+
+        System.assertEquals(null, student, 'No student should be returned for invalid Hall Ticket Number');
+    }
+
+@IsTest
+static void testSearchEmployeeById() {
+    educx__Employees__c employee = [SELECT Id, Name FROM educx__Employees__c LIMIT 1];
+        String autoGeneratedName = employee.Name;
+  
+    System.debug('Auto-Generated Name: ' + autoGeneratedName);
+    
+    Test.startTest();
+    educx__Employees__c employee1 = BookController.searchEmployeeById(autoGeneratedName);
+    Test.stopTest();
+
+    System.debug('Retrieved Employee: ' + employee1);
+    System.assertNotEquals(null, employee1, 'Employee should be returned');
+    System.assertEquals(autoGeneratedName, employee1.Name, 'Employee Name should match the auto-number');
+}
+
+    @IsTest
+    static void testSearchEmployeeByIdNotFound() {
+        Test.startTest();
+        educx__Employees__c employee = BookController.searchEmployeeById('InvalidEmpId');
+        Test.stopTest();
+
+        System.assertEquals(null, employee, 'No employee should be returned for invalid Employee Id');
+    }
+
+    @IsTest
+static void testGetStudentFiles() {
+    educx__Student__c student = [SELECT Id FROM educx__Student__c LIMIT 1];
+
+    Test.startTest();
+    List<ContentDocumentLink> files = BookController.getStudentFiles(student.Id);
+    Test.stopTest();
+
+    System.assertNotEquals(0, files.size(), 'Files should be returned');
+    System.assertEquals('Test File', files[0].ContentDocument.Title, 'File title should match');
+    System.assertEquals('PDF', files[0].ContentDocument.FileType, 'File type should be PDF');
+}
+
+@IsTest
+static void testGetStudentFilesInvalidId() {
+      String nonExistentId = '001000000000000AAA';
+    Test.startTest();
+    List<ContentDocumentLink> files = BookController.getStudentFiles(nonExistentId);
+    Test.stopTest();
+
+    System.assertEquals(0, files.size(), 'No files should be returned for an invalid Student Id');
+}
+}

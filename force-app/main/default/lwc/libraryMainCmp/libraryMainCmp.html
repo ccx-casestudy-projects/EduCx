@@ -1,0 +1,85 @@
+<template>
+    <!-- <lightning-modal-body> -->
+    <!-- <lightning-card title="Library Management" >
+     -->
+       
+    
+        <div class="card-container">
+            <lightning-card variant="Narrow" title="Issued Books" class="custom-card">
+                <div class="card-content">
+                    <div class="circle-content">
+                           { IssuedBooksCount}
+                    </div>
+                </div>
+            </lightning-card>
+            <lightning-card variant="Narrow" title="Overdue Books" class="custom-card">
+                <div class="card-content">
+                    <div class="circle-content">
+                  {OverduebooksCount}
+                    </div>
+                </div>
+            </lightning-card>
+            <lightning-card variant="Narrow" title="Total Books" class="custom-card">
+                <div class="card-content">
+                    <div class="circle-content">
+                      {TotalBooksCount}
+                    </div>
+                </div>
+            </lightning-card>
+        </div>
+
+      
+        <!--Books-->
+            <lightning-layout horizontal-align="space-between">
+                <lightning-layout-item size=9>
+                    <template if:true={isAllBooksVisible}>
+                        <c-all-books></c-all-books>
+                    </template>
+                    <template if:true={isBorrowedBooksVisible}>
+                        <c-borrowed-books></c-borrowed-books>
+                    </template>
+                     <template if:true={isAddBookVisible}>
+                     <c-add-books></c-add-books>
+                    </template>
+                    <template if:true={isBorrowVisible}>
+                        <c-employee-and-student-login></c-employee-and-student-login>
+                    </template>
+                    <template if:true={isOverdueVisible}>
+                       <c-overdue-books></c-overdue-books>
+                    </template>
+                </lightning-layout-item>
+
+                <!-- //buttons -->
+                <lightning-layout-item class="slds-m-left_xx-small" size=3>
+                     <div class="card">
+                    <div class="slds-col style1">
+                      <br/>
+                        <div class="slds-col slds-size_1-of-1">
+                            <lightning-button label="All Books" value="Allbooks" onclick={handleFlowButtonClick} class="style1" stretch></lightning-button>
+                        </div>
+                        <br/> 
+                        <div class="slds-col slds-size_1-of-1">
+                            <lightning-button label="Issued Books" value="Borrowedbooks" onclick={handleFlowButtonClick} stretch></lightning-button>
+                        </div>
+                        <br/> 
+                        <div class="slds-col slds-size_1-of-1">
+                            <lightning-button label="Add Books" class="slds-c-button-inverse" variant="neutral" value="Addbook" onclick={handleFlowButtonClick} stretch></lightning-button>
+                        </div>
+                        <br/>  
+                        <div class="slds-col slds-size_1-of-1">
+                            <lightning-button label="Issue/Return Books" value="Borrowbook" onclick={handleFlowButtonClick} stretch></lightning-button>
+                        </div>
+                        <br/> 
+                        <div class="slds-col slds-size_1-of-1">
+                            <lightning-button label="OverDue Books" value="overduebook" onclick={handleFlowButtonClick} stretch></lightning-button>
+                        </div>  
+                       <br/>
+                    </div>
+                    </div>
+               </lightning-layout-item>
+                </lightning-layout>
+            
+<!--       
+    </lightning-card> 
+</lightning-modal-body>-->
+</template>

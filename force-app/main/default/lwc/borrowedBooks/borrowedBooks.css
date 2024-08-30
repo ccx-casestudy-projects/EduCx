@@ -1,0 +1,12 @@
+.headercolor{
+	text-align: center;
+	color :#1888f1;
+}
+.card {
+    background-color: #f1f1f1;
+    padding: 10px;
+    width: 98%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin-top: 10px;
+    position: relative;
+  }

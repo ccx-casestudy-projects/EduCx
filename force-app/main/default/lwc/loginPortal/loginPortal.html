@@ -1,0 +1,36 @@
+<template>
+  <div class="divwidth slds-box custom-border">
+      <lightning-tabset active-tab-value="" onchange={handleTabChange}>
+        <lightning-tab label="STUDENT" class="student-login-tab " value="student">
+          <div>
+            <div class="slds-align_absolute-center">
+              <img src={studentLogo} alt="Logo" class="logo"/>
+              <h1 class="h1class">LOGIN</h1>
+            </div>
+            <lightning-input label="Student ID" data-id="studentid" onchange={handleInput} onkeypress={handleKeyPress} value={studentId} name="studentName"
+            placeholder="Ex:-18071A1278" type="text"  class="slds-align_absolute-center widthspace"></lightning-input></br>
+            <p class="p1class">{studentError}</p>
+            <lightning-input label="Password" data-id="studentpassword" onchange={handleInput} onkeypress={handleKeyPress} value={studentPassword} name="stupassword" type="password" class="slds-align_absolute-center widthspace"></lightning-input><br/>
+            <lightning-button label="Reset Password" name="reset" variant="base" onclick={handleResetSubmit} class="floatleftspace"></lightning-button>
+            <lightning-button label="Submit" name="submit" variant="brand" onclick={handleSubmit} class="floatspace"></lightning-button><br/>
+          </div>
+        </lightning-tab>
+
+        <lightning-tab label="EMPLOYEE" class="employee-login-tab " value="employee">
+          <div>
+            <div class="slds-align_absolute-center">
+              <img src={employeeLogo} alt="Logo" class="logo"/>
+              <h1 class="h1class">LOGIN</h1>
+            </div>
+            <lightning-input label="Employee ID" onchange={handleInput}  onkeypress={handleKeyPress} data-id="employeeId" name="employName" placeholder="Ex:-EMP-0001"
+            value={employeeId} type="text" class="slds-align_absolute-center widthspace"></lightning-input><br/>
+            <p class="p1class">{studentError}</p>
+            <lightning-input label="Password" onchange={handleInput} onkeypress={handleKeyPress} data-id="employeePassword" name="employpassword" value={employeePassword} type="password" class="slds-align_absolute-center widthspace"></lightning-input><br/>
+            <lightning-button label="Reset Password" name="reset" variant="base" onclick={handleResetSubmit} class="floatleftspace"></lightning-button>
+            <lightning-button label="Submit" name="submit" variant="brand" onclick={handleSubmit} class="floatspace"></lightning-button><br/>
+          </div>
+        </lightning-tab>
+        
+      </lightning-tabset>
+  </div>
+</template>

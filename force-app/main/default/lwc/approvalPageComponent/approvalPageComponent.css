@@ -1,0 +1,49 @@
+.badge-container {
+    border: 1px solid #4F6271; /* Set the border color according to your design */
+    padding: 5px; /* Adjust padding as needed */
+    border-radius: 20px; /* Set border-radius for rounded corners */
+    margin-bottom: 2px; /* Optional: Add margin to separate groups */
+    display: inline-block;
+    margin-left:15px;
+   
+}
+.slds-m-around_medium{
+    position: relative;
+}
+.card{
+    background-image: url('pinkimg.jpg');
+}
+
+.reject-button .slds-button {
+    background-color: #ba0517; /* Red background */
+    border-color: #ba0517;
+    color: #ffffff; /* White text */
+}
+
+.reject-button .slds-button:disabled {
+    background-color: #f4f6f9; /* Light gray background */
+    border-color: #d8dde6; /* Gray border */
+    color: #b3b9c1; /* Muted gray text */
+    cursor: not-allowed; /* Show cursor as not-allowed */
+}
+
+.pagination-container {
+    display: flex;
+    justify-content: flex-end; /* Align contents to the extreme right */
+    gap: 20px; /* Adjust the spacing between elements */
+    margin-right: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.approvebutton {
+    margin-right: 20px;
+    margin-top: 20px;
+    margin-left:20px;
+}
+.rejectbutton{
+    margin-right: 10px;
+    margin-top: 20px;
+}
+.searchbar{
+    width:45%;
+}

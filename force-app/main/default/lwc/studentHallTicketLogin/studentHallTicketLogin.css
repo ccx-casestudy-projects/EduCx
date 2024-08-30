@@ -1,0 +1,14 @@
+.loginscreen1{
+    /* border: 2px solid red; */
+    width:300px;
+    height: 300px;
+    margin-top: 40px;
+    margin-left: 37%;
+       
+}
+.backgroundScreen{
+    background-color:rgb(210, 228, 248);
+    width: 100%;
+    height: 450px;
+   border: 1px solid rgb(210, 228, 248);;
+}

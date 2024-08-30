@@ -1,0 +1,86 @@
+<template>
+    <div>
+        <lightning-card>
+            <lightning-layout>
+        <lightning-layout-item size="6" padding="around-small" large-device-size="6" style="width:18rem">
+          <lightning-input type="search" variant="standard" name="Search Event" label="Search Fee Structure" placeholder="type here..." onchange={updateSearch}></lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item size="6" padding="around-small" large-device-size="6" style="margin-top:1.5rem; margin-left: 10rem">
+          <lightning-button label="New Fee Structure" onclick={handleCreate} variant="brand" icon-name="utility:add"></lightning-button>
+          <lightning-button label="Edit" onclick={handleEdit} variant="brand" icon-name="utility:edit" class="slds-m-left_small"></lightning-button>
+          <lightning-button label="Delete" onclick={handleDelete} variant="destructive" icon-name="utility:delete" class="slds-m-left_small"></lightning-button>
+        </lightning-layout-item>
+      </lightning-layout>
+            <template if:true={feeStructureData}>
+                <lightning-datatable key-field="id" data={paginatedRecords} columns={columns} selected-rows={selectedRows} wrap-table-header></lightning-datatable>
+                <div class="slds-align_absolute-center" style="height:2rem; margin-top:1rem;">
+                    <lightning-button icon-name="utility:jump_to_left" label="First" class="slds-p-horizontal_x-small"
+                        alternative-text="First page" onclick={handleFirstPage} disabled={isFirstPage}>
+                    </lightning-button>
+
+                    <lightning-button icon-name="utility:chevronleft" label="Previous" alternative-text="Previous"
+                        onclick={handlePrevious} disabled={isPrevDisabled}></lightning-button>
+
+                    <span class="slds-badge"> Page {currentPage} of {totalPages}</span>
+
+                    <lightning-button icon-name="utility:chevronright" label="Next" alternative-text="Next"
+                        onclick={handleNext} disabled={isNextDisabled} class="slds-p-horizontal_x-small"
+                        icon-position="right"></lightning-button>
+
+                    <lightning-button icon-name="utility:jump_to_right" label="Last" alternative-text="Last page"
+                        onclick={handleLastPage} disabled={isLastPage} icon-position="right"></lightning-button>
+                </div>
+            </template>
+        </lightning-card>
+    </div>
+
+    <!-- Create/Edit Modal -->
+    <template if:true={isModalOpen}>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_medium">
+            <div class="slds-modal__container">
+                <!-- modal header start -->
+                <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" style="color:white" onclick={handleCloseModal}>
+                    <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse" size="small"></lightning-icon>
+                    <span class="slds-assistive-text">Close</span>
+                </button>
+                <div class="slds-modal__header">
+                    <h1 id="modal-heading-02" class="slds-modal__title slds-hyphenate">
+                        <b>{modalTitle}</b>
+                    </h1>
+                </div>
+                <div>
+                    <div class="slds-modal__content slds-p-around_large" style="max-height: 24rem; background-color: #fff; min-height: 125px">
+                        <lightning-card>
+                            <div class="slds-p-around_small" >
+                                <lightning-combobox style="font-weight: bold; font-size: 12px;" name="Admission Type" label="Admission Type" value={selectedRecordTypeId} placeholder="Select Admission Type" options={recordTypeOptions} onchange={handleRecordTypeChange} disabled={isDisabled}></lightning-combobox>
+                                <lightning-input style="font-weight: bold; font-size: 12px;" type="text" name="Name" label="Name" placeholder="type here..." value={name} onchange={handleNameChange} disabled={isDisabled}></lightning-input>
+								<lightning-input style="font-weight: bold; font-size: 12px;" type="text" name="G.O Number" label="G.O Number" placeholder="G.O/Revised value" value={GOvalue} onchange={handleGOchange} disabled={isDisabled}></lightning-input>
+                                <lightning-record-picker label="Course" placeholder="Search Course..."
+								object-api-name={CourseTarget} display-info={displayCourse}
+								matching-info={matchingCourse} onchange={handleCourseChange} value={courseId} disabled={isDisabled} style="font-weight: bold; font-size: 12px;">
+								</lightning-record-picker>
+								<lightning-combobox style="font-weight: bold; font-size: 12px;" name="Year" label="Year" value={yearValue} placeholder="Year" options={yearOptions} onchange={handleYearChange} disabled={isDisabled}></lightning-combobox>
+                                <template if:true={selectedRecordTypeId}>
+                                <template if:false={isManagement}>
+                                <lightning-input style="font-weight: bold; font-size: 12px;" type="number" name="Admission Fee" label="Admission Fee" value={admissionFee} formatter="currency" onchange={handleAdmissionFeeChange}></lightning-input>
+                                <lightning-input style="font-weight: bold; font-size: 12px;" type="number" name="Tution Fee" label="Tution Fee" value={tuitionFee} formatter="currency" onchange={handleTuitionFeeChange}></lightning-input>
+                                <lightning-input style="font-weight: bold; font-size: 12px;" type="number" name="Special Fee" label="Special Fee" value={specialFee} formatter="currency" onchange={handleSpecialFeeChange}></lightning-input>
+                                </template>
+                                <template if:true={isManagement}>
+                                <lightning-input style="font-weight: bold; font-size: 12px;" type="number" name="Management Fee" label="Management Fee" value={managementFee} formatter="currency" onchange={handleManagementFeeChange} default="0"></lightning-input>
+                                </template>
+                                </template>
+                            </div>
+                        </lightning-card>
+                    </div>
+                </div>
+                <div class="slds-modal__footer">
+                    <lightning-button style="margin-right: 1rem" label="Cancel" onclick={handleCloseModal} variant="brand-outline"></lightning-button>
+                    <lightning-button style="margin-right: 31rem" label="Save" onclick={handleSave} variant="brand"></lightning-button>
+                    
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>

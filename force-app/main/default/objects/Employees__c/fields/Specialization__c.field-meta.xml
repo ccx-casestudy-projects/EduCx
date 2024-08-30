@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Specialization__c</fullName>
+    <externalId>false</externalId>
+    <label>Specialization</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Telugu</fullName>
+                <default>false</default>
+                <label>Telugu</label>
+            </value>
+            <value>
+                <fullName>English</fullName>
+                <default>false</default>
+                <label>English</label>
+            </value>
+            <value>
+                <fullName>Botony</fullName>
+                <default>false</default>
+                <label>Botony</label>
+            </value>
+            <value>
+                <fullName>Zoology</fullName>
+                <default>false</default>
+                <label>Zoology</label>
+            </value>
+            <value>
+                <fullName>Maths</fullName>
+                <default>false</default>
+                <label>Maths</label>
+            </value>
+            <value>
+                <fullName>Computer Science</fullName>
+                <default>false</default>
+                <label>Computer Science</label>
+            </value>
+            <value>
+                <fullName>Economics</fullName>
+                <default>false</default>
+                <label>Economics</label>
+            </value>
+            <value>
+                <fullName>Chemistry</fullName>
+                <default>false</default>
+                <label>Chemistry</label>
+            </value>
+            <value>
+                <fullName>Physics</fullName>
+                <default>false</default>
+                <label>Physics</label>
+            </value>
+            <value>
+                <fullName>Political science</fullName>
+                <default>false</default>
+                <label>Political science</label>
+            </value>
+            <value>
+                <fullName>History</fullName>
+                <default>false</default>
+                <label>History</label>
+            </value>
+            <value>
+                <fullName>Hindi</fullName>
+                <default>false</default>
+                <label>Hindi</label>
+            </value>
+            <value>
+                <fullName>Sanskrit</fullName>
+                <default>false</default>
+                <label>Sanskrit</label>
+            </value>
+            <value>
+                <fullName>Public Administration</fullName>
+                <default>false</default>
+                <label>Public Administration</label>
+            </value>
+            <value>
+                <fullName>Civics</fullName>
+                <default>false</default>
+                <label>Civics</label>
+            </value>
+            <value>
+                <fullName>Electronics</fullName>
+                <default>false</default>
+                <label>Electronics</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

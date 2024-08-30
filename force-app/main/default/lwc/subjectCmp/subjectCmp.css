@@ -1,0 +1,47 @@
+.custom-list {
+    list-style: decimal inside; /* Ensure numbers are displayed inside the list item */
+    padding-left: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+}
+
+.custom-subject-item {
+    display: list-item; /* Ensure the list item displays correctly */
+    margin: 0; /* Remove the margin around the items */
+    padding: 0.5rem; /* Adjust as needed for spacing within items */
+}
+
+.slds-text-heading_small {
+    font-size: 1.25rem; /* Adjust font size for the heading */
+    font-weight: 700; /* Adjust font weight for the heading */
+}
+
+.slds-m-bottom_small {
+    margin-bottom: 0.5rem; /* Adjust margin below the heading */
+}
+
+.text{
+    font-size: medium;
+    font-weight: bold !important; /* Make the label bold */
+}
+
+.custom-scroll-container {
+    max-height: 200px; 
+    overflow-y: auto;
+    padding: 0;
+    margin: 0;
+} 
+.custom-layout {
+    display: flex;
+    align-items: stretch; /* Align items to stretch for consistent height */
+}
+
+.vertical-line {
+    width: 1px; /* Adjust the width of the vertical line */
+    background-color: #d8dde6; /* Adjust the color of the vertical line */
+    height: 100%; /* Full height of the parent container */
+    margin: 0 1rem; /* Space between items and the line */
+}
+
+.custom-margin-right {
+    margin-right: 3px; /* or use margin-right if you prefer */
+}

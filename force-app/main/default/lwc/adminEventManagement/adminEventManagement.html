@@ -1,0 +1,82 @@
+<template>
+  <div>
+    <lightning-card>
+      <header class="slds-modal__header">
+        <div class="slds-grid slds-grid_align-spread slds-grid_vertical-align-center">
+            <!-- Back Icon aligned to the left -->
+            <lightning-icon 
+                class="custom-back-icon" 
+                icon-name="action:back" 
+                alternative-text="back" 
+                size="x-small" 
+                onclick={handleBackClick} 
+                title="back">
+            </lightning-icon>
+
+            <!-- Title aligned to the center -->
+            <h2 
+                id="modal-heading-01" 
+                class="slds-text-heading_medium slds-hyphenate header" 
+                style="font-weight:bold; text-align: center; flex-grow: 1;">
+                Event Management
+            </h2>
+
+            <!-- Empty div to keep the title centered -->
+            <div style="width: x-small;"></div>
+        </div>
+    </header>
+      <lightning-layout>
+        <lightning-layout-item size="6" padding="around-small" large-device-size="6" style="width:30rem">
+          <lightning-input type="search" variant="standard" name="Search Event" label="Search Event" placeholder="type here..." onchange={updateSearch}></lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item size="6" padding="around-small" large-device-size="6" style="display: flex; justify-content: flex-end; align-items: center; margin-top:1.5rem">
+          <lightning-button label="New Event" onclick={handleCreate} variant="brand" icon-name="utility:add"></lightning-button>
+          <lightning-button label="Edit" onclick={handleEdit} variant="brand" icon-name="utility:edit" class="slds-m-left_small"></lightning-button>
+          <lightning-button label="Delete" onclick={handleDelete} variant="destructive-text" icon-name="utility:delete" class="slds-m-left_small"></lightning-button>
+        </lightning-layout-item>
+      </lightning-layout>
+      <template if:true={eventData}>
+        <lightning-datatable key-field="id" data={eventData} columns={columns} selected-rows={selectedRows}></lightning-datatable>
+      </template>
+    </lightning-card>
+  </div>
+
+  <!-- Create/Edit Modal -->
+  <template if:true={isModalOpen}>
+    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+      aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_medium">
+      <div class="slds-modal__container">
+        <!-- modal header start -->
+        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" style="color:white" onclick={handleCloseModal}>
+          <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse" size="small"></lightning-icon>
+          <span class="slds-assistive-text">Close</span>
+        </button>
+        <div class="slds-modal__header">
+          <h1 id="modal-heading-02" class="slds-modal__title slds-hyphenate">
+            <b>{modalTitle}</b>
+          </h1>
+        </div>
+        <div>
+          <div class="slds-modal__content slds-p-around_large" style="max-height: 24rem; background-color: #fff; min-height: 125px">
+            <lightning-card>
+              <div class="slds-p-around_small">
+                <form onsubmit={handleSave}>
+                  <lightning-input name="subject" label="Subject" value={subject} onchange={handleInputChange}></lightning-input>
+                  <lightning-input name="startDateTime" label="Start Date & Time" type="datetime-local" value={startDateTime} onchange={handleInputChange}></lightning-input>
+                  <lightning-input name="endDateTime" label="End Date & Time" type="datetime-local" value={endDateTime} onchange={handleInputChange}></lightning-input>
+                  <lightning-input type="checkbox" name="All Day" label="All Day" value={checkValue} onchange={handleInputChange}></lightning-input>
+                  <lightning-input name="location" label="Location" value={location} onchange={handleInputChange}></lightning-input>
+                </form>
+              </div>
+            </lightning-card>
+          </div>
+        </div>
+        <div class="slds-modal__footer">
+          <lightning-button style="margin-right: 1.2rem"  label="Cancel" onclick={handleCloseModal} variant="brand-outline"></lightning-button>
+          <lightning-button class="slds-m-top_medium"  style="margin-right: 30rem" label="Save" type="submit" variant="brand" onclick={handleSave}></lightning-button>
+        </div>
+      </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+  </template>
+</template>

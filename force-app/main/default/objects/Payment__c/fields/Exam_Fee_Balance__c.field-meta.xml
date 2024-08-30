@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Exam_Fee_Balance__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(RecordType.Name =&apos;Management&apos;, Management_Exam_Fee__c- Management_Exam_Fee_Paid__c, Convenor_Exam_Fee__c - Convenor_Exam_Fee_Paid__c)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Exam Fee Balance</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
+</CustomField>

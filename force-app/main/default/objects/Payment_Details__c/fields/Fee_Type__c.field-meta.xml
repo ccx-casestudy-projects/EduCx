@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Fee_Type__c</fullName>
+    <externalId>false</externalId>
+    <label>Fee Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Management Fee</fullName>
+                <default>false</default>
+                <label>Management Fee</label>
+            </value>
+            <value>
+                <fullName>Special Fee</fullName>
+                <default>false</default>
+                <label>Special Fee</label>
+            </value>
+            <value>
+                <fullName>Tution Fee</fullName>
+                <default>false</default>
+                <label>Tution Fee</label>
+            </value>
+            <value>
+                <fullName>Admission Fee</fullName>
+                <default>false</default>
+                <label>Admission Fee</label>
+            </value>
+            <value>
+                <fullName>Univeristy Fee</fullName>
+                <default>false</default>
+                <label>Univeristy Fee</label>
+            </value>
+            <value>
+                <fullName>Transportation Fee</fullName>
+                <default>false</default>
+                <label>Transportation Fee</label>
+            </value>
+            <value>
+                <fullName>Exam Fee</fullName>
+                <default>false</default>
+                <label>Exam Fee</label>
+            </value>
+            <value>
+                <fullName>Other Fee</fullName>
+                <default>false</default>
+                <label>Other Fee</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

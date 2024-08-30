@@ -1,0 +1,18 @@
+.inputWidth{
+    width: 450px;
+}
+.header{
+    font-weight: bold;
+    font-size: x-large;
+    font-family: sans-serif;
+}
+.layout-item{
+    font-weight: bold;
+    font-size: small;
+}
+.layout-item1{
+    font-size: small;
+}
+/* .slds-button_icon-inverse{
+    background-color: white ;
+} */

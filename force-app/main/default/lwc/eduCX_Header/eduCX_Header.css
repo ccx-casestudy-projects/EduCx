@@ -1,0 +1,23 @@
+.img{
+	width: 8%;
+	height: 8%;
+}
+.alignment{
+	text-align: center;
+}
+.title{
+	font-family: 'Georgia';
+	font-size: 160%;
+	align-items: center;
+}
+.address{
+	font-style: italic;
+	font-family: monotype corsiva;
+	font-size: 130%;
+	align-items: center;
+}
+.phone{
+	font-family: 'Times New Roman';
+	font-size: 130%;
+	align-items: center;
+}

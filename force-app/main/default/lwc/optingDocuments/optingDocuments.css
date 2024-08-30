@@ -1,0 +1,4 @@
+.checkboxClass .slds-form-element__control{
+    display: -webkit-box;
+    display: flex;
+}

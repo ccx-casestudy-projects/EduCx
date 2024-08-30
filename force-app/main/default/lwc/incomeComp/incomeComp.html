@@ -1,0 +1,170 @@
+<template>
+    <lightning-card>
+
+        
+            <div class="slds-clearfix">
+                <div class="slds-align_absolute-center">
+                    <lightning-icon icon-name="standard:expense" size="small" class="slds-m-right_small">
+                    </lightning-icon>
+                    <!-- <h1 class="slds-text-title_caps slds-text-title_bold headerSize">Income</h1> -->
+                    <h1 class="slds-text-title_bold headerSize">Income</h1>
+                </div>
+
+            </div>
+       
+<br/>
+        <div class="slds-grid slds-wrap">
+            <div class="slds-col slds-size_10-of-12">
+                <div class="slds-grid slds-wrap">
+                    <div class="slds-col slds-size_3-of-10">
+                        <strong class="warehouse-title" style="margin-right: 10px;">Income Amount: <span class="count">{AllRowCount}</span></strong>
+                    </div>
+                    <div class="slds-col slds-size_2-of-10">
+                        <lightning-input type="search" value={searchKey} placeholder="Search the list" variant="label-hidden" style="font-weight: bold; font-size: 12px; width: 14rem;"
+                            onchange={handleSearchChange}>
+                        </lightning-input>
+                    </div>
+                    <div class="slds-col slds-size_5-of-10">
+                        <lightning-input type="date" variant="label-hidden" value={searchDate}
+                            onchange={handleDateChange} style="width:13rem;"></lightning-input>
+                    </div>
+                </div>
+ 
+            </div>
+            <div class="slds-col slds-size_2-of-12">
+
+                <lightning-button style="font-weight: bold; font-size: 12px;" label="New Income" onclick={handleCreate} variant="brand" icon-name="utility:add">
+                </lightning-button>
+
+            </div>
+        </div>
+    </lightning-card>
+
+
+    <lightning-card>
+        <div class="slds-m-around_medium">
+            <template if:true={incomeRecords}>
+                <lightning-datatable key-field="Id" data={paginatedRecords} columns={columns}
+                    onrowaction={handleRowAction} hide-checkbox-column="true">
+                </lightning-datatable>
+            
+            <div class="slds-align_absolute-center" style="height:2rem; margin-top:1rem;">
+                <lightning-button icon-name="utility:jump_to_left" label="First" class="slds-p-horizontal_x-small"
+                    alternative-text="First page" onclick={handleFirstPage} disabled={isFirstPage}></lightning-button>
+
+                <lightning-button icon-name="utility:chevronleft" label="Previous" alternative-text="Previous"
+                    onclick={handlePrevious} disabled={isPrevDisabled} class="slds-p-horizontal_x-small">
+                </lightning-button>
+
+                <span class="slds-badge"> Page {currentPage} of {totalPages}</span>
+
+                <lightning-button icon-name="utility:chevronright" label="Next" alternative-text="Next"
+                    onclick={handleNext} disabled={isNextDisabled} class="slds-p-horizontal_x-small"
+                    icon-position="right"></lightning-button>
+
+                <lightning-button icon-name="utility:jump_to_right" label="Last" alternative-text="Last page"
+                    onclick={handleLastPage} disabled={isLastPage} icon-position="right"></lightning-button>
+            </div>
+            </template>
+            <template if:false={incomeRecords}>
+                No records found
+            </template>
+        </div>
+    </lightning-card>
+
+    <template if:true={isIncomeCreate}>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+            aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- modal header start -->
+                <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" style="color:white" onclick={handleIncomeModal}>
+                    <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse" size="small"></lightning-icon>
+                    <span class="slds-assistive-text">Close</span>
+                </button>
+                <div class="slds-modal__header">
+                    <h1 id="modal-heading-02" class="slds-modal__title slds-hyphenate">
+                        <b>Create Income</b>
+                    </h1>
+                </div>
+                <div>
+                    <div class="slds-modal__content slds-p-around_small">
+                        <lightning-card>
+
+
+
+                            <lightning-record-picker style="font-weight: bold; font-size: 12px;" label="Student" placeholder="Search Student..."
+                                object-api-name={IncomeTarget} display-info={displayIncome}
+                                matching-info={matchingIncome} onchange={handleOnChange}>
+                            </lightning-record-picker>
+                            <lightning-input style="font-weight: bold; font-size: 12px;" type="number" name="Amount Received" label="Amount Received"
+                                value={admissionFee} formatter="currency" onchange={handleOnChange}>
+                            </lightning-input>
+                            <lightning-input style="font-weight: bold; font-size: 12px;" type="text" name="Source" label="Source" value={GOvalue}
+                                onchange={handleOnChange}></lightning-input>
+                            <lightning-input style="font-weight: bold; font-size: 12px;" type="datetime" name="Date Received" label="Date Received" value={GOvalue}
+                                onchange={handleOnChange}></lightning-input>
+
+
+
+                        </lightning-card>
+                    </div>
+                </div>
+                <div class="slds-modal__footer">
+                    <div class="slds-align_absolute-center">
+                        <lightning-button label="Cancel" class="slds-m-left_x-small" onclick={handleIncomeModal}
+                            variant="brand-outline"></lightning-button>
+                        <lightning-button label="Save" onclick={handleIncomeSave} variant="brand"></lightning-button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+
+
+
+
+
+
+    <template if:true={showEditIncome}>
+        <div>
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <header class="slds-modal__header">
+                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                            <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse" size="small"></lightning-icon>
+                            <span class="slds-assistive-text">Close</span>
+                        </button>
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate special-heading">Edit
+                            Income</h2>
+                    </header>
+
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-2">
+                        <lightning-record-edit-form style="font-weight: bold; font-size: 12px;" record-id={incomeRecordId} object-api-name="educx__Income__c"
+                            onsuccess={handleSuccessUpdate} onerror={handleError} >
+                            <form>
+                                <div class="slds-modal__content slds-p-around_medium">
+                                    <lightning-input-field style="font-weight: bold; font-size: 12px;" field-name="educx__Student_Id__c"></lightning-input-field>
+                                    <lightning-input-field style="font-weight: bold; font-size: 12px;" field-name="educx__Amount_Received__c">
+                                    </lightning-input-field>
+                                    <lightning-input-field style="font-weight: bold; font-size: 12px;" field-name="educx__Source__c"></lightning-input-field>
+                                    <lightning-input-field style="font-weight: bold; font-size: 12px;" field-name="educx__Date_Received__c"></lightning-input-field>
+                                </div>
+                            </form>
+                        </lightning-record-edit-form>
+                    </div>
+                    <div class="slds-modal__footer">
+                        <div class="slds-align_absolute-center">
+                            <lightning-button label="Cancel" onclick={closeModal}></lightning-button>
+                            <lightning-button class="slds-m-left_x-small" type="submit" label="Update" onclick={handleSubmitUpdate} variant="brand">
+                            </lightning-button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </div>
+    </template>
+
+</template>

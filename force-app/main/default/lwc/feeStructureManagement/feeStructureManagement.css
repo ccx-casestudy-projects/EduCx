@@ -1,0 +1,24 @@
+.header{
+    font-size: 18px; 
+}
+.course-info{
+    font-size: 18px; 
+    font-weight: bold;
+}
+.table-data {
+    font-size: 14px; 
+    font-weight: normal;
+}
+.table-header {
+    font-size: 15px; 
+    font-weight: bold;
+}
+.slds-modal__container {
+    max-width: 60%; 
+    min-width: 50%; 
+    width: auto;
+}
+.bold-header{
+    font-weight: bold;
+    font-size: 17px;
+}

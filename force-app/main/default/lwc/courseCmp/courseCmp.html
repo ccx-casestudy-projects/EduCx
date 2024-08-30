@@ -1,0 +1,241 @@
+<template>
+    <lightning-card>
+        <div class="slds-m-around_medium">
+            <div class="slds-grid slds-gutters">
+                <div class="slds-col slds-size_1-of-4">
+                    <lightning-input class="search-input" type="search" value={searchKey} placeholder="Search Course"
+                        onchange={handleSearchChange}></lightning-input>
+                </div>
+                <div class="slds-col slds-size_3-of-4 slds-grid slds-grid_align-end slds-m-top_medium">
+                    <lightning-button label="Associate Subject(s)" onclick={handleAssociateSubject} variant="brand"
+                        icon-name="utility:link" class="slds-m-left_small"></lightning-button>
+                    <lightning-button label="Create" onclick={handleCreate} variant="brand" icon-name="utility:add"
+                        class="slds-m-left_small"></lightning-button>
+                    <lightning-button label="Edit" onclick={handleEdit} variant="brand" icon-name="utility:edit"
+                        class="slds-m-left_small"></lightning-button>
+                    <lightning-button label="Delete" onclick={handleDelete} variant="destructive-text"
+                        icon-name="utility:delete" class="slds-m-left_small"></lightning-button>
+                </div>
+            </div>
+        </div>
+        <template if:true={availableCourses}>
+            <lightning-datatable key-field="id" data={displayedCourses} columns={columns} onrowaction={handleRowAction}
+                onrowselection={handleRowSelection} selected-rows={selectedRows}></lightning-datatable>
+        </template>
+
+        <!-- Create/Edit Modal -->
+        <template if:true={isModalOpen}>
+            <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <header class="slds-modal__header">
+                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={handleCloseModal}>
+            <lightning-icon icon-name="utility:close" alternative-text="close" size="small"></lightning-icon>
+            <span class="slds-assistive-text">Close</span>
+          </button>
+                        <b><h2 class="slds-text-heading_large">{modalTitle}</h2></b>
+                    </header>
+                    <div class="slds-modal__content slds-p-around_medium">
+                        <lightning-record-edit-form object-api-name="educx__Course__c" record-id={selectedCourseId}
+                            onsuccess={handleSuccess}>
+                            <label for="courseLevel" class="custom-label">Course Level</label>
+                            <lightning-input-field field-name="educx__Course_Level__c" id="courseLevel"
+                                variant="label-hidden"></lightning-input-field><br/>
+
+                            <label for="courseCode" class="custom-label">Course</label>
+                            <lightning-input-field field-name="educx__Course__c" id="courseCode" variant="label-hidden">
+                            </lightning-input-field><br/>
+
+                            <label for="courseFullName" class="custom-label">Course Name</label>
+                            <lightning-input-field field-name="educx__Course_Name__c" id="courseFullName"
+                                variant="label-hidden"></lightning-input-field><br/>
+
+                            <label for="courseName" class="custom-label">Course Code</label>
+                            <lightning-input-field field-name="Name" id="courseName" variant="label-hidden">
+                            </lightning-input-field><br/>
+
+                            <label for="courseDuration" class="custom-label">Course Duration</label>
+                            <lightning-input-field field-name="educx__Course_Duration__c" id="courseDuration"
+                                variant="label-hidden"></lightning-input-field><br/>
+
+                            <label for="medium" class="custom-label">Medium</label>
+                            <lightning-input-field field-name="educx__Medium__c" id="medium" variant="label-hidden">
+                            </lightning-input-field><br/>
+
+                            <footer class="slds-modal__footer slds-align_absolute-center">
+                                <lightning-button variant="neutral" label="Cancel" onclick={handleCloseModal}>
+                                </lightning-button>
+                                <lightning-button variant="brand" label="Save" type="submit" style="margin-left: 5px;">
+                                </lightning-button>
+                            </footer>
+                        </lightning-record-edit-form>
+                    </div>
+                </div>
+
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </template>
+
+        <!-- Available Subjects Modal -->
+        <template if:true={availableSubjectsPopup}>
+            <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <header class="slds-modal__header">
+                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={handleCloseModal}>
+                    <lightning-icon icon-name="utility:close" alternative-text="close" size="small"></lightning-icon>
+                    <span class="slds-assistive-text">Close</span>
+                </button>
+                        <template if:true={relatedSubjects}>
+                            <b><h2 class="header">Show Subjects</h2></b>
+                            <div class="container1">
+                                <template for:each={uniqueCourses} for:item="subject">
+                                    <div key={subject.Id} class="slds-item">
+                                        <div class="course-info">Course Name:
+                                            <span>{subject.educx__Course__r.educx__Course_Name__c}</span></div>
+                                    </div>
+                                </template>
+                            </div>
+                        </template>
+                    </header>
+                    <div class="slds-modal__content slds-p-around_medium">
+                        <template if:true={showRecs}>
+                            <lightning-accordion allow-multiple-sections-open>
+                                <template for:each={groupedSubjects} for:item="group">
+                                    <lightning-accordion-section class="bold-header" label={group.yearSemester}
+                                        key={group.yearSemester}>
+                                        <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+                                            <thead>
+                                                <tr class="slds-text-title_caps">
+                                                    <th scope="col">
+                                                        <div class="table-header" title="Subject Code">Subject Code
+                                                        </div>
+                                                    </th>
+                                                    <th scope="col">
+                                                        <div class="table-header" title="Subject Name">Subject Name
+                                                        </div>
+                                                    </th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <template for:each={group.subjects} for:item="subject">
+                                                    <tr key={subject.Id}>
+
+                                                        <td>
+                                                            <div class="table-data"
+                                                                title={subject.educx__Subject__r.Name}>
+                                                                {subject.educx__Subject__r.Name}</div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="table-data"
+                                                                title={subject.educx__Subject__r.educx__Subject_Name__c}>
+                                                                {subject.educx__Subject__r.educx__Subject_Name__c}</div>
+                                                        </td>
+
+                                                    </tr>
+                                                </template>
+                                            </tbody>
+                                        </table>
+                                    </lightning-accordion-section>
+                                </template>
+                            </lightning-accordion>
+                        </template>
+                        <template if:true={donotShowRec}>
+                            <p>No subjects available for this course.</p>
+                        </template>
+                    </div>
+                    <footer class="slds-modal__footer">
+                        <lightning-button variant="neutral" label="Cancel" onclick={handleCloseModal}>
+                        </lightning-button>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+        </template>
+
+        <template if:true={isAssociateModalOpen}>
+            <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open custom-modal slds-modal_medium">
+                <div class="slds-modal__container">
+                    <header class="slds-modal__header">
+                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={handleCloseAssociateModal}>
+                            <lightning-icon icon-name="utility:close" alternative-text="close" size="small"></lightning-icon>
+                            <span class="slds-assistive-text">Close</span>
+                        </button>
+                        <b><h2 class="slds-text-heading_large">Associate Subject with Selected Courses</h2></b>
+                    </header>
+                    <div class="slds-modal__content slds-p-around_medium">
+                        <lightning-layout class="slds-p-around_medium custom-layout">
+
+                            <!-- Subject Details Section -->
+                            <lightning-layout-item size="6">
+                                <div class="slds-m-bottom_medium slds-text-align_left">
+                                    <h2 class="slds-text-heading_small">Selected Courses</h2>
+                                    <div class="custom-scroll-container">
+                                        <ol class="custom-list">
+                                            <template for:each={selectedCourses} for:item="course">
+                                                <li key={course.Id} class="slds-m-around_small custom-subject-item">
+                                                    <span class="slds-m-right_small">{course.Name} - {course.educx__Course_Name__c}</span>
+                                                </li>
+                                            </template>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </lightning-layout-item>
+
+                            <!-- Vertical line for separation -->
+                            <div class="vertical-line"></div>
+
+                            <!-- Record Edit Form Section -->
+                            <div class="slds-m-around_medium slds-size_5-of-12">
+                                <lightning-layout-item size="6">
+                                    <lightning-record-edit-form object-api-name="educx__Course_Subject__c"
+                                        onsuccess={handleAssociateSuccess} onerror={handleError}>
+                                        <label for="subject" class="custom-label">Subject Code</label>
+                                        <lightning-input-field field-name="educx__Subject__c" id="course"
+                                            variant="label-hidden" onchange={handleSubjectChange}>
+                                        </lightning-input-field><br/>
+                                        <label for="year" class="custom-label">Year</label>
+                                        <lightning-input-field field-name="educx__Year__c" id="year"
+                                            variant="label-hidden" onchange={handleYearChange}></lightning-input-field>
+                                        <br/>
+                                        <label for="sem" class="custom-label">Semester</label>
+                                        <lightning-input-field field-name="educx__Semester__c" id="sem"
+                                            variant="label-hidden" onchange={handleSemesterChange}>
+                                        </lightning-input-field><br/>
+                                    </lightning-record-edit-form>
+                                </lightning-layout-item>
+                            </div>
+
+                        </lightning-layout>
+                        <footer class="slds-modal__footer slds-align_absolute-center">
+                            <lightning-button variant="neutral" label="Cancel" onclick={handleCloseAssociateModal}>
+                            </lightning-button>
+                            <lightning-button variant="brand" label="Save" onclick={handleSaveAssociations}
+                                style="margin-left: 5px;"></lightning-button>
+                        </footer>
+
+                    </div>
+
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </template>
+
+        <!-- Pagination Controls and Page Number Display -->
+        <div class="slds-align_absolute-center" style="height:5rem">
+            <lightning-button disabled={bDisableFirst} icon-name="utility:jump_to_left" label="First"
+                class="slds-p-horizontal_x-small" alternative-text="first page" onclick={firstPage}></lightning-button>
+
+            <lightning-button disabled={bDisableFirst} icon-name="utility:chevronleft" label="Previous"
+                alternative-text="Previous" onclick={previousPage}></lightning-button>
+            &nbsp;
+            <span class="slds-badge">Page {pageNumber} of {totalPages}</span>
+            &nbsp;
+            <lightning-button disabled={bDisableLast} icon-name="utility:chevronright" label="Next"
+                alternative-text="Next" onclick={nextPage} class="slds-p-horizontal_x-small" icon-position="right">
+            </lightning-button>
+
+            <lightning-button disabled={bDisableLast} icon-name="utility:jump_to_right" label="Last"
+                alternative-text="last page" onclick={lastPage} icon-position="right"></lightning-button>
+        </div>
+    </lightning-card>
+</template>

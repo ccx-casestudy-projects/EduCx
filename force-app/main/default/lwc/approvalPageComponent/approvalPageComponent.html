@@ -1,0 +1,84 @@
+<template>
+    <lightning-card title="Approval Requests" icon-name="standard:person_name">
+        <lightning-radio-group style="padding-left:1rem; padding-bottom:1rem" options={options} value={radioValue} onchange={radioChange}
+            type="button"></lightning-radio-group>
+        <template if:true={isStudent}>
+            <lightning-tabset>
+                <lightning-tab label="All Requests" value="All" onactive={handleTabChange}>
+                </lightning-tab>
+                <lightning-tab label="Transfer Certificate Requests" value="Transfer Certificate(TC)" onactive={handleTabChange}>
+                </lightning-tab>
+                <lightning-tab label="Bonafide Requests" value="Bonafide Certificate" onactive={handleTabChange}>
+                </lightning-tab>
+                <lightning-tab label="SSC Certificate Requests" value="SSC Certificate" onactive={handleTabChange}>
+                </lightning-tab>
+                <lightning-tab label="Intermeditae Certificate Requests" value="Inter Certificate" onactive={handleTabChange}>
+                </lightning-tab>
+            </lightning-tabset>
+            <div>
+                <div class="slds-m-around_medium ">
+                    <span class=".slds-badge .slds-theme_warning badge-container">
+                    <lightning-badge class="slds-theme_shade-violet" style="margin-right:6px" label={AllRowCount} title="All Rows">All</lightning-badge>
+                    <span class="slds-m-left_small" style="margin-right:6px">All</span>
+                    </span>
+                    <span  class=".slds-badge .slds-theme_warning badge-container">
+                    <lightning-badge class="slds-badge slds-badge_x-small slds-theme_warning" label={pendingRowCount} title="Pending Rows" >Pending</lightning-badge>
+                    <span class="slds-m-left_small" style="margin-right:6px">Pending</span>
+                    </span>
+                    <span class=".slds-badge .slds-theme_warning badge-container">
+                    <lightning-badge class="slds-theme_success" style="margin-right:6px" label={ApprovedRowCount} title="Approved Rows">Approved</lightning-badge>
+                    <span class="slds-m-left_small" style="margin-right:6px">Approved</span>
+                    </span>
+                    <span class=".slds-badge .slds-theme_warning badge-container">
+                    <lightning-badge class="slds-theme_error" style="margin-right:6px" label={RejectedRowCount} title="Rejected Rows">Rejected</lightning-badge>
+                    <span class="slds-m-left_small" style="margin-right:6px">Rejected</span>
+                    </span>
+
+                    <span class="slds-align_absolute-center searchbar slds-m-bottom_xx-large slds-form-element__control slds-p-left_large slds-size_1-of-4 "
+                style="position:absolute; bottom:-45px; margin-left:52%" >
+
+
+                 <lightning-input style="width:20rem"       type="search"
+                                        value={searchKey}
+                                         placeholder="Search the list" 
+                                         onchange={updateSearch} >
+                                        </lightning-input>
+                <lightning-button variant="success" label="Approve" title="Approve Selected Requests" onclick={handleApproveRecords} 
+                class="approvebutton"></lightning-button>
+                <lightning-button variant="destructive" label="Reject" title="Reject Selected Requests" onclick={handleRejectRecords} 
+                class="rejectbutton"></lightning-button> 
+            </span>
+                </div>
+            </div><br/>
+            <template if:true={records}>
+                <lightning-datatable key-field="id3" data={paginatedRecords} columns={columns}
+                    onrowaction={handleRowAction} onrowselection={handleRowSelection} pagination="true"
+                    column-widths-mode="auto" class="edu-datatable">
+                </lightning-datatable>
+                <div class="slds-align_absolute-center" style="height:2rem; margin-top:1rem;">
+                    <lightning-button icon-name="utility:jump_to_left" label="First" class="slds-p-horizontal_x-small"
+                        alternative-text="First page" onclick={handleFirstPage} disabled={isFirstPage}>
+                    </lightning-button>
+
+                    <lightning-button icon-name="utility:chevronleft" label="Previous" alternative-text="Previous"
+                        onclick={handlePrevious} disabled={isPrevDisabled}></lightning-button>
+
+                    <span class="slds-badge"> Page {currentPage} of {totalPages}</span>
+
+                    <lightning-button icon-name="utility:chevronright" label="Next" alternative-text="Next"
+                        onclick={handleNext} disabled={isNextDisabled} class="slds-p-horizontal_x-small"
+                        icon-position="right"></lightning-button>
+
+                    <lightning-button icon-name="utility:jump_to_right" label="Last" alternative-text="Last page"
+                        onclick={handleLastPage} disabled={isLastPage} icon-position="right"></lightning-button>
+                </div>
+            </template>
+            <template if:true={filterRecords}>
+                <c-filter-templates selected-rows={selectedRecords}></c-filter-templates>
+            </template>
+        </template>
+        <template if:false={isStudent}>
+            <c-leave-approval-request></c-leave-approval-request>
+        </template>
+    </lightning-card>
+</template>

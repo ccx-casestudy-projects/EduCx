@@ -1,0 +1,41 @@
+<template>
+    <div class="card">
+    <div class="loginscreen">
+     
+      <div class=" cardPos "><!--slds-size_1-of-3-->
+      <lightning-card>
+        <div class="slds-align_absolute-center slds-p-around_small" >
+          <lightning-icon 
+            icon-name="action:user" 
+            alternative-text="User" 
+            size="xx-large" 
+            title="User"
+            
+          ></lightning-icon>
+        </div>
+        <div>
+          <label class="slds-text-heading_small slds-align_absolute-center slds-p-around_small">Select Book Borrower</label>
+        </div>
+        
+        <div class="slds-m-around_small slds-align_absolute-center">
+          <!-- Card Body  -->
+          <lightning-radio-group name="loginType" variant="label-hidden" label="Select login type" options={loginOptions} value={selectedLoginType} onchange={handleLoginTypeChange}></lightning-radio-group>
+      
+    </div>
+    <div >
+      <div class="slds-m-around_small" >
+      <lightning-button 
+      class="slds-m-around_small slds-align_absolute-center "
+        variant="brand"
+        label="Next" 
+        onclick={handleNext} 
+      ></lightning-button>
+          </div></div>
+      
+      </lightning-card>
+     
+  </div>
+ 
+  </div>
+    </div>
+  </template>

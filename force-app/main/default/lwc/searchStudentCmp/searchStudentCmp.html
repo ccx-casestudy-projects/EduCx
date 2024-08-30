@@ -1,0 +1,90 @@
+<template>
+    <br/>
+    <lightning-button label="Search Student" variant="brand" onclick={handleSearchStudent}></lightning-button>
+
+    <template if:true={isShowModal}>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+        <!-- modal header start -->
+            <header class="slds-modal__header">
+                <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" 
+                onclick={hideModalBox}>
+                <lightning-icon icon-name="utility:close"
+                    alternative-text="close"
+                    variant="inverse"
+                    size="small" ></lightning-icon>
+                <span class="slds-assistive-text">Close</span>
+                </button>
+                <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Search Student</h2>
+            </header>
+
+            <!-- modal body start -->
+            <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                <template if:true={selectedStudent}>
+                <lightning-record-picker
+                    label="Search Student With Hallticket Or Name"
+                    placeholder="Search..."
+                    object-api-name="educx__Student__c"
+                    value={initialValue}
+                    onchange={handleChange}
+                    matching-info={matchingInfo}
+                    display-info={displayInfo}
+                ></lightning-record-picker></template>
+                <br/>
+                <div if:true={showContent}>
+                    <div class="slds-grid slds-gutters ">
+                            <div class="slds-col slds-align_absolute-center ">
+                                <p>Name : </p>
+                                <p class="stuDetails"> {studentName}</p>
+                            </div>
+                            <div class="slds-col slds-align_absolute-center ">
+                                <p>Hallticket No : </p>
+                                <p class="stuDetails"> {hallticketNo}</p>
+                            </div>
+                            <div class="slds-col slds-align_absolute-center ">
+                                <p>Year :  </p>
+                                <p class="stuDetails"> {year}</p>
+                            </div>
+                            <div class="slds-col slds-align_absolute-center ">
+                                <p>Semester : </p>
+                                <p class="stuDetails"> {semester}</p>
+                            </div>
+                            <div class="slds-col slds-align_absolute-center ">
+                                <p>Course : </p>
+                                <p class="stuDetails"> {CourseName}</p>
+                            </div>
+                    </div>
+                    <br/>
+                    <section class="slds-box border">
+                        <h1 class="studentSection">Student Attendance</h1><br/>
+                        <template if:true={hallticketNo}>
+                            <div ><c-stu-attendance-cmp record-id={hallticketNo}></c-stu-attendance-cmp> </div>
+                        </template>
+                    </section>
+                    <br/>
+                    <section class="slds-box border">
+                        <h1 class="studentSection">Student Payments</h1><br/>
+                        <template if:true={hallticketNo}>
+                            <div><c-stu-payment-cmp  paid-amount={paidAmount} total-fee={totalFee} balance-amount={balanceAmount} record-id={hallticketNo}></c-stu-payment-cmp></div>
+                        </template>
+                    </section>
+                    <br/>
+                    <section class="slds-box border">
+                        <h1 class="studentSection">Student Requests</h1><br/>
+                        <template if:true={hallticketNo}>
+                            <div><c-stu-requests-cmp record-id={hallticketNo}></c-stu-requests-cmp></div>
+                        </template>
+                    </section>
+                </div>
+            </div>
+
+            <!-- modal footer start-->
+            <footer class="slds-modal__footer">
+                <button class="slds-button slds-button_neutral" onclick={hideModalBox}>Cancel</button>
+            </footer>
+
+        </div>
+        </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>

@@ -1,0 +1,31 @@
+.input-container {
+    display: block;             
+    gap: 1rem;
+     width: 100%;
+     padding: 0 1rem;
+}
+.fontsize {
+    font-weight: bold;
+}
+.header{
+	font-weight:bold;
+    font-size:35px;
+    color:rgb(68, 41, 102);
+	font-family:'Times New Roman', Times, serif;
+}
+.custom-modal{
+    width: 96%; /* Adjust the width as needed */
+    max-width: 1200px; /* Set a maximum width if needed */
+    margin: 0 auto;
+}
+.datatable-container {
+    max-height: 300px; /* Set a fixed height for the datatable container */
+    overflow-y: auto; /* Enable vertical scrolling */
+    margin-bottom: 1rem; /* Add some spacing below the table */
+}
+.hidefield {
+    display:none;
+}
+.spacing {
+    margin-right: 5px;
+}

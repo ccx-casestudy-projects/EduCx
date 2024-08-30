@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Employee Leave Details</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Employee Leave Details</value>
+    </caseValues>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Already you have applied leave today --></errorMessage>
+        <name>Duplicate</name>
+    </validationRules>
+</CustomObjectTranslation>

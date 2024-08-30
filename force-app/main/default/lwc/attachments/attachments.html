@@ -1,0 +1,49 @@
+<template>
+    <div class="slds-m-around_xx-large form-container fontsize">
+        <!-- Left side -->
+        <div class="form-column">
+            <template for:each={leftItems} for:item="item">
+                <div key={item.id} class="form-row">
+                    <div class="form-item">
+                        <label class="labels">{item.label}</label>
+                        <div class="slds-grid slds-align_absolute-center">
+                            <lightning-input type="file" variant="label-hidden"
+                                onchange={handleFileChange} data-id={item.id}>
+                            </lightning-input>
+                            <lightning-button-icon icon-name="action:preview"
+                                alternative-text="View" title="View"
+                                onclick={handlePreviewClick} data-id={item.id}
+                                class="slds-m-left_x-small" variant="bare"
+                                style="color: blue;"></lightning-button-icon>
+                            <span class="file-name" data-file-name-id={item.id}></span>
+                        </div>
+                        <span class="file-size-error" data-file-size-error-id={item.id}></span> <!-- Error message span -->
+                    </div>
+                </div>
+            </template>
+        </div>
+        <!-- Right side -->
+        <div class="form-column">
+            <template for:each={rightItems} for:item="item">
+                <div key={item.id} class="form-row">
+                    <div class="form-item">
+                        <label class="labels">{item.label}</label>
+                        <div class="slds-grid slds-align_absolute-center">
+                            <lightning-input type="file" variant="label-hidden"
+                                onchange={handleFileChange} data-id={item.id}>
+                            </lightning-input>
+                            <lightning-button-icon icon-name="action:preview"
+                                alternative-text="View" title="View"
+                                onclick={handlePreviewClick} data-id={item.id}
+                                class="slds-m-left_x-small" variant="bare"
+                                style="color: blue;"></lightning-button-icon>
+                            <span class="file-name" data-file-name-id={item.id}></span>
+                        </div>
+                        <span class="file-size-error" data-file-size-error-id={item.id}></span> <!-- Error message span -->
+                    </div>
+                </div>
+            </template>
+        </div>
+    </div>
+    <c-toast-message></c-toast-message>
+</template>

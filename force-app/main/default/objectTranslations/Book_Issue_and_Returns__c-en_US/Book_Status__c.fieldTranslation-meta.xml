@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Book Status --></label>
+    <name>Book_Status__c</name>
+    <picklistValues>
+        <masterLabel>Returned</masterLabel>
+        <translation><!-- Returned --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

@@ -1,0 +1,14 @@
+.custom-container{
+	color : black;
+}
+.layout-item{
+    font-weight: bold;
+}
+/* :host{
+	--sds-c-icon-color-background: var(--slds-c-icon-color-background, rgba(1, 118, 211, 1));
+} */
+
+.custom-back-icon {
+    --sds-c-icon-color-background: rgba(1, 118, 211, 1);
+	padding-left: 10px;
+}

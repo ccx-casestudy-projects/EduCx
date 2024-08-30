@@ -1,0 +1,22 @@
+<template>
+    <template if:true={facultySubjects.length}>
+        <lightning-datatable
+            key-field="Id"
+            data={facultySubjects}
+            columns={columns}
+            hide-checkbox-column
+            sorted-by="Name"
+            sorted-direction="asc">
+        </lightning-datatable>
+    </template>
+    <template if:false={facultySubjects.length}>
+        <div style="color: #F1490E; font-size: 18px; font-weight: bold; text-align: center; padding: 10px;">
+            No subjects are assigned for this employee.
+        </div>
+    </template>
+    <template if:true={error}>
+        <div class="error-message">
+            {error.message}
+        </div>
+    </template>
+</template>

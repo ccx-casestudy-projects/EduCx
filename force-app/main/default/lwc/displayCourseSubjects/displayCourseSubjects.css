@@ -1,0 +1,34 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.subject-details {
+    border: 1px solid #d8dde6;
+    padding: 1rem;
+    border-radius: 0.25rem;
+    background-color: #f4f6f9;
+}
+
+.info-box {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.label {
+    font-weight: bold;
+    margin-right: 0.5rem;
+}
+
+.value-box {
+    flex-grow: 1;
+}
+.header {
+    font-size: 1.5em;
+    font-family: 'Times New Roman', sans-serif;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: rgb(3, 192, 244);
+}

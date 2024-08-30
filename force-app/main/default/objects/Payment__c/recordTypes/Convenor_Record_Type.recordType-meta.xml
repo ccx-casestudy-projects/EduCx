@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Convenor_Record_Type</fullName>
+    <active>true</active>
+    <label>Convenor</label>
+    <picklistValues>
+        <picklist>Year__c</picklist>
+        <values>
+            <fullName>1st Year</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2nd Year</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3rd Year</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>4th Year</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

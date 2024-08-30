@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Admission Type --></label>
+    <name>Admission_Type__c</name>
+    <picklistValues>
+        <masterLabel>Convenor Quota</masterLabel>
+        <translation><!-- Convenor Quota --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Management Quota</masterLabel>
+        <translation><!-- Management Quota --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Spot Registration</masterLabel>
+        <translation><!-- Spot Registration --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

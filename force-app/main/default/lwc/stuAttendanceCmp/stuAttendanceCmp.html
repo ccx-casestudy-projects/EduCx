@@ -1,0 +1,10 @@
+<template>
+    <template if:true={attendanceData}>
+        <lightning-datatable 
+        key-field="Id" 
+        data={attendanceData}
+        hide-checkbox-column="true"
+        wrap-text-max-lines="3"
+        columns={attendancecolumns}></lightning-datatable>
+    </template>
+</template>
